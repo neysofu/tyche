@@ -1,6 +1,5 @@
 package io.neysofu.tyche.stats
 
-import io.neysofu.tyche.stats.Distribution
 import scala.util.Random
 
 abstract class GaussianDistribution(stdev: Double, expval: Double)

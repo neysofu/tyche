@@ -1,13 +1,43 @@
 package io.neysofu.tyche.stats
 
 trait Distribution[A] { self =>
-  
+
+  /** The default values for deciding the number of trial runs. See
+   *    http://en.wikipedia.org/wiki/Checking_whether_a_coin_is_fair
+   */
+  val stdDev: Double = 2
+  val maxError: Double = 0.01
+
   /** Returns a random outcome according to some probability
    *  distribution.
    */
-  def get: A
+  def get(): A
 
   override def toString = "<distribution>"
+
+  /** Returns the expected value (mean) of the probability distribution
+   *  accordingly to an estimator of true probability.
+   */
+  def mean(implicit toDouble: A <:< Double): Double = {
+    val n = (stdDev, maxError) match {
+      case (2, 0.01) => 10000
+      case _ => (Math.pow(stdDev, 2) / (4 * Math.pow(maxError, 2))).toInt
+    }
+    times(n).get.map(toDouble(_)).sum / n
+  }
+
+  /** Returns the variance of the probability distribution.
+   */
+  def variance(implicit toDouble: A <:< Double): Double = {
+    val avg = mean
+    map(x => Math.pow(toDouble(x) - avg, 2)).mean
+  }
+
+  /** Returns the standard deviation of the probability function.
+   */
+  def standardDeviation(implicit toDouble: A <:< Double): Double = {
+    Math.sqrt(variance)
+  }
 
   /** Returns a new probability distribution originated from the current
    *  instance, the sample space of which is changed accordingly to a given
@@ -22,7 +52,7 @@ trait Distribution[A] { self =>
    *  predicate.
    */
   def given(pred: A => Boolean): Distribution[A] = new Distribution[A] {
-    def get = { val aa = self.get; if (pred(aa)) this.get else aa }
+    def get = { val aa = self.get; if (pred(aa)) self.get else aa }
   }
 
   /** Returns a new probability distribution originated from the current
@@ -49,12 +79,4 @@ trait Distribution[A] { self =>
     new Distribution[(A, B)] {
       def get = (self.get, that.get)
     }
-}
-
-trait UniformDistribution[A] extends Distribution[A] {
-
-  /** Returns the numerical density of the probability distribution at a
-   *  given point
-   */
- // def densityAt(x: Double)
 }
