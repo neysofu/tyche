@@ -1,5 +1,6 @@
-package io.neysofu.tyche
+package io.neysofu.tyche.main
 
+import io.neysofu.tyche.stats.Distribution
 import scala.util.Random
 
 object Hello {

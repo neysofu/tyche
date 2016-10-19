@@ -1,4 +1,4 @@
-package io.neysofu.tyche
+package io.neysofu.tyche.stats
 
 trait Distribution[A] { self =>
   
@@ -18,7 +18,7 @@ trait Distribution[A] { self =>
   }
 
   /** Returns a new probability distribution originated from the current
-   *  instance, the sample space of which is reduced accordingly to a given
+   *  instance, the sample space of which is shrunk accordingly to a given
    *  predicate.
    */
   def given(pred: A => Boolean): Distribution[A] = new Distribution[A] {
@@ -49,4 +49,12 @@ trait Distribution[A] { self =>
     new Distribution[(A, B)] {
       def get = (self.get, that.get)
     }
+}
+
+trait UniformDistribution[A] extends Distribution[A] {
+
+  /** Returns the numerical density of the probability distribution at a
+   *  given point
+   */
+ // def densityAt(x: Double)
 }
