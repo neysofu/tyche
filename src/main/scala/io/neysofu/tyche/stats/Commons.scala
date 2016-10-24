@@ -4,9 +4,8 @@ package stats
 object Commons {
 
   def newDiscreteUniform[A](seq: Seq[A]): DiscreteDistribution[A] = {
-    new DiscreteDistribution[A] {
-      val mass = seq.map(x => (1.0 / seq.length, x))
-    }
+    val d = 1.0 / seq.size
+    new DiscreteDistribution[A](seq.map((d, _)))
   }
 
   def newUniform(): ContinuousDistribution[Double] = {
