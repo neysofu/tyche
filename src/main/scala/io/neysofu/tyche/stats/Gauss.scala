@@ -3,7 +3,7 @@ package stats
 
 import scala.util.Random
 
-case class Gauss(sd: Double, eg: Double) extends DistributionWithMoments[Double] {
+case class Gauss(sd: Double = 1, eg: Double = 0) extends DistributionWithMoments[Double] {
 
   def get = Random.nextGaussian * sd + eg
 }
