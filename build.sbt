@@ -1,21 +1,23 @@
-import sbt._
+import sbt._, Keys._
+import Dependencies._
 
-lazy val commonSettings = Seq(
-	organization := "io.neysofu",
-	version := "0.0.1",
-	scalaVersion := "2.11.8"
-)
-
-lazy val root = (project in file(".")).
-	settings(commonSettings: _*).
-	settings(
-		name := "Tyche",
-		scalacOptions += "-feature",
-        scalacOptions += "-deprecation",
-        libraryDependencies += "org.scalactic" %% "scalactic" % "3.0.0",
-        libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.0" % "test"
-	)
-
-
-
-
+lazy val root = (project in file("."))
+  .settings(Seq(
+    // Commons
+    organization := "io.neysofu",
+    name := "tyche",
+    version := "0.0.1",
+    // Compiler settings
+    scalaVersion := "2.11.8",
+    scalacOptions := Seq(
+      "-deprecation",
+      "-unchecked",
+      "-feature"
+    ),
+    // Dependencies
+    resolvers ++= Dependencies.Resolvers.commons,
+    libraryDependencies ++= Seq(
+      scalactic,
+      scalatest
+    )
+  ))
