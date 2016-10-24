@@ -22,10 +22,9 @@ object Commons {
 
   def newStdNormal(): ContinuousDistribution[Double] = newGauss(1, 0)
 
-  def newChiSq(k: Int): ContinuousDistribution[Double] = {
-    val gauss = newGauss(1, 0)
+  def newChiSquare(k: Int): ContinuousDistribution[Double] = {
     new ContinuousDistribution[Double] {
-      def get = Seq.fill(k)(Math.pow(gauss.get, 2)).sum
+      def get = Seq.fill(k)(Math.pow(newStdNormal.get, 2)).sum
     }
   }
 
