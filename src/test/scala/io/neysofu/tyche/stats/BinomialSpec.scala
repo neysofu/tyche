@@ -1,13 +1,18 @@
 package io.neysofu.tyche
 package stats
 
-import org.scalatest._
+import org.scalatest.{WordSpec, Matchers}
 
-class BinomialSpec extends FlatSpec with Matchers {
-  val binomial = Commons.newBinomial(24, 0.5)
+class BinomialSpec extends WordSpec with Matchers {
+  
+  val binomial = Commons.newBinomial(8, 0.6)
 
-  "A binomial distribution" should "give integer results" in {
-    val d = binomial.get
-    d should equal (Math.floor(d))
+  "A binomial distribution" when {
+    "sampled" should {
+      "return an integer number" in {
+        val d = binomial.get
+        d should equal (Math.floor(d))
+      }
+    }
   }
 }
