@@ -8,9 +8,9 @@ package stats
  *  ---------
  *  1. https://en.wikipedia.org/wiki/Numerical_analysis
  */
-abstract class DistributionWithMoments[A] extends Distribution[A] { self =>
+abstract class ContinuousDistribution[A] extends Distribution[A] { self =>
 
-  override def map[B](f: A => B) = new DistributionWithMoments[B] {
+  override def map[B](f: A => B) = new ContinuousDistribution[B] {
     def get = f(self.get)
   }
 

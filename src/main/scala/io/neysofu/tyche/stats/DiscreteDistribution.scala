@@ -9,9 +9,9 @@ import scala.util.Random
  *  ---------
  *  1. https://www.youtube.com/watch?v=3MOahpLxj6A
  */
-abstract class DistributionDiscrete[A] extends Distribution[A] { self =>
+abstract class DiscreteDistribution[A] extends Distribution[A] { self =>
 
-  override def map[B](f: A => B) = new DistributionDiscrete[B] {
+  override def map[B](f: A => B) = new DiscreteDistribution[B] {
     val mass = self.mass.map(x => (x._1, f(x._2)))
   }
 
