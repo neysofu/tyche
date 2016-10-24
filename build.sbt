@@ -10,10 +10,10 @@ lazy val root = (project in file(".")).
 	settings(commonSettings: _*).
 	settings(
 		name := "Tyche",
-		scalaSource in Compile := baseDirectory.value / "src",
-		scalaSource in Test := baseDirectory.value / "test",
-		libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.0" % "test",
-		resolvers += "Artima Maven Repository" at "http://repo.artima.com/releases"
+		scalacOptions += "-feature",
+        scalacOptions += "-deprecation",
+        libraryDependencies += "org.scalactic" %% "scalactic" % "3.0.0",
+        libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.0" % "test"
 	)
 
 
