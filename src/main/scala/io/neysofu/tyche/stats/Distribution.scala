@@ -22,12 +22,9 @@ trait Distribution[A] { self =>
 
   def map[B](f: A => B): Distribution[B]
 
-  /** Returns a new probability distribution originated from the current
-   *  instance, the type parameter of which is changed to ´Double´.
-   *
-  def plot(implicit num: Numeric[A]): Distribution[Double] = map {
-    x => num.toDouble(x)
-  }*/
+  def flatMap[B](f: A => Distribution[B]): Distribution[B] = map {
+    x => f(x).get
+  }
 
   /** Returns a new probability distribution originated from the current
    *  instance, the sample space of which is shrunk accordingly to a given

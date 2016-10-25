@@ -1,6 +1,8 @@
 package io.neysofu.tyche
 package stats
 
+import io.neysofu.tyche.util.Minions
+
 /** Represents a discrete probability distribution.
  *
  *  Resources
@@ -9,13 +11,7 @@ package stats
  */
 class DiscreteDistribution[A](pmf: Seq[(Double, A)]) extends Distribution[A] { self =>
   
-  private lazy val cumulativeSums = {
-    var t: Double = 0
-    pmf.map { s =>
-      t += s._1
-      t
-    }
-  }
+  private lazy val csum = Minions.cumulativeSum(pmf.map(_._1))
 
   override def map[B](f: A => B) = {
     new DiscreteDistribution[B](pmf.map(x => (x._1, f(x._2))))
@@ -23,6 +19,6 @@ class DiscreteDistribution[A](pmf: Seq[(Double, A)]) extends Distribution[A] { s
 
   override def get = {
     val d = rnd.nextDouble
-    pmf(cumulativeSums.indexWhere(_ > d))._2
+    pmf(csum.indexWhere(_ > d))._2
   }
  }

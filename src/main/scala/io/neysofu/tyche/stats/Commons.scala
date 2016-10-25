@@ -8,6 +8,8 @@ object Commons {
     new DiscreteDistribution[A](seq.map((d, _)))
   }
 
+  def newMarkovChain[A](trans: Map[A, Seq[(Double, A)]]): DiscreteDistribution[DiscreteDistribution[A]]
+
   def newUniform(): ContinuousDistribution[Double] = {
     new ContinuousDistribution[Double] {
       def get = rnd.nextDouble
