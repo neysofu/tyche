@@ -5,7 +5,7 @@ object Commons {
 
   def newDiscreteUniform[A](seq: Seq[A]): DiscreteDistribution[A] = {
     val d = 1.0 / seq.size
-    new DiscreteDistribution[A](seq.map((d, _)))
+    new DiscreteDistribution[A](seq.map(x => (d, x)))
   }
 
   //def newMarkovChain[A](trans: Map[A, Seq[(Double, A)]]): DiscreteDistribution[DiscreteDistribution[A]]
