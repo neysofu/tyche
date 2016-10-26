@@ -1,8 +1,9 @@
 package io.neysofu.tyche
 package stats
 
+/** A collection of useful probaiblity distribution generators.
+ */
 object Commons {
-
 
   /** Returns a discrete uniform probability distribution such that every
    *  one of the possible values has equal probability.
@@ -13,6 +14,10 @@ object Commons {
    */
   def newDiscreteUniform[A](seq: Seq[A]): DiscreteGen[A] = new DiscreteGen(
     DiscreteGen.probabilityMassFunct(seq.map(x => (1.0/seq.size, x)))
+  )
+
+  def newBernoulli(p: Double): DiscreteGen[Boolean] = new DiscreteGen(
+    DiscreteGen.probabilityMassFunct(Seq((1-p, false), (p, true)))
   )
 
   /** Returns a continuous uniform probability distribution in the interval
