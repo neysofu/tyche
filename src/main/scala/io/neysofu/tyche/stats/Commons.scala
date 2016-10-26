@@ -16,6 +16,8 @@ object Commons {
     DiscreteGen.probabilityMassFunct(seq.map(x => (1.0/seq.size, x)))
   )
 
+  /** Returns a Bernoulli probability distribution with Boolean outcomes.
+   */
   def newBernoulli(p: Double): DiscreteGen[Boolean] = new DiscreteGen(
     DiscreteGen.probabilityMassFunct(Seq((1-p, false), (p, true)))
   )
