@@ -7,8 +7,6 @@ object Commons {
     DiscreteGen.probabilityMassFunct(seq.map(x => (1.0/seq.size, x)))
   )
 
-  //def newMarkovChain[A](trans: Map[A, Seq[(Double, A)]]): DiscreteGen[DiscreteGen[A]]
-
   def newUniform(): ContinuousGen[Double] = {
     new ContinuousGen[Double] {
       def get = rnd.nextDouble
