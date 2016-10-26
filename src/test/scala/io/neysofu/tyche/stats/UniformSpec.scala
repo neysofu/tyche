@@ -13,5 +13,10 @@ class UniformSpec extends WordSpec with Matchers {
         distr.map(x => x + 1).get should be >= 1.0
       }
     }
+    "zipped with itself" should {
+      "return another distribution" in {
+        distr.joint(distr) shouldBe a [Gen[_]]
+      }
+    }
   }
 }
