@@ -8,9 +8,9 @@ package stats
  *  ---------
  *  1. https://en.wikipedia.org/wiki/Numerical_analysis
  */
-abstract class ContinuousDistribution[A] extends Distribution[A] { self =>
+abstract class ContinuousGen[A] extends Gen[A] { self =>
 
-  override def map[B](f: A => B) = new ContinuousDistribution[B] {
+  override def map[B](f: A => B) = new ContinuousGen[B] {
     def get = f(self.get)
   }
 
@@ -38,7 +38,7 @@ abstract class ContinuousDistribution[A] extends Distribution[A] { self =>
     Math.sqrt(variance)
   }
 
-  def toDouble(implicit toDouble: A <:< Double): Distribution[Double] = map {
+  def toDouble(implicit toDouble: A <:< Double): Gen[Double] = map {
     toDouble(_)
   }
 }
