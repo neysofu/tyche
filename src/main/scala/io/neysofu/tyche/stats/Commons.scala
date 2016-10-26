@@ -16,6 +16,12 @@ object Commons {
     DiscreteGen.probabilityMassFunct(seq.map(x => (1.0/seq.size, x)))
   )
 
+  /** Returns a degenerate (deterministic) probability distribution.
+   */
+  def newDegenerate[A](v: A): DiscreteGen[A] = newDiscreteUniform(
+    Seq(v)
+  )
+
   /** Returns a Bernoulli probability distribution with Boolean outcomes.
    */
   def newBernoulli(p: Double): DiscreteGen[Boolean] = new DiscreteGen(
