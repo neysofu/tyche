@@ -8,12 +8,10 @@ class UniformSpec extends WordSpec with Matchers {
   val distr = Commons.newUniform()
 
   "A uniform probability distribution" when {
-    "sampled" should {
-      "generate values in the [0, 1] range" in {
-        distr.get should be >=0.0
-        distr.get should be <=1.0
+    "mapped" should {
+      "return different outcomes" in {
+        distr.map(x => x + 1).get should be >= 1.0
       }
     }
   }
 }
-
