@@ -9,6 +9,7 @@ class DegenerateSpec extends WordSpec with Matchers {
   val gen = Commons.newDegenerate(Outcome)
 
   "A degenerate distribution" when {
+    
     "sampled" should {
       "always return the same value" in {
         gen.get shouldBe Outcome

@@ -5,17 +5,13 @@ import org.scalatest.{WordSpec, Matchers}
 
 class UniformSpec extends WordSpec with Matchers {
 
-  val distr = Commons.newUniform()
+  val gen = Commons.newUniform()
 
   "A uniform probability distribution" when {
-    "mapped" should {
-      "return different outcomes" in {
-        distr.map(x => x + 1).get should be >= 1.0
-      }
-    }
-    "zipped with itself" should {
-      "return another distribution" in {
-        distr.joint(distr) shouldBe a [Gen[_]]
+    
+    "sampled" should {
+      "generate values in the ´[0,1[´ interval" in {
+        gen.times(gen.sampleSize).forall(x => x >= 0 && x < 1)
       }
     }
   }
