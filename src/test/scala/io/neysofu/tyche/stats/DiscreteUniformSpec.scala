@@ -5,13 +5,27 @@ import org.scalatest.{WordSpec, Matchers}
 
 class DiscreteUniformSpec extends WordSpec with Matchers {
 
-  //println(DiscreteGen.probabilityMassFunct(Seq((0.5, 1), (0.5, 2))).weights)
-  val distr = Commons.newDiscreteUniform(Seq(1, 2))
-
   "A discrete uniform probability distribution" when {
-    "sampled" should {
-      "generate random outcomes according to a mass function" in {
-        distr.get shouldBe a [Integer]
+    
+    "a coin is tossed" should {
+
+      sealed trait Coin
+      case object Head extends Coin
+      case object Tail extends Coin
+      val gen = Commons.newDiscreteUniform(Seq(Head, Tail))
+
+      "return $HEAD or $TAIL." in {
+        gen.get shouldBe a [Coin]
+      }
+    }
+
+    "a 1-sided die is rolled" should {
+      
+      case object Outcome
+      val die = Commons.newDiscreteUniform(Seq(Outcome))
+
+      "always return the same value" in {
+        die.get shouldBe Outcome
       }
     }
   }
