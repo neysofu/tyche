@@ -5,9 +5,9 @@ import org.scalatest.{WordSpec, Matchers}
 
 class ChiSquareSpec extends WordSpec with Matchers {
 
-  val distr = Commons.newChiSquare(4)
+  val distr = Commons.newChiSquare(1)
 
-  "A chi-squared (k=3) probability distribution" when {
+  "A chi-square probability distribution" when {
     "sampled" should {
       "generate nonnegative values" in {
         distr.get should be >= 0.0
