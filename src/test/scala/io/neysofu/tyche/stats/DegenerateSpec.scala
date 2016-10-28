@@ -5,12 +5,13 @@ import org.scalatest.{WordSpec, Matchers}
 
 class DegenerateSpec extends WordSpec with Matchers {
 
-  val distr = Commons.newDegenerate(0)
+  case object Outcome
+  val gen = Commons.newDegenerate(Outcome)
 
   "A degenerate distribution" when {
     "sampled" should {
       "always return the same value" in {
-        distr.get shouldBe 0
+        gen.get shouldBe Outcome
       }
     }
   }
