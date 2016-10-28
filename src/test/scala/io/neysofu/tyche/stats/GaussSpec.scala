@@ -5,13 +5,15 @@ import org.scalatest.{WordSpec, Matchers}
 
 class GaussSpec extends WordSpec with Matchers {
 
-  val distr = Commons.newGauss(1, 0)
-
   "A normal distribution" when {
-    "sampled" should {
-      "have an expected value of 0" in {
-        distr.mean should be > -1.0
-        distr.mean should be < +1.0
+   
+    val sd = 1
+    val ev = 0
+
+    s"when ´SD=$sd´ and ´EV=$ev´" should {
+      val gen = Commons.newGauss(sd, ev)
+      "have a sample mean of ~0" in {
+        Math.round(gen.mean) shouldBe 0.toLong
       }
     }
   }
