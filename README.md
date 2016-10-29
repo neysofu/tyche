@@ -7,7 +7,7 @@ processes.
 	case object M extends Child
 	case object F extends Child
 
-	def family = newDiscreteUniform(Seq(M,F)).until(_.contains(M))
+	def family = Commons.newDiscreteUniform(Seq(M,F)).until(_.contains(M))
 
 	val sampleSize = 10000
-	1.0 family.times(sampleSize).flatten.count(_ == F) / sampleSize
+	1.0 * family.times(sampleSize).flatten.count(_ == F) / sampleSize
