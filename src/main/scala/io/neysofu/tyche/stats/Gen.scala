@@ -13,6 +13,8 @@ import scala.util.Random
  */
 trait Gen[A] { self =>
 
+  /** The top random variable. Use this to generate *all* values!
+   */
   val rnd: Random = new Random
 
   /** Returns a random outcome according to some probability
@@ -21,7 +23,7 @@ trait Gen[A] { self =>
   def get: A
 
   /** Returns a new probability distribution originated from the current
-   *  instance, the outcomes of which are changed accordingly to a given
+   *  instance, the sample space of which is changed accordingly to a given
    *  function.
    */
   def map[B](f: A => B): Gen[B] = new Gen[B] {
@@ -35,7 +37,8 @@ trait Gen[A] { self =>
   def given(pred: A => Boolean): Gen[A] = new Gen[A] {
     def get: A = {
       val g = self.get
-      if (pred(g)) g else get
+      if (pred(g)) g
+      else get
     }
   }
 
@@ -45,15 +48,13 @@ trait Gen[A] { self =>
    */
   def until(pred: Seq[A] => Boolean): Gen[Seq[A]] = map { x =>
     def growSeq(ls: Seq[A]): Seq[A] = {
-      if (pred(ls))
-        ls
-      else
-        growSeq(ls :+ self.get)
+      if (pred(ls)) ls
+      else growSeq(ls :+ self.get)
     }
     growSeq(Seq(x))
   }
 
-  /** Returns an array filled with outcomes of the desired length.
+  /** Returns an array of the desired length filled with random outcomes.
    */
   def times(n: Int): Seq[A] = Seq.fill(n)(get)
 
@@ -63,4 +64,10 @@ trait Gen[A] { self =>
   def joint[B](that: Gen[B]): Gen[(A, B)] = map {
     x => (x, that.get)
   }
+
+  /** Returns a new probability distribution originated from the current
+   *  instance, the sample space of which only contains numerical
+   *  representations of its elements.
+   */
+  def toDouble(implicit d: A <:< Double): Gen[Double] = map(d(_))
 }
