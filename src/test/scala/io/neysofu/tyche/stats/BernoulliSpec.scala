@@ -5,14 +5,13 @@ import org.scalatest.{WordSpec, Matchers}
 
 class BernoulliSpec extends WordSpec with Matchers {
 
-  val p = 1
-  val gen = Commons.newBernoulli(p)
+  val always = Commons.newBernoulli(1)
 
-  f"A Bernoulli distribution (´p=$p´)" when {
+  "A Bernoulli distribution (´p=1´)" when {
     
     "sampled" should {
       "always be successful" in {
-        gen.get shouldBe true
+        always.get shouldBe true
       }
     }
   }

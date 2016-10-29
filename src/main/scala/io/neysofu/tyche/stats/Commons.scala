@@ -1,6 +1,8 @@
 package io.neysofu.tyche
 package stats
 
+import scala.util.Random
+
 /** A collection of useful probaiblity distribution generators.
  */
 object Commons {

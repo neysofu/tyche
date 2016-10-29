@@ -48,7 +48,7 @@ trait Gen[A] { self =>
       if (pred(ls))
         ls
       else
-        growSeq(ls :+ get)
+        growSeq(ls :+ self.get)
     }
     growSeq(Seq(x))
   }

@@ -1,6 +1,8 @@
 package io.neysofu.tyche
 package stats
 
+import scala.util.Random
+
 /** Represents a discrete probability distribution.
  *
  *  Resources
@@ -8,10 +10,6 @@ package stats
  *  1. https://www.youtube.com/watch?v=3MOahpLxj6A
  */
 class DiscreteGen[A](val pmf: DiscreteGen.MassFunct[A]) extends Gen[A] { self =>
-
-  override def map[B](f: A => B) = new DiscreteGen(
-    new DiscreteGen.MassFunct(pmf.weights zip pmf.values.map(f(_)))
-  )
 
   // See https://goo.gl/X4hwlu
   def get = {
