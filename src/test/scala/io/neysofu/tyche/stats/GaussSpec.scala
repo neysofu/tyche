@@ -7,7 +7,7 @@ class GaussSpec extends WordSpec with Matchers {
 
   val sd = 1
   val ev = 0
-  val gen = Commons.newGauss(sd, ev)
+  val gen = ContinuousGen.normal(sd, ev)
 
   "A normal distribution" when {
    

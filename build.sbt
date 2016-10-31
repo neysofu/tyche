@@ -6,7 +6,7 @@ lazy val root = (project in file("."))
     // Commons
     organization := "io.neysofu",
     name := "tyche",
-    version := "0.0.1",
+    version := "0.1.0",
     // Compiler settings
     scalaVersion := "2.11.8",
     scalacOptions := Seq(

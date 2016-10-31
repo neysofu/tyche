@@ -4,21 +4,21 @@ package stats
 import scala.util.Random
 
 /** Represents a generic probability distribution. It supports sampling,
- *  plotting, data manipulation features, zipping and more.
+ *  plotting, data manipulation features, zipping, and more.
  *
  *  Resources
  *  ---------
  *  1. B.Gnedenko - Kurs teorii verojatnostej
  *  2. D.E.Knuth - Seminumerical algorithms
  */
-trait Gen[A] { self =>
+trait Gen[A] {
+  self =>
 
-  /** The top random variable. Use this to generate *all* values!
+  /** A unique random variable should be used for debugging purposes.
    */
-  val rnd: Random = new Random
+  val random: Random = new Random
 
-  /** Returns a random outcome according to some probability
-   *  distribution.
+  /** Returns a random outcome.
    */
   def get: A
 
@@ -34,12 +34,12 @@ trait Gen[A] { self =>
    *  instance, the sample space of which is shrunk accordingly to a given
    *  predicate.
    */
-  def given(pred: A => Boolean): Gen[A] = new Gen[A] {
-    def get: A = {
-      val g = self.get
+  def given(pred: A => Boolean): Gen[A] = map { x =>
+    def repeat(g: A): A = {
       if (pred(g)) g
-      else get
+      else repeat(self.get)
     }
+    repeat(x)
   }
 
   /** Returns a new probability distribution originated from the current
@@ -69,5 +69,5 @@ trait Gen[A] { self =>
    *  instance, the sample space of which only contains numerical
    *  representations of its elements.
    */
-  def toDouble(implicit d: A <:< Double): Gen[Double] = map(d(_))
+  def toGenDouble(implicit d: A <:< Double): Gen[Double] = map(d(_))
 }

@@ -1,7 +1,9 @@
 package io.neysofu.tyche
 package stats
 
-trait MomentsGen[A] extends Gen[A] {
+trait Moments[A] {
+
+  def plot(x: Int, y: Int)(implicit toDouble: A <:< Double): String
 
   /** Returns the expected value (mean) of the probability distribution.
    */

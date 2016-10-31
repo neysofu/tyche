@@ -7,7 +7,7 @@ class BinomialSpec extends WordSpec with Matchers {
 
   val n = 20
   val p = 0.5
-  val gen = Commons.newBinomial(n, p)
+  val gen = ContinuousGen.binomial(n, p)
 
   "A binomial distribution" when {
     

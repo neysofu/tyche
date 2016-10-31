@@ -5,7 +5,7 @@ import org.scalatest.{WordSpec, Matchers}
 
 class BernoulliSpec extends WordSpec with Matchers {
 
-  val always = Commons.newBernoulli(1)
+  val always = DiscreteGen.Bernoulli(1)
 
   "A Bernoulli distribution (´p=1´)" when {
     
