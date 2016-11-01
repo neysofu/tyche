@@ -1,11 +1,10 @@
 package io.neysofu.tyche
-package stats
 
 import org.scalatest.{WordSpec, Matchers}
 
 class ChiSquareSpec extends WordSpec with Matchers {
 
-  val gen = ContinuousGen.ChiSquare(1)
+  val gen = ContinuousGen.chiSquare(1)
 
   "A chi-square probability distribution" when {
     

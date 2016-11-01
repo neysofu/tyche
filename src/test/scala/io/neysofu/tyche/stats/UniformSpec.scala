@@ -1,11 +1,10 @@
 package io.neysofu.tyche
-package stats
 
 import org.scalatest.{WordSpec, Matchers}
 
 class UniformSpec extends WordSpec with Matchers {
 
-  val gen = ContinuousGen.uniform()
+  val gen = ContinuousGen.uniform
 
   "A uniform probability distribution" when {
     

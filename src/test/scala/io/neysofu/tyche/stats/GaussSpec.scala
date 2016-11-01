@@ -1,5 +1,4 @@
 package io.neysofu.tyche
-package stats
 
 import org.scalatest.{WordSpec, Matchers}
 

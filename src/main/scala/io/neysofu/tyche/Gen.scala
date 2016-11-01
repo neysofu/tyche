@@ -1,15 +1,9 @@
 package io.neysofu.tyche
-package stats
 
 import scala.util.Random
 
 /** Represents a generic probability distribution. It supports sampling,
  *  plotting, data manipulation features, zipping, and more.
- *
- *  Resources
- *  ---------
- *  1. B.Gnedenko - Kurs teorii verojatnostej
- *  2. D.E.Knuth - Seminumerical algorithms
  */
 trait Gen[A] {
   self =>
@@ -18,7 +12,8 @@ trait Gen[A] {
    */
   val random: Random = new Random
 
-  /** Returns a random outcome.
+  /** Returns a random outcome. This is said to be the generative
+   *  characteristic function of the probability distribution.
    */
   def get: A
 
@@ -37,7 +32,7 @@ trait Gen[A] {
   def given(pred: A => Boolean): Gen[A] = map { x =>
     def repeat(g: A): A = {
       if (pred(g)) g
-      else repeat(self.get)
+      else repeat(get)
     }
     repeat(x)
   }
@@ -47,11 +42,11 @@ trait Gen[A] {
    *  that satisfy a given predicate.
    */
   def until(pred: Seq[A] => Boolean): Gen[Seq[A]] = map { x =>
-    def growSeq(ls: Seq[A]): Seq[A] = {
+    def grow(ls: Seq[A]): Seq[A] = {
       if (pred(ls)) ls
-      else growSeq(ls :+ self.get)
+      else grow(ls :+ get)
     }
-    growSeq(Seq(x))
+    grow(Seq(x))
   }
 
   /** Returns an array of the desired length filled with random outcomes.
