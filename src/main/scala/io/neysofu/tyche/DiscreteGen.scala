@@ -21,7 +21,20 @@ trait DiscreteGen[A] extends Gen[A] with ProbabilityMass[A] with Moments[A] { se
   }
 
   def plot(implicit toDouble: A <:< Double): String = {
-    "" // placeholder
+    val sampleSize = 10000
+    val sums = toGenDouble
+      .times(sampleSize).sorted
+      .grouped(sampleSize / 80)
+      .toList
+      .map(seq => seq.sum/seq.size)
+    val range = sums.head - sums.last
+    val nth = 1 / sums.last
+    util.PlotUtil.frameString(
+      sums.map { d =>
+        val height = Math.round(d * nth * 24).toInt
+        ("#" * height).padTo(24, ' ').reverse
+      }.transpose.map(_.mkString).mkString("\n")
+    )
   }
 
   def mean(implicit toDouble: A <:< Double): Double = {
