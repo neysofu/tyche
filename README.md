@@ -7,7 +7,8 @@ processes.
 	case object M extends Child
 	case object F extends Child
 
-	def family = Commons.newDiscreteUniform(Seq(M,F)).until(_.contains(M))
+	def family = DiscreteDistribution.uniform(M, F).until(_.contains(M))
 
 	val sampleSize = 10000
-	1.0 * family.times(sampleSize).flatten.count(_ == F) / sampleSize
+	// The expected number of children per family
+	1.0 * family.map(_.size).times(sampleSize).sum / sampleSize
