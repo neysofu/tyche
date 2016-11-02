@@ -9,22 +9,18 @@ package io.neysofu.tyche
  */
 trait ContinuousGen[A] extends Gen[A] with Sampling with Moments[A] { self =>
 
-  def plot(x: Int = 64)(y: Int = 32)(implicit toDouble: A <:< Double) : String = {
-    val sums = toGenDouble
-      .times(sampleSize)
-      .sorted
-      .grouped(sampleSize / x)
-      .toList
-      .map(seq => seq.sum / seq.size)
-      .scanLeft(0.0)(_+_)
-    val range = sums.last - sums.head
-    val plot = sums.map { d =>
-      val height = Math.floor(Math.abs(d) / range).toInt
-      ("#" * height).padTo(y, ' ').reverse
-    } .transpose
-      .map(_.mkString)
-      .mkString("\n")
-    util.PlotUtil.frameString(plot)
+  def plot(implicit toDouble: A <:< Double) : String = {
+    val sums = toGenDouble.times(sampleSize).sorted
+      .grouped(sampleSize / 80).toList.map(seq => seq.sum/seq.size)
+    val range = sums.head - sums.last
+    val nth = 1 / sums.last
+    util.PlotUtil.frameString {
+      val columns = sums.map { d =>
+        val height = Math.round(d * nth * 24).toInt
+        ("#" * height).padTo(24, ' ').reverse
+      }
+      columns.transpose.map(_.mkString).mkString("\n")
+    }
   }
 
   def mean(implicit toDouble: A <:< Double) = {

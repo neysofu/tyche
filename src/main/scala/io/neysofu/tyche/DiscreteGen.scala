@@ -20,7 +20,7 @@ trait DiscreteGen[A] extends Gen[A] with ProbabilityMass[A] with Moments[A] { se
     mass(cdf.indexWhere(_ > d))._2
   }
 
-  def plot(x: Int = 64)(y: Int = 32)(implicit toDouble: A <:< Double): String = {
+  def plot(implicit toDouble: A <:< Double): String = {
     "" // placeholder
   }
 

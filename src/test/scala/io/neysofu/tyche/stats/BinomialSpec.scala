@@ -14,7 +14,6 @@ class BinomialSpec extends WordSpec with Matchers {
       "always generate an integer number" in {
         val d = gen.get
         d shouldBe Math.round(d)
-        println(gen.plot(64)(32))
       }
     }
   }

@@ -14,8 +14,6 @@ class UniformSpec extends WordSpec with Matchers {
     "sampled" should {
       "generate values in the ´[0,1[´ interval" in {
         gen.times(gen.sampleSize).forall(x => x >= 0 && x < 1)
-        println(gen.plot(1)(1))
-        println(gen2.plot(11)(40))
       }
     }
   }

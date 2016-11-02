@@ -13,7 +13,6 @@ class GaussSpec extends WordSpec with Matchers {
     f"when ´SD=$sd´ and ´EV=$ev´" should {
       "have a sample mean of ~0" in {
         Math.round(gen.mean) shouldBe 0.toLong
-        println(gen.plot(20)(10))
       }
     }
   }
