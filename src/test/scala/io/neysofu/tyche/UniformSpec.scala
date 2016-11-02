@@ -4,8 +4,8 @@ import org.scalatest.{WordSpec, Matchers}
 
 class UniformSpec extends WordSpec with Matchers {
 
-  val gen = ContinuousGen.uniform
-  val gen2 = new ContinuousGen[Double] {
+  val gen = ContinuousDistribution.uniform
+  val gen2 = new ContinuousDistribution[Double] {
     def get = Math.pow(random.nextDouble, 2)
   }
 

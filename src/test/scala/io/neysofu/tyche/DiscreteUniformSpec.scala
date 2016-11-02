@@ -10,17 +10,17 @@ class DiscreteUniformSpec extends WordSpec with Matchers {
   sealed trait Coin
   case object Head extends Coin
   case object Tail extends Coin
-  val coin = DiscreteGen.uniform(Head, Tail)
+  val coin = DiscreteDistribution.uniform(Head, Tail)
 
   // 1-sided die
   object Outcome
-  val die = DiscreteGen.uniform(Outcome)
+  val die = DiscreteDistribution.uniform(Outcome)
 
   // Families
   sealed trait Child
   case object Male extends Child
   case object Female extends Child
-  val family = DiscreteGen.uniform(Male, Female)
+  val family = DiscreteDistribution.uniform(Male, Female)
     .until(_ contains Male)
     .map(_.size - 1)
       

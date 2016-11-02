@@ -4,7 +4,7 @@ import org.scalatest.{WordSpec, Matchers}
 
 class ChiSquareSpec extends WordSpec with Matchers {
 
-  val gen = ContinuousGen.chiSquare(1)
+  val gen = ContinuousDistribution.chiSquare(1)
 
   "A chi-square probability distribution" when {
     

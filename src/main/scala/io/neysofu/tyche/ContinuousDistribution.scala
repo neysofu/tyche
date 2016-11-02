@@ -4,7 +4,7 @@ package io.neysofu.tyche
  *   [[https://goo.gl/5xB1A4 simple random sampling]]
  * facilities.
  */
-abstract class ContinuousGen[A] extends Gen[A] with Sampling with Moments[A] { self =>
+abstract class ContinuousDistribution[A] extends Gen[A] with Sampling with Moments[A] { self =>
 
   def plot(implicit toDouble: A <:< Double) : String = {
     val sums = toGenDouble.times(sampleSize).sorted
@@ -30,14 +30,14 @@ abstract class ContinuousGen[A] extends Gen[A] with Sampling with Moments[A] { s
   }
 }
 
-object ContinuousGen {
+object ContinuousDistribution {
  
   /** Returns a normal distribution.
    *
    *  @param sd the standard deviation
    *  @param eg the expected value
    */
-  def normal(sd: Double, eg: Double): ContinuousGen[Double] = new ContinuousGen[Double] {
+  def normal(sd: Double, eg: Double): ContinuousDistribution[Double] = new ContinuousDistribution[Double] {
     def get = random.nextGaussian * sd + eg
   }
 
@@ -45,7 +45,7 @@ object ContinuousGen {
    *
    *  @param k the degrees of freedom
    */
-  def chiSquare(k: Int): ContinuousGen[Double] = new ContinuousGen[Double] {
+  def chiSquare(k: Int): ContinuousDistribution[Double] = new ContinuousDistribution[Double] {
     def get = Seq.fill(k)(Math.pow(normal(1, 0).get, 2)).sum
   }
 
@@ -54,13 +54,13 @@ object ContinuousGen {
    *  @param n the number of independent yes/no experiments
    *  @param p the success probability
    */
-  def binomial(n: Int, p: Double): ContinuousGen[Double] = new ContinuousGen[Double] {
+  def binomial(n: Int, p: Double): ContinuousDistribution[Double] = new ContinuousDistribution[Double] {
     def get = Seq.fill(n)(random.nextDouble).count(_ < p).toDouble
   }
 
   /** Returns a uniform distribution in the interval `[0;1[`.
    */
-  def uniform: ContinuousGen[Double] = new ContinuousGen[Double] {
+  def uniform: ContinuousDistribution[Double] = new ContinuousDistribution[Double] {
     def get = random.nextDouble
   }
 }
