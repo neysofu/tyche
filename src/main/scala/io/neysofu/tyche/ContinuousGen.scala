@@ -1,12 +1,9 @@
 package io.neysofu.tyche
 
-/**
- * Represents a continuous probability distribution with simple random
- * sampling facilities.
- *  
- * See:
- *  https://en.wikipedia.org/wiki/Simple_random_sample
- */
+/** Represents a continuous ''PD'' with
+  *   [[https://en.wikipedia.org/wiki/Simple_random_sample simple random sampling]]
+  * facilities.
+  */
 trait ContinuousGen[A] extends Gen[A] with Sampling with Moments[A] { self =>
 
   def plot(implicit toDouble: A <:< Double) : String = {
@@ -35,31 +32,27 @@ trait ContinuousGen[A] extends Gen[A] with Sampling with Moments[A] { self =>
 
 object ContinuousGen {
  
-  /**
-   * Returns a Gaussian (normal) distribution.
-   */
+  /** Returns a Gaussian (normal) distribution.
+    */
   def normal(sd: Double, eg: Double): ContinuousGen[Double] = new ContinuousGen[Double] {
     def get = random.nextGaussian * sd + eg
   }
 
-  /**
-   * Returns a chi-squared distribution.
-   */
+  /** Returns a chi-squared distribution.
+    */
   def chiSquare(k: Int): ContinuousGen[Double] = new ContinuousGen[Double] {
     def get = Seq.fill(k)(Math.pow(normal(1, 0).get, 2)).sum
   }
 
-  /**
-   * Returns a binomial distribution.
-   */
+  /** Returns a binomial distribution.
+    */
   def binomial(n: Int, p: Double): ContinuousGen[Double] = new ContinuousGen[Double] {
     def get = Seq.fill(n)(random.nextDouble).count(_ < p).toDouble
   }
 
-  /**
-   * Returns a continuous uniform probability distribution in the interval
-   *  ´[0;1[´.
-   */
+  /** Returns a continuous uniform probability distribution in the interval
+    * ´[0;1[´.
+    */
   def uniform: ContinuousGen[Double] = new ContinuousGen[Double] {
     def get = random.nextDouble
   }

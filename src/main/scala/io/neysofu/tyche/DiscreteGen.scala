@@ -1,16 +1,13 @@
 package io.neysofu.tyche
 
-/**
- * Represents a discrete probability distribution characterized by a
- * probability mass function (PMF).
- */
+/** Represents a discrete probability distribution characterized by a
+  * ''PMF''.
+  */
 trait DiscreteGen[A] extends Gen[A] with ProbabilityMass[A] with Moments[A] { self =>
 
-  /**
-   * Returns a new discrete probability distribution originated from the
-   * current instance, the outcomes of which are changed accordingly to a
-   * bijective function.
-   */
+  /** Returns a discrete ''PD'', the sample space of which is changed
+    * accordingly to a bijective function.
+    */
   def bijectiveMap[B](f: A => B): DiscreteGen[B] = new DiscreteGen[B] {
     val mass = self.mass.map(p => (p._1, f(p._2)))
   }
@@ -22,11 +19,8 @@ trait DiscreteGen[A] extends Gen[A] with ProbabilityMass[A] with Moments[A] { se
 
   def plot(implicit toDouble: A <:< Double): String = {
     val sampleSize = 10000
-    val sums = toGenDouble
-      .times(sampleSize).sorted
-      .grouped(sampleSize / 80)
-      .toList
-      .map(seq => seq.sum/seq.size)
+    val sums = toGenDouble.times(sampleSize).sorted.grouped(sampleSize / 80)
+      .toList.map(seq => seq.sum/seq.size)
     val range = sums.head - sums.last
     val nth = 1 / sums.last
     util.PlotUtil.frameString(
@@ -51,16 +45,15 @@ trait DiscreteGen[A] extends Gen[A] with ProbabilityMass[A] with Moments[A] { se
   
 object DiscreteGen {
 
-  /**
-   * Returns a discrete uniform distribution.
-   */
+  /** Returns a discrete uniform distribution.
+    */
   def uniform[A](vs: A*): DiscreteGen[A] = new DiscreteGen[A] {
-    val mass = vs.map(x => (1.0/vs.size, x))
+    val w = 1.0/vs.size
+    val mass = vs.map(x => (w, x))
   }
 
-  /**
-   * Returns a Bernoulli distribution.
-   */
+  /** Returns a Bernoulli distribution.
+    */
   def Bernoulli(p: Double): DiscreteGen[Boolean] = new DiscreteGen[Boolean] {
     val mass = Seq((p, true), (1-p, false))
   }
