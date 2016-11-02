@@ -1,7 +1,6 @@
 language: scala
 sudo: false
 scala:
-    - 2.10
     - 2.11
 script:
     - sbt test
