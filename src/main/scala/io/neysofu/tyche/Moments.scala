@@ -4,7 +4,7 @@ package io.neysofu.tyche
  */
 trait Moments[A] {
 
-  def plot(x: Int, y: Int)(implicit toDouble: A <:< Double): String
+  def plot(x: Int = 64)(y: Int = 32)(implicit toDouble: A <:< Double): String
 
   /** Returns the expected value (mean).
    */

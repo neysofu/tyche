@@ -11,6 +11,7 @@ class ChiSquareSpec extends WordSpec with Matchers {
     "sampled" should {
       "generate nonnegative values" in {
         gen.get should be >= 0.0
+        println(gen.plot(80)(40))
       }
     }
   }
