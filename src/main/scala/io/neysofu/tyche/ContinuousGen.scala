@@ -17,16 +17,14 @@ trait ContinuousGen[A] extends Gen[A] with Sampling with Moments[A] { self =>
       .toList
       .map(seq => seq.sum / seq.size)
       .scanLeft(0.0)(_+_)
-    sums.map { d =>
-      val n = d / sums.last * y
-      val height = (n > 0) match {
-        case true => Math.floor(n).toInt
-        case false => Math.ceil(n).toInt
-      }
+    val range = sums.last - sums.head
+    val plot = sums.map { d =>
+      val height = Math.floor(Math.abs(d) / range).toInt
       ("#" * height).padTo(y, ' ').reverse
     } .transpose
       .map(_.mkString)
       .mkString("\n")
+    util.PlotUtil.frameString(plot)
   }
 
   def mean(implicit toDouble: A <:< Double) = {
