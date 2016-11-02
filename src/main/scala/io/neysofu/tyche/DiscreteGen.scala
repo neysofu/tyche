@@ -1,13 +1,13 @@
 package io.neysofu.tyche
 
-/** Represents a discrete probability distribution characterized by a
-  * ''PMF''.
-  */
-trait DiscreteGen[A] extends Gen[A] with ProbabilityMass[A] with Moments[A] { self =>
+/** This class represents a discrete probability distribution characterized
+ *  by a probability mass function.
+ */
+abstract class DiscreteGen[A] extends Gen[A] with MassFunction[A] with Moments[A] { self =>
 
-  /** Returns a discrete ''PD'', the sample space of which is changed
-    * accordingly to a bijective function.
-    */
+  /** Builds a new discrete probability distribution by applying a function
+   *  to all the outcomes.
+   */
   def bijectiveMap[B](f: A => B): DiscreteGen[B] = new DiscreteGen[B] {
     val mass = self.mass.map(p => (p._1, f(p._2)))
   }
@@ -46,14 +46,18 @@ trait DiscreteGen[A] extends Gen[A] with ProbabilityMass[A] with Moments[A] { se
 object DiscreteGen {
 
   /** Returns a discrete uniform distribution.
-    */
-  def uniform[A](vs: A*): DiscreteGen[A] = new DiscreteGen[A] {
-    val w = 1.0/vs.size
-    val mass = vs.map(x => (w, x))
+   *
+   *  @param outcomes the sample space
+   */
+  def uniform[A](outcomes: A*): DiscreteGen[A] = new DiscreteGen[A] {
+    val w = 1.0/outcomes.size
+    val mass = outcomes.map(x => (w, x))
   }
 
   /** Returns a Bernoulli distribution.
-    */
+   *
+   *  @param p the success probability
+   */
   def Bernoulli(p: Double): DiscreteGen[Boolean] = new DiscreteGen[Boolean] {
     val mass = Seq((p, true), (1-p, false))
   }

@@ -2,36 +2,65 @@ package io.neysofu.tyche
 
 import scala.util.Random
 
-/** Represents a generic probability distribution (henceforth: ''PD'').
-  */
+/** This trait defines fundamental data manipulation techniques for random
+ *  variables and stochastic processes, such as probability distributions.
+ *
+ *  The type parameter `A` represents the outcomes' type signature. Note that
+ *  many implementions require `A <: Double` to work correctly, with the
+ *  notable exception of Markovian chains.
+ *
+ *  Each and every instance is implemented by specifying its generative
+ *  function ([[io.neysofu.tyche.Gen.get]]), as so:
+ *
+ *  {{{
+ *  val uniform = new Gen[Double] {
+ *    def get = random.nextDouble
+ *  }
+ *  }}}
+ *
+ *  @author Filippo Costa
+ *  @see [[io.neysofu.tyche.Moments]], [[io.neysofu.tyche.Markovian]]
+ */
 trait Gen[A] { self =>
 
-  // Use a unique random variable to ease debugging.
+  /** This random variable should be the only nondeterministic piece of
+   *  information used in the generative function:
+   *
+   *  {{{
+   *  // Wrong
+   *  val uniform = new Gen[Double] {
+   *   def get = scala.util.Random.nextGaussian
+   *  }
+   *
+   *  // Right, as it allows mocking
+   *  val uniform = new Gen[Double] {
+   *   def get = random.nextGaussian
+   *  }
+   *  }}}
+   */
   val random: Random = new Random
 
-  /** Returns a random outcome. This is said to be the generative
-    * characteristic function of the ''PD''.
-    */
+  /** Returns a random outcome.
+   */
   def get: A
 
-  /** Returns a ''PD'', the sample space of which is changed accordingly
-    * to a given function.
-    */
+  /** Builds a new generator by applying a function to all the outcomes.
+   */
   def map[B](f: A => B): Gen[B] = new Gen[B] {
     def get = f(self.get)
   }
 
-  /** Returns a ''PD'', the sample space of which is shrunk accordingly to a
-    * given predicate.
-    */
+  /** Builds a new generator by filtering the sample space accordingly to a
+   *  predicate.
+   */
   def given(pred: A => Boolean): Gen[A] = map { x =>
     def pickAnother(g: A): A = if (pred(g)) g else pickAnother(get)
     pickAnother(x)
   }
 
-  /** Returns a ''PD'', the sample space of which only contains arrays of
-    * outcomes that satisfy a given predicate.
-    */
+  /** Builds a new generator by creating a sample space which contains
+   *  only collections of outcomes that satisfy a predicate.
+   */
   def until(pred: Seq[A] => Boolean): Gen[Seq[A]] = map { x =>
     def grow(ls: Seq[A]): Seq[A] = if (pred(ls)) ls else grow(ls :+ get)
     grow(Seq(x))
@@ -41,15 +70,15 @@ trait Gen[A] { self =>
    */
   def times(n: Int): Seq[A] = Seq.fill(n)(get)
 
-  /** Returns a bivariate ''PD'' originated from both the current instance
-    * and a given probability distribution.
-    */
+  /** Builds a new, bivariate generator by zipping the sample space with
+   *  another generator's.
+   */
   def joint[B](that: Gen[B]): Gen[(A, B)] = map {
     x => (x, that.get)
   }
 
-  /** Returns a ´´PD´´, the sample space of which only contains numerical
-    * representations of its elements.
+  /** Builds a new generator by replacing all the outcomes with their
+   *  respective numerical representations.
    */
   def toGenDouble(implicit d: A <:< Double): Gen[Double] = map(d(_))
 }
