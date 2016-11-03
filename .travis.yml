@@ -4,6 +4,7 @@ scala:
 - 2.11
 script:
 - sbt test
+- sbt doc
 after_success:
 - bash deploy.sh
 env:
