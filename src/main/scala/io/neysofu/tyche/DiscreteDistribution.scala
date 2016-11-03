@@ -9,12 +9,14 @@ abstract class DiscreteDistribution[A] extends Gen[A] with MassFunction[A] with 
    *  to all the outcomes.
    */
   def bijectiveMap[B](f: A => B): DiscreteDistribution[B] = new DiscreteDistribution[B] {
-    val mass = self.mass.map(p => (p._1, f(p._2)))
+    val mass = self.mass.map { case (k, v) =>
+      f(k) -> v
+    }
   }
 
   def get: A = {
     val d = random.nextDouble
-    mass(cdf.indexWhere(_ > d))._2
+    outcomes(cdf.indexWhere(_ > d))
   }
 
   def plot(implicit toDouble: A <:< Double): String = {
@@ -33,13 +35,17 @@ abstract class DiscreteDistribution[A] extends Gen[A] with MassFunction[A] with 
 
   def mean(implicit toDouble: A <:< Double): Double = {
     val nth = 1 / mass.size
-    mass.map(p => p._1 * toDouble(p._2) * nth).sum
+    mass.map { case (k, v) =>
+      toDouble(k) * v * nth
+    }.sum
   }
 
   def standardDeviation(implicit toDouble: A <:< Double): Double = {
     val m = mean
     val nth = 1 / mass.size
-    mass.map(p => Math.pow(toDouble(p._2) * m, 2) * p._1 * nth).sum
+    mass.map { case (k, v) =>
+      Math.pow(toDouble(k) * m, 2) * v * nth
+    }.sum
   }
 } 
   
@@ -49,9 +55,11 @@ object DiscreteDistribution {
    *
    *  @param outcomes the sample space
    */
-  def uniform[A](outcomes: A*): DiscreteDistribution[A] = new DiscreteDistribution[A] {
-    val w = 1.0/outcomes.size
-    val mass = outcomes.map(x => (w, x))
+  def uniform[A](sampleSpace: A*): DiscreteDistribution[A] = new DiscreteDistribution[A] {
+    val mass = {
+      val w = 1.0 / sampleSpace.size
+      sampleSpace.map(x => x -> w).toMap
+    }
   }
 
   /** Returns a Bernoulli distribution.
@@ -59,6 +67,6 @@ object DiscreteDistribution {
    *  @param p the success probability
    */
   def Bernoulli(p: Double): DiscreteDistribution[Boolean] = new DiscreteDistribution[Boolean] {
-    val mass = Seq((p, true), (1-p, false))
+    val mass = Map(true -> p, false -> (1-p))
   }
 }

@@ -12,12 +12,13 @@ trait MassFunction[A] {
    *
    *  {{{
    *  // Wrong
-   *  val mass = Seq((-1.0, true), (2.0, false))
+   *  val mass = Map(true -> -1.0, false -> 2.0)
    *
    *  // Right
-   *  val mass = Seq((0.5, true), (0.5, false))
+   *  val mass = Map(true -> 0.5, false -> 0.5)
    *  }}}
    */
-  val mass: Seq[(Double, A)]
-  protected lazy val cdf = mass.unzip._1.scanLeft(0.0)(_+_).tail
+  val mass: Map[A, Double]
+  protected lazy val outcomes = mass.unzip._1.toList
+  protected lazy val cdf = mass.unzip._2.scanLeft(0.0)(_+_).tail.toList
 }

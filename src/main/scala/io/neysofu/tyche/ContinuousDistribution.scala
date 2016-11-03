@@ -1,6 +1,6 @@
 package io.neysofu.tyche
 
-/** Represents a continuous probability distribution with
+/** This class represents a continuous probability distribution with
  *   [[https://goo.gl/5xB1A4 simple random sampling]]
  * facilities.
  */

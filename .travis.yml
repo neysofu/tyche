@@ -4,4 +4,5 @@ scala:
     - 2.11
 script:
     - sbt test
-
+after_success:
+    - bash deploy.sh
