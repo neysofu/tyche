@@ -1,5 +1,22 @@
 # Tyche ![build](https://travis-ci.org/neysofu/tyche.svg?branch=master)
-Tyche is a robust, fully modular *JVM* library written in Scala for
+Tyche is a simple yet robust statistical library for the JVM. Many JVM-hosted
+numerical libraries offer similar functionalities but they fail to offer
+modularity. Tyche is built from the ground up to first be able to perform
+common data manipulation techniques.
+
+Behold, the power of Tyche:
+
+	import io.neysofu.tyche
+
+	// How many times do I have to toss a coin before a head comes up?
+	sealed trait Coin
+	object Head extends Coin
+	object Tail extends Coin
+
+	val toss = DiscreteDistribution
+	  .uniform(Head, Tail)
+	  .until()
+
 numerical analysis over probability distributions and other stochastic
 processes.
 
