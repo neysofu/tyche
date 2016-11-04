@@ -1,5 +1,7 @@
 package io.neysofu.tyche
 
+import io.neysofu.tyche.util.Util
+
 /** This trait defines the essential properties of all probability
  *  distributions:
  *   1. Plotting;
@@ -7,11 +9,11 @@ package io.neysofu.tyche
  *   3. standard deviation;
  *  and other [[https://goo.gl/p4TGzt moments]].
  */
-trait Moments[A] {
+trait Moments[A] extends Gen[A] {
 
-  /** Draws a plot with Unicode characters.
+  /** Draws a virtual plot.
    */
-  def plot(implicit toDouble: A <:< Double): String
+  def mapPlot(implicit toDouble: A <:< Double): Map[A, Double]
 
   /** Computes the [[https://goo.gl/LruXGw expected value]] (mean).
    */
@@ -23,6 +25,5 @@ trait Moments[A] {
 
   /** Computes the [[https://goo.gl/Wzlr6p variance]].
    */
-  def variance(implicit toDouble: A <:< Double): Double =
-    Math.pow(standardDeviation, 2)
+  def variance(implicit toDouble: A <:< Double): Double = Util.square(standardDeviation)
 }

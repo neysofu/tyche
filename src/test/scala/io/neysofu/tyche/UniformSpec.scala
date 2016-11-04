@@ -1,19 +1,20 @@
 package io.neysofu.tyche
 
+import scala.util.Random
+import io.neysofu.tyche.util.Util
 import org.scalatest.{WordSpec, Matchers}
 
 class UniformSpec extends WordSpec with Matchers {
 
   val gen = ContinuousDistribution.uniform
-  val gen2 = new ContinuousDistribution[Double] {
-    def get = Math.pow(random.nextDouble, 2)
-  }
+  val gen2 = new ContinuousDistribution(() => Util.square(Random.nextDouble))
 
   "A uniform probability distribution" when {
     
     "sampled" should {
       "generate values in the ´[0,1[´ interval" in {
-        gen.times(gen.sampleSize).forall(x => x >= 0 && x < 1)
+        gen.take(gen.sampleSize).forall(x => x >= 0 && x < 1)
+        println(Random.nextDouble)
       }
     }
   }

@@ -23,23 +23,6 @@ import scala.util.Random
  */
 trait Gen[A] { self =>
 
-  /** This random variable should be the only nondeterministic piece of
-   *  information used in the generative function:
-   *
-   *  {{{
-   *  // Wrong
-   *  val uniform = new Gen[Double] {
-   *   def get = scala.util.Random.nextGaussian
-   *  }
-   *
-   *  // Right, as it allows mocking
-   *  val uniform = new Gen[Double] {
-   *   def get = random.nextGaussian
-   *  }
-   *  }}}
-   */
-  val random: Random = new Random
-
   /** Returns a random outcome.
    */
   def get: A
@@ -50,12 +33,10 @@ trait Gen[A] { self =>
     def get = f(self.get)
   }
 
-  def mirrorMap(f: A => A): Gen[A] = map(f)
-
   /** Builds a new generator by filtering the sample space accordingly to a
    *  predicate.
    */
-  def given(pred: A => Boolean): Gen[A] = map { x =>
+  def filter(pred: A => Boolean): Gen[A] = map { x =>
     def pickAnother(g: A): A = if (pred(g)) g else pickAnother(get)
     pickAnother(x)
   }
@@ -68,11 +49,9 @@ trait Gen[A] { self =>
     grow(Seq(x))
   }
 
-  /** Returns an array of the desired length filled with random outcomes.
+  /** Builds a new generator by joining multiple outcomes together.
    */
-  def times(n: Int): Seq[A] = Seq.fill(n)(get)
-
-  def repeat(n: Int): Gen[Seq[A]] = map(_ +: times(n-1))
+  def repeat(n: Int): Gen[Seq[A]] = map(_ +: take(n-1))
 
   /** Builds a new, bivariate generator by zipping the sample space with
    *  another generator's.
@@ -83,4 +62,12 @@ trait Gen[A] { self =>
    *  respective numerical representations.
    */
   def toGenDouble(implicit d: A <:< Double): Gen[Double] = map(d(_))
-}
+
+  /** Returns an array of the desired length filled with random outcomes.
+   */
+  def take(n: Int): Seq[A] = Seq.fill(n)(get)
+  
+  /** Returns a [[Stream]] of outcomes.
+   */
+  def toStream: Stream[A] = get #:: toStream
+}  

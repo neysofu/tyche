@@ -34,7 +34,7 @@ class DiscreteUniformSpec extends WordSpec with Matchers {
         val coinSpree = coin
           .until(_ containsSlice Seq(Head, Head))
           .map(_.size)
-          .times(sampleSize)
+          .take(sampleSize)
           .sum
         Math.round(1.0 * coinSpree / sampleSize) shouldBe 6
       }
@@ -49,7 +49,7 @@ class DiscreteUniformSpec extends WordSpec with Matchers {
     "parents only want boys" should {
       "compute an expectation of one girl per family" in {
         Math.round(
-          1.0 * family.times(sampleSize).sum / sampleSize
+          1.0 * family.take(sampleSize).sum / sampleSize
         ) shouldBe 1
       }
     }

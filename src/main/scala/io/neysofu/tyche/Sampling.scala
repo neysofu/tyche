@@ -4,7 +4,7 @@ package io.neysofu.tyche
  */
 trait Sampling {
 
-  /** The number of observations in include in a statistical sample.
+  /** The number of observations to include in a statistical sample.
    *
    * The default value assures a confidence level of 95% and a margin of
    * error of 0.01 for distributions with a normal (0.5 or less) standard
