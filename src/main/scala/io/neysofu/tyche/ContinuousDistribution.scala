@@ -6,17 +6,20 @@ package io.neysofu.tyche
 abstract class ContinuousDistribution[A] extends Gen[A] with Sampling with Moments[A] { self =>
 
   def plot(implicit toDouble: A <:< Double) : String = {
+    val x = 80
+    val y = 24
+    
     val sums = toGenDouble
       .times(sampleSize)
       .sorted
-      .grouped(sampleSize / 80)
+      .grouped(sampleSize / x)
       .toList
       .map(seq => seq.sum / seq.size)
     val range = sums.head - sums.last
     val nth = 1 / sums.last
     util.PlotUtil.frameString(
       sums.map { d =>
-        ("#" * Math.round(d * nth * 24).toInt).padTo(24, ' ').reverse
+        ("#" * Math.round(d * nth * y).toInt).padTo(y, ' ').reverse
       }.transpose.map(_.mkString).mkString("\n")
     )
   }

@@ -50,6 +50,8 @@ trait Gen[A] { self =>
     def get = f(self.get)
   }
 
+  def mirrorMap(f: A => A): Gen[A] = map(f)
+
   /** Builds a new generator by filtering the sample space accordingly to a
    *  predicate.
    */
@@ -70,12 +72,12 @@ trait Gen[A] { self =>
    */
   def times(n: Int): Seq[A] = Seq.fill(n)(get)
 
+  def repeat(n: Int): Gen[Seq[A]] = map(_ +: times(n-1))
+
   /** Builds a new, bivariate generator by zipping the sample space with
    *  another generator's.
    */
-  def joint[B](that: Gen[B]): Gen[(A, B)] = map {
-    x => (x, that.get)
-  }
+  def joint[B](that: Gen[B]): Gen[(A, B)] = map((_, that.get))
 
   /** Builds a new generator by replacing all the outcomes with their
    *  respective numerical representations.

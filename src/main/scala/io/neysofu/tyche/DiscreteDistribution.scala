@@ -7,12 +7,12 @@ abstract class DiscreteDistribution[A] extends Gen[A] with MassFunction[A] with 
 
   /** Builds a new discrete probability distribution by applying a function
    *  to all the outcomes.
-   */
+   *
   def bijectiveMap[B](f: A => B): DiscreteDistribution[B] = new DiscreteDistribution[B] {
     val mass = self.mass.map { case (k, v) =>
       f(k) -> v
     }
-  }
+  }*/
 
   def get: A = {
     val d = random.nextDouble
@@ -35,17 +35,13 @@ abstract class DiscreteDistribution[A] extends Gen[A] with MassFunction[A] with 
 
   def mean(implicit toDouble: A <:< Double): Double = {
     val nth = 1 / mass.size
-    mass.map { case (k, v) =>
-      toDouble(k) * v * nth
-    }.sum
+    mass.map { case (k, v) => toDouble(k) * v * nth }.sum
   }
 
   def standardDeviation(implicit toDouble: A <:< Double): Double = {
-    val m = mean
-    val nth = 1 / mass.size
-    mass.map { case (k, v) =>
-      Math.pow(toDouble(k) * m, 2) * v * nth
-    }.sum
+    // We square the mean to save time at each iteration
+    val m = Math.pow(mean, 2) / mass.size
+    mass.map { case (k, v) => Math.pow(toDouble(k), 2) * v * m }.sum
   }
 } 
   
