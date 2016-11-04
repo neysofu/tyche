@@ -52,8 +52,7 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>This class represents a continuous probability distribution with
-  <a href="https://goo.gl/5xB1A4" target="_blank">simple random sampling</a>
-facilities.
+ <a href="https://goo.gl/5xB1A4" target="_blank">simple random sampling</a> facilities.
 </p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="io.neysofu.tyche.ContinuousDistribution">ContinuousDistribution</a>[<span class="extype" name="io.neysofu.tyche.ContinuousDistribution.A">A</span>]</dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="Moments.html" class="extype" name="io.neysofu.tyche.Moments">Moments</a>[<span class="extype" name="io.neysofu.tyche.ContinuousDistribution.A">A</span>], <a href="Sampling.html" class="extype" name="io.neysofu.tyche.Sampling">Sampling</a>, <a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a>[<span class="extype" name="io.neysofu.tyche.ContinuousDistribution.A">A</span>], <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
@@ -415,6 +414,23 @@ facilities.
     </span>
       <p class="shortcomment cmt">Computes the <a href="https://goo.gl/LruXGw" target="_blank">expected value</a> (mean).</p><div class="fullcomment"><div class="comment cmt"><p>Computes the <a href="https://goo.gl/LruXGw" target="_blank">expected value</a> (mean).
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.neysofu.tyche.ContinuousDistribution">ContinuousDistribution</a> → <a href="Moments.html" class="extype" name="io.neysofu.tyche.Moments">Moments</a></dd></dl></div>
+    </li><li name="io.neysofu.tyche.Gen#mirrorMap" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="mirrorMap(f:A=&gt;A):io.neysofu.tyche.Gen[A]"></a>
+      <a id="mirrorMap((A)⇒A):Gen[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">mirrorMap</span><span class="params">(<span name="f">f: (<span class="extype" name="io.neysofu.tyche.ContinuousDistribution.A">A</span>) ⇒ <span class="extype" name="io.neysofu.tyche.ContinuousDistribution.A">A</span></span>)</span><span class="result">: <a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a>[<span class="extype" name="io.neysofu.tyche.ContinuousDistribution.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.neysofu.tyche.ContinuousDistribution@mirrorMap(f:A=&gt;A):io.neysofu.tyche.Gen[A]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a></dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
@@ -528,6 +544,23 @@ facilities.
 <span class="kw">val</span> uniform = <span class="kw">new</span> Gen[<span class="std">Double</span>] {
  <span class="kw">def</span> get = random.nextGaussian
 }</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a></dd></dl></div>
+    </li><li name="io.neysofu.tyche.Gen#repeat" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="repeat(n:Int):io.neysofu.tyche.Gen[Seq[A]]"></a>
+      <a id="repeat(Int):Gen[Seq[A]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">repeat</span><span class="params">(<span name="n">n: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a>[<span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="io.neysofu.tyche.ContinuousDistribution.A">A</span>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.neysofu.tyche.ContinuousDistribution@repeat(n:Int):io.neysofu.tyche.Gen[Seq[A]]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a></dd></dl></div>
     </li><li name="io.neysofu.tyche.Sampling#sampleSize" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="sampleSize:Int"></a>
       <a id="sampleSize:Int"></a>
