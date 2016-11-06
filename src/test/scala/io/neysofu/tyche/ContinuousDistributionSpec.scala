@@ -31,8 +31,12 @@ class ContinuousDistributionSpec extends WordSpec with Matchers {
     }
 
     "k > 0" should {
+      val gen = ContinuousDistribution.chiSquare(1)
       "yield a nonnegative value" in {
-        ContinuousDistribution.chiSquare(1).get should be >= 0.0
+        gen.get should be >= 0.0
+      }
+      "have a nonnegative mean" in {
+        gen.mean should be >= 0.0
       }
     }
   }
@@ -69,6 +73,20 @@ class ContinuousDistributionSpec extends WordSpec with Matchers {
         val outcome = ContinuousDistribution.uniform.get
         outcome should be < 1.0
         outcome should be >= 0.0
+      }
+    }
+  }
+
+  "A pseudo-continuous distribution" when {
+    
+    val gen = new ContinuousDistribution(() => 1.0)
+    
+    "its sample space size equals 1" should {
+      "have equal mean and outcome" in {
+        (gen.get - gen.mean).abs should be < 0.0001
+      }
+      "have a null standard deviation" in {
+        gen.standardDeviation.abs should be < 0.0001
       }
     }
   }

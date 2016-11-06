@@ -13,17 +13,16 @@ trait DiscreteGen[A] extends Gen[A] with MassFunction[A] with Moments[A] { self 
     outcomes(cdf.indexWhere(_ > d))
   }
 
-  def mapPlot(implicit toDouble: A <:< Double): Map[A, Double] = {
+  def virtualPlot(implicit toDouble: A <:< Double): Map[A, Double] = {
     outcomes.zip(cdf).toMap
   }
 
   def mean(implicit toDouble: A <:< Double): Double = {
-    val nth = 1 / mass.size
-    mass.map { case (k, v) => toDouble(k) * v * nth }.sum
+    mass.map { case (k, v) => toDouble(k) * v }.sum
   }
 
   def standardDeviation(implicit toDouble: A <:< Double): Double = {
-    val m = Util.square(mean) / mass.size
-    mass.map { case (k, v) => Util.square(toDouble(k)) * v * m }.sum
+    val m = mean
+    mass.map { case (k, v) => Util.square(toDouble(k) - mean) * v }.sum
   }
 } 

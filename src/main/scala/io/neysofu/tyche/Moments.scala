@@ -9,11 +9,11 @@ import io.neysofu.tyche.util.Util
  *   3. standard deviation;
  *  and other [[https://goo.gl/p4TGzt moments]].
  */
-trait Moments[A] extends Gen[A] {
+trait Moments[A] {
 
   /** Draws a virtual plot.
    */
-  def mapPlot(implicit toDouble: A <:< Double): Map[A, Double]
+  def virtualPlot(implicit toDouble: A <:< Double): Map[A, Double]
 
   /** Computes the [[https://goo.gl/LruXGw expected value]] (mean).
    */
@@ -25,5 +25,5 @@ trait Moments[A] extends Gen[A] {
 
   /** Computes the [[https://goo.gl/Wzlr6p variance]].
    */
-  def variance(implicit toDouble: A <:< Double): Double = Util.square(standardDeviation)
+  def variance(implicit toDouble: A <:< Double): Double = Math.sqrt(standardDeviation)
 }

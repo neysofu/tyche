@@ -7,7 +7,7 @@ import io.neysofu.tyche.util.Util
  */
 trait ContinuousGen[A] extends Gen[A] with Sampling with Moments[A] { self =>
 
-  def mapPlot(implicit toDouble: A <:< Double) : Map[A, Double] = {
+  def virtualPlot(implicit toDouble: A <:< Double): Map[A, Double] = {
     take(sampleSize)
     .sortBy(toDouble(_))
     .grouped(sampleSize / 12)
