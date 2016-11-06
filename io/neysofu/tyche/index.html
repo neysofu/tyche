@@ -172,9 +172,9 @@
                       </li><li class="current-entities indented3">
                         <span class="separator"></span>
                         <a class="trait" href="Gen.html" title="This trait defines fundamental data manipulation techniques for random
- variables and stochastic processes, such as probability distributions."></a>
+ variables and stochastic processes such as probability distributions."></a>
                         <a href="Gen.html" title="This trait defines fundamental data manipulation techniques for random
- variables and stochastic processes, such as probability distributions.">
+ variables and stochastic processes such as probability distributions.">
                           Gen
                         </a>
                       </li><li class="current-entities indented3">
@@ -345,9 +345,9 @@
       <p class="shortcomment cmt">This class represents a discrete probability distribution characterized
  by a probability mass function.</p>
     </li><li name="io.neysofu.tyche.Gen" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="Gen[A]extendsAnyRef"></a><a id="Gen[A]:Gen[A]"></a>
+      <a id="Gen[+A]extendsAnyRef"></a><a id="Gen[+A]:Gen[A]"></a>
       <span class="permalink">
-      <a href="../../../io/neysofu/tyche/index.html#Gen[A]extendsAnyRef" title="Permalink">
+      <a href="../../../io/neysofu/tyche/index.html#Gen[+A]extendsAnyRef" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -357,19 +357,21 @@
       </span>
       <span class="symbol">
         <a title="This trait defines fundamental data manipulation techniques for random
- variables and stochastic processes, such as probability distributions." href="Gen.html">
+ variables and stochastic processes such as probability distributions." href="Gen.html">
               <span class="name">Gen</span>
-            </a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+            </a><span class="tparams">[<span name="A">+A</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       
       <p class="shortcomment cmt">This trait defines fundamental data manipulation techniques for random
- variables and stochastic processes, such as probability distributions.</p><div class="fullcomment"><div class="comment cmt"><p>This trait defines fundamental data manipulation techniques for random
- variables and stochastic processes, such as probability distributions.</p><p> The type parameter <code>A</code> represents the outcomes' type signature. Note that
- many implementions require <code>A &lt;: Double</code> to work correctly, with the
- notable exception of Markovian chains.</p><p> Each and every instance is implemented by specifying its generative
- function (<a href="Gen.html#get:A" class="extmbr" name="io.neysofu.tyche.Gen#get">io.neysofu.tyche.Gen.get</a>), as so:</p><pre><span class="kw">val</span> uniform = <span class="kw">new</span> Gen[<span class="std">Double</span>] {
-  <span class="kw">def</span> get = Random.nextDouble
-}</pre></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="Moments.html" class="extype" name="io.neysofu.tyche.Moments">io.neysofu.tyche.Moments</a></p></span></dd></dl></div>
+ variables and stochastic processes such as probability distributions.</p><div class="fullcomment"><div class="comment cmt"><p>This trait defines fundamental data manipulation techniques for random
+ variables and stochastic processes such as probability distributions.</p><p> Each and every instance is implemented by specifying its generative
+ function (<a href="Gen.html#get:A" class="extmbr" name="io.neysofu.tyche.Gen#get">io.neysofu.tyche.Gen.get</a>).
+</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>the outcomes' type signature. Note that many implementions
+ require <code>A &lt;: Double</code> to work correctly.</p></dd></dl><dl class="attributes block"> <div class="block">Example:
+               <ol><li class="cmt"><p></p><pre><span class="kw">val</span> uniform = <span class="kw">new</span> Gen[<span class="std">Double</span>] {
+  <span class="kw">def</span> get = scala.util.Random.nextDouble
+}</pre></li></ol>
+            </div><dt>See also</dt><dd><span class="cmt"><p><a href="Moments.html" class="extype" name="io.neysofu.tyche.Moments">io.neysofu.tyche.Moments</a></p></span></dd></dl></div>
     </li><li name="io.neysofu.tyche.MarkovChain" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="MarkovChain[A]extendsAnyRef"></a><a id="MarkovChain[A]:MarkovChain[A]"></a>
       <span class="permalink">
@@ -409,9 +411,9 @@
       <p class="shortcomment cmt">This trait defines a probability mass function and the associated
  cumulative density function for discrete random variables.</p>
     </li><li name="io.neysofu.tyche.Moments" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="Moments[A]extendsGen[A]"></a><a id="Moments[A]:Moments[A]"></a>
+      <a id="Moments[A]extendsAnyRef"></a><a id="Moments[A]:Moments[A]"></a>
       <span class="permalink">
-      <a href="../../../io/neysofu/tyche/index.html#Moments[A]extendsGen[A]" title="Permalink">
+      <a href="../../../io/neysofu/tyche/index.html#Moments[A]extendsAnyRef" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -423,7 +425,7 @@
         <a title="This trait defines the essential properties of all probability
  distributions:" href="Moments.html">
               <span class="name">Moments</span>
-            </a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a>[<span class="extype" name="io.neysofu.tyche.Moments.A">A</span>]</span>
+            </a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       
       <p class="shortcomment cmt">This trait defines the essential properties of all probability

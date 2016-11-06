@@ -174,9 +174,9 @@
                       </li><li class="current-entities indented3">
                         <span class="separator"></span>
                         <a class="trait" href="Gen.html" title="This trait defines fundamental data manipulation techniques for random
- variables and stochastic processes, such as probability distributions."></a>
+ variables and stochastic processes such as probability distributions."></a>
                         <a href="Gen.html" title="This trait defines fundamental data manipulation techniques for random
- variables and stochastic processes, such as probability distributions.">
+ variables and stochastic processes such as probability distributions.">
                           Gen
                         </a>
                       </li><li class="current-entities indented3">
@@ -476,7 +476,10 @@
       <p class="shortcomment cmt">Builds a new generator by filtering the sample space accordingly to a
  predicate.</p><div class="fullcomment"><div class="comment cmt"><p>Builds a new generator by filtering the sample space accordingly to a
  predicate.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a></dd><div class="block">Example:
+               <ol><li class="cmt"><p></p><pre>println(uniform.filter(d <span class="kw">=&gt;</span> d &gt; <span class="num">0.8</span>).get)
+<span class="cmt">// 0.8619005365066574</span></pre></li></ol>
+            </div></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <span class="permalink">
@@ -515,7 +518,10 @@
       </span>
       
       <p class="shortcomment cmt">Returns a random outcome.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a random outcome.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.neysofu.tyche.DiscreteGen">DiscreteGen</a> → <a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.neysofu.tyche.DiscreteGen">DiscreteGen</a> → <a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a></dd><div class="block">Example:
+               <ol><li class="cmt"><p></p><pre>println(uniform.get)
+<span class="cmt">// 0.677464655118979</span></pre></li></ol>
+            </div></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <span class="permalink">
@@ -582,7 +588,10 @@
       <p class="shortcomment cmt">Builds a new, bivariate generator by zipping the sample space with
  another generator's.</p><div class="fullcomment"><div class="comment cmt"><p>Builds a new, bivariate generator by zipping the sample space with
  another generator's.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a></dd><div class="block">Example:
+               <ol><li class="cmt"><p></p><pre>println(uniform.joint(uniform.map(-_)).get)
+<span class="cmt">// (0.5872605617066919, -0.5959848796935293)</span></pre></li></ol>
+            </div></dl></div>
     </li><li name="io.neysofu.tyche.Gen#map" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="map[B](f:A=&gt;B):io.neysofu.tyche.Gen[B]"></a><a id="map[B]((A)⇒B):Gen[B]"></a>
       <span class="permalink">
@@ -599,24 +608,10 @@
       </span>
       
       <p class="shortcomment cmt">Builds a new generator by applying a function to all the outcomes.</p><div class="fullcomment"><div class="comment cmt"><p>Builds a new generator by applying a function to all the outcomes.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a></dd></dl></div>
-    </li><li name="io.neysofu.tyche.DiscreteGen#mapPlot" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="mapPlot(implicittoDouble:&lt;:&lt;[A,Double]):Map[A,Double]"></a><a id="mapPlot(&lt;:&lt;[A,Double]):Map[A,Double]"></a>
-      <span class="permalink">
-      <a href="../../../io/neysofu/tyche/DiscreteGen.html#mapPlot(implicittoDouble:&lt;:&lt;[A,Double]):Map[A,Double]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">mapPlot</span><span class="params">(<span class="implicit">implicit </span><span name="toDouble">toDouble: <span class="extype" name="scala.Predef.&lt;:&lt;">&lt;:&lt;</span>[<span class="extype" name="io.neysofu.tyche.DiscreteGen.A">A</span>, <span class="extype" name="scala.Double">Double</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="io.neysofu.tyche.DiscreteGen.A">A</span>, <span class="extype" name="scala.Double">Double</span>]</span>
-      </span>
-      
-      <p class="shortcomment cmt">Draws a virtual plot.</p><div class="fullcomment"><div class="comment cmt"><p>Draws a virtual plot.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.neysofu.tyche.DiscreteGen">DiscreteGen</a> → <a href="Moments.html" class="extype" name="io.neysofu.tyche.Moments">Moments</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a></dd><div class="block">Example:
+               <ol><li class="cmt"><p></p><pre>println(uniform.map(d <span class="kw">=&gt;</span> d + <span class="num">1</span>).get)
+<span class="cmt">// 1.742019032131262</span></pre></li></ol>
+            </div></dl></div>
     </li><li name="io.neysofu.tyche.DiscreteGen#mean" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="mean(implicittoDouble:&lt;:&lt;[A,Double]):Double"></a><a id="mean(&lt;:&lt;[A,Double]):Double"></a>
       <span class="permalink">
@@ -714,7 +709,10 @@
       </span>
       
       <p class="shortcomment cmt">Builds a new generator by joining multiple outcomes together.</p><div class="fullcomment"><div class="comment cmt"><p>Builds a new generator by joining multiple outcomes together.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a></dd><div class="block">Example:
+               <ol><li class="cmt"><p></p><pre>println(uniform.repeat(<span class="num">2</span>).get)
+<span class="cmt">// Seq(0.4656608004451568, 0.2043631751083831)</span></pre></li></ol>
+            </div></dl></div>
     </li><li name="io.neysofu.tyche.DiscreteGen#standardDeviation" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="standardDeviation(implicittoDouble:&lt;:&lt;[A,Double]):Double"></a><a id="standardDeviation(&lt;:&lt;[A,Double]):Double"></a>
       <span class="permalink">
@@ -799,8 +797,11 @@
         <span class="name">toStream</span><span class="result">: <span class="extype" name="scala.Stream">Stream</span>[<span class="extype" name="io.neysofu.tyche.DiscreteGen.A">A</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">Returns a <span class="extype" name="Stream">Stream</span> of outcomes.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a <span class="extype" name="Stream">Stream</span> of outcomes.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a></dd></dl></div>
+      <p class="shortcomment cmt">Returns a stream of outcomes.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a stream of outcomes.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a></dd><div class="block">Example:
+               <ol><li class="cmt"><p></p><pre>println(uniform.stream)
+<span class="cmt">// Stream(0.6295245393412436, ?)</span></pre></li></ol>
+            </div></dl></div>
     </li><li name="scala.AnyRef#toString" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
       <span class="permalink">
@@ -835,7 +836,10 @@
       <p class="shortcomment cmt">Builds a new generator by creating a sample space which contains
  only collections of outcomes that satisfy a predicate.</p><div class="fullcomment"><div class="comment cmt"><p>Builds a new generator by creating a sample space which contains
  only collections of outcomes that satisfy a predicate.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a></dd><div class="block">Example:
+               <ol><li class="cmt"><p></p><pre>println(uniform.until(_.sum &gt; <span class="num">1</span>).get)
+<span class="cmt">// Seq(0.45045141067752825, 0.35965061961514433, 0.3274988472269684)</span></pre></li></ol>
+            </div></dl></div>
     </li><li name="io.neysofu.tyche.Moments#variance" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="variance(implicittoDouble:&lt;:&lt;[A,Double]):Double"></a><a id="variance(&lt;:&lt;[A,Double]):Double"></a>
       <span class="permalink">
@@ -853,6 +857,23 @@
       
       <p class="shortcomment cmt">Computes the <a href="https://goo.gl/Wzlr6p" target="_blank">variance</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Computes the <a href="https://goo.gl/Wzlr6p" target="_blank">variance</a>.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Moments.html" class="extype" name="io.neysofu.tyche.Moments">Moments</a></dd></dl></div>
+    </li><li name="io.neysofu.tyche.DiscreteGen#virtualPlot" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="virtualPlot(implicittoDouble:&lt;:&lt;[A,Double]):Map[A,Double]"></a><a id="virtualPlot(&lt;:&lt;[A,Double]):Map[A,Double]"></a>
+      <span class="permalink">
+      <a href="../../../io/neysofu/tyche/DiscreteGen.html#virtualPlot(implicittoDouble:&lt;:&lt;[A,Double]):Map[A,Double]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">virtualPlot</span><span class="params">(<span class="implicit">implicit </span><span name="toDouble">toDouble: <span class="extype" name="scala.Predef.&lt;:&lt;">&lt;:&lt;</span>[<span class="extype" name="io.neysofu.tyche.DiscreteGen.A">A</span>, <span class="extype" name="scala.Double">Double</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="io.neysofu.tyche.DiscreteGen.A">A</span>, <span class="extype" name="scala.Double">Double</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Draws a virtual plot.</p><div class="fullcomment"><div class="comment cmt"><p>Draws a virtual plot.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.neysofu.tyche.DiscreteGen">DiscreteGen</a> → <a href="Moments.html" class="extype" name="io.neysofu.tyche.Moments">Moments</a></dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <span class="permalink">

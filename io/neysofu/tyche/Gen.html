@@ -174,9 +174,9 @@
                       </li><li class="current-entities indented3">
                         <span class="separator"></span>
                         <a class="trait" href="" title="This trait defines fundamental data manipulation techniques for random
- variables and stochastic processes, such as probability distributions."></a>
+ variables and stochastic processes such as probability distributions."></a>
                         <a href="" title="This trait defines fundamental data manipulation techniques for random
- variables and stochastic processes, such as probability distributions.">
+ variables and stochastic processes such as probability distributions.">
                           Gen
                         </a>
                       </li><li class="current-entities indented3">
@@ -230,18 +230,20 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <span class="name">Gen</span><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <span class="name">Gen</span><span class="tparams">[<span name="A">+A</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
 
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>This trait defines fundamental data manipulation techniques for random
- variables and stochastic processes, such as probability distributions.</p><p> The type parameter <code>A</code> represents the outcomes' type signature. Note that
- many implementions require <code>A &lt;: Double</code> to work correctly, with the
- notable exception of Markovian chains.</p><p> Each and every instance is implemented by specifying its generative
- function (<a href="#get:A" class="extmbr" name="io.neysofu.tyche.Gen#get">io.neysofu.tyche.Gen.get</a>), as so:</p><pre><span class="kw">val</span> uniform = <span class="kw">new</span> Gen[<span class="std">Double</span>] {
-  <span class="kw">def</span> get = Random.nextDouble
-}</pre></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="io.neysofu.tyche.Gen">Gen</a>[<span class="extype" name="io.neysofu.tyche.Gen.A">A</span>]</dd><dt>See also</dt><dd><span class="cmt"><p><a href="Moments.html" class="extype" name="io.neysofu.tyche.Moments">io.neysofu.tyche.Moments</a></p></span></dd></dl><div class="toggleContainer block">
+ variables and stochastic processes such as probability distributions.</p><p> Each and every instance is implemented by specifying its generative
+ function (<a href="#get:A" class="extmbr" name="io.neysofu.tyche.Gen#get">io.neysofu.tyche.Gen.get</a>).
+</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>the outcomes' type signature. Note that many implementions
+ require <code>A &lt;: Double</code> to work correctly.</p></dd></dl><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="io.neysofu.tyche.Gen">Gen</a>[<span class="extype" name="io.neysofu.tyche.Gen.A">A</span>]</dd><div class="block">Example:
+               <ol><li class="cmt"><p></p><pre><span class="kw">val</span> uniform = <span class="kw">new</span> Gen[<span class="std">Double</span>] {
+  <span class="kw">def</span> get = scala.util.Random.nextDouble
+}</pre></li></ol>
+            </div><dt>See also</dt><dd><span class="cmt"><p><a href="Moments.html" class="extype" name="io.neysofu.tyche.Moments">io.neysofu.tyche.Moments</a></p></span></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -250,7 +252,7 @@
             <span class="toggle">
               Known Subclasses
             </span>
-            <div class="subClasses hiddenContent"><a href="ContinuousDistribution.html" class="extype" name="io.neysofu.tyche.ContinuousDistribution">ContinuousDistribution</a>, <a href="ContinuousGen.html" class="extype" name="io.neysofu.tyche.ContinuousGen">ContinuousGen</a>, <a href="DiscreteDistribution.html" class="extype" name="io.neysofu.tyche.DiscreteDistribution">DiscreteDistribution</a>, <a href="DiscreteGen.html" class="extype" name="io.neysofu.tyche.DiscreteGen">DiscreteGen</a>, <a href="Moments.html" class="extype" name="io.neysofu.tyche.Moments">Moments</a></div>
+            <div class="subClasses hiddenContent"><a href="ContinuousDistribution.html" class="extype" name="io.neysofu.tyche.ContinuousDistribution">ContinuousDistribution</a>, <a href="ContinuousGen.html" class="extype" name="io.neysofu.tyche.ContinuousGen">ContinuousGen</a>, <a href="DiscreteDistribution.html" class="extype" name="io.neysofu.tyche.DiscreteDistribution">DiscreteDistribution</a>, <a href="DiscreteGen.html" class="extype" name="io.neysofu.tyche.DiscreteGen">DiscreteGen</a></div>
           </div></div>
         
 
@@ -300,7 +302,7 @@
 
         <div class="values members">
               <h3>Abstract Value Members</h3>
-              <ol><li name="io.neysofu.tyche.Gen#get" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
+              <ol><li name="io.neysofu.tyche.Gen#get" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="get:A"></a>
       <span class="permalink">
       <a href="../../../io/neysofu/tyche/Gen.html#get:A" title="Permalink">
@@ -315,7 +317,11 @@
         <span class="name">get</span><span class="result">: <span class="extype" name="io.neysofu.tyche.Gen.A">A</span></span>
       </span>
       
-      <p class="shortcomment cmt">Returns a random outcome.</p>
+      <p class="shortcomment cmt">Returns a random outcome.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a random outcome.
+</p></div><dl class="attributes block"> <div class="block">Example:
+               <ol><li class="cmt"><p></p><pre>println(uniform.get)
+<span class="cmt">// 0.677464655118979</span></pre></li></ol>
+            </div></dl></div>
     </li></ol>
             </div>
 
@@ -440,7 +446,7 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="io.neysofu.tyche.Gen#filter" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="io.neysofu.tyche.Gen#filter" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="filter(pred:A=&gt;Boolean):io.neysofu.tyche.Gen[A]"></a><a id="filter((A)⇒Boolean):Gen[A]"></a>
       <span class="permalink">
       <a href="../../../io/neysofu/tyche/Gen.html#filter(pred:A=&gt;Boolean):io.neysofu.tyche.Gen[A]" title="Permalink">
@@ -456,7 +462,12 @@
       </span>
       
       <p class="shortcomment cmt">Builds a new generator by filtering the sample space accordingly to a
- predicate.</p>
+ predicate.</p><div class="fullcomment"><div class="comment cmt"><p>Builds a new generator by filtering the sample space accordingly to a
+ predicate.
+</p></div><dl class="attributes block"> <div class="block">Example:
+               <ol><li class="cmt"><p></p><pre>println(uniform.filter(d <span class="kw">=&gt;</span> d &gt; <span class="num">0.8</span>).get)
+<span class="cmt">// 0.8619005365066574</span></pre></li></ol>
+            </div></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <span class="permalink">
@@ -527,7 +538,7 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="io.neysofu.tyche.Gen#joint" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="io.neysofu.tyche.Gen#joint" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="joint[B](that:io.neysofu.tyche.Gen[B]):io.neysofu.tyche.Gen[(A,B)]"></a><a id="joint[B](Gen[B]):Gen[(A,B)]"></a>
       <span class="permalink">
       <a href="../../../io/neysofu/tyche/Gen.html#joint[B](that:io.neysofu.tyche.Gen[B]):io.neysofu.tyche.Gen[(A,B)]" title="Permalink">
@@ -543,8 +554,13 @@
       </span>
       
       <p class="shortcomment cmt">Builds a new, bivariate generator by zipping the sample space with
- another generator's.</p>
-    </li><li name="io.neysofu.tyche.Gen#map" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+ another generator's.</p><div class="fullcomment"><div class="comment cmt"><p>Builds a new, bivariate generator by zipping the sample space with
+ another generator's.
+</p></div><dl class="attributes block"> <div class="block">Example:
+               <ol><li class="cmt"><p></p><pre>println(uniform.joint(uniform.map(-_)).get)
+<span class="cmt">// (0.5872605617066919, -0.5959848796935293)</span></pre></li></ol>
+            </div></dl></div>
+    </li><li name="io.neysofu.tyche.Gen#map" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="map[B](f:A=&gt;B):io.neysofu.tyche.Gen[B]"></a><a id="map[B]((A)⇒B):Gen[B]"></a>
       <span class="permalink">
       <a href="../../../io/neysofu/tyche/Gen.html#map[B](f:A=&gt;B):io.neysofu.tyche.Gen[B]" title="Permalink">
@@ -559,7 +575,11 @@
         <span class="name">map</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="f">f: (<span class="extype" name="io.neysofu.tyche.Gen.A">A</span>) ⇒ <span class="extype" name="io.neysofu.tyche.Gen.map.B">B</span></span>)</span><span class="result">: <a href="" class="extype" name="io.neysofu.tyche.Gen">Gen</a>[<span class="extype" name="io.neysofu.tyche.Gen.map.B">B</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">Builds a new generator by applying a function to all the outcomes.</p>
+      <p class="shortcomment cmt">Builds a new generator by applying a function to all the outcomes.</p><div class="fullcomment"><div class="comment cmt"><p>Builds a new generator by applying a function to all the outcomes.
+</p></div><dl class="attributes block"> <div class="block">Example:
+               <ol><li class="cmt"><p></p><pre>println(uniform.map(d <span class="kw">=&gt;</span> d + <span class="num">1</span>).get)
+<span class="cmt">// 1.742019032131262</span></pre></li></ol>
+            </div></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -608,7 +628,7 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="io.neysofu.tyche.Gen#repeat" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="io.neysofu.tyche.Gen#repeat" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="repeat(n:Int):io.neysofu.tyche.Gen[Seq[A]]"></a><a id="repeat(Int):Gen[Seq[A]]"></a>
       <span class="permalink">
       <a href="../../../io/neysofu/tyche/Gen.html#repeat(n:Int):io.neysofu.tyche.Gen[Seq[A]]" title="Permalink">
@@ -623,7 +643,11 @@
         <span class="name">repeat</span><span class="params">(<span name="n">n: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="" class="extype" name="io.neysofu.tyche.Gen">Gen</a>[<span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="io.neysofu.tyche.Gen.A">A</span>]]</span>
       </span>
       
-      <p class="shortcomment cmt">Builds a new generator by joining multiple outcomes together.</p>
+      <p class="shortcomment cmt">Builds a new generator by joining multiple outcomes together.</p><div class="fullcomment"><div class="comment cmt"><p>Builds a new generator by joining multiple outcomes together.
+</p></div><dl class="attributes block"> <div class="block">Example:
+               <ol><li class="cmt"><p></p><pre>println(uniform.repeat(<span class="num">2</span>).get)
+<span class="cmt">// Seq(0.4656608004451568, 0.2043631751083831)</span></pre></li></ol>
+            </div></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
@@ -673,7 +697,7 @@
       
       <p class="shortcomment cmt">Builds a new generator by replacing all the outcomes with their
  respective numerical representations.</p>
-    </li><li name="io.neysofu.tyche.Gen#toStream" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="io.neysofu.tyche.Gen#toStream" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toStream:Stream[A]"></a>
       <span class="permalink">
       <a href="../../../io/neysofu/tyche/Gen.html#toStream:Stream[A]" title="Permalink">
@@ -688,7 +712,11 @@
         <span class="name">toStream</span><span class="result">: <span class="extype" name="scala.Stream">Stream</span>[<span class="extype" name="io.neysofu.tyche.Gen.A">A</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">Returns a <span class="extype" name="Stream">Stream</span> of outcomes.</p>
+      <p class="shortcomment cmt">Returns a stream of outcomes.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a stream of outcomes.
+</p></div><dl class="attributes block"> <div class="block">Example:
+               <ol><li class="cmt"><p></p><pre>println(uniform.stream)
+<span class="cmt">// Stream(0.6295245393412436, ?)</span></pre></li></ol>
+            </div></dl></div>
     </li><li name="scala.AnyRef#toString" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
       <span class="permalink">
@@ -705,7 +733,7 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="io.neysofu.tyche.Gen#until" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="io.neysofu.tyche.Gen#until" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="until(pred:Seq[A]=&gt;Boolean):io.neysofu.tyche.Gen[Seq[A]]"></a><a id="until((Seq[A])⇒Boolean):Gen[Seq[A]]"></a>
       <span class="permalink">
       <a href="../../../io/neysofu/tyche/Gen.html#until(pred:Seq[A]=&gt;Boolean):io.neysofu.tyche.Gen[Seq[A]]" title="Permalink">
@@ -721,7 +749,12 @@
       </span>
       
       <p class="shortcomment cmt">Builds a new generator by creating a sample space which contains
- only collections of outcomes that satisfy a predicate.</p>
+ only collections of outcomes that satisfy a predicate.</p><div class="fullcomment"><div class="comment cmt"><p>Builds a new generator by creating a sample space which contains
+ only collections of outcomes that satisfy a predicate.
+</p></div><dl class="attributes block"> <div class="block">Example:
+               <ol><li class="cmt"><p></p><pre>println(uniform.until(_.sum &gt; <span class="num">1</span>).get)
+<span class="cmt">// Seq(0.45045141067752825, 0.35965061961514433, 0.3274988472269684)</span></pre></li></ol>
+            </div></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <span class="permalink">
