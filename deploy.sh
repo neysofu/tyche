@@ -12,7 +12,7 @@ fi
 rev=$(git rev-parse --short HEAD)
 
 cd target
-cd scala-2.11
+cd scala-2.12
 cd api
 
 git init

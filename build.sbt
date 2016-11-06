@@ -1,25 +1,28 @@
 import sbt._, Keys._
 import Dependencies._
 
-val TycheLibraryVersion = "0.1.0"
+val TycheLibraryVersion = "0.2.0"
 
-lazy val root = (project in file("."))
-  .settings(Seq(
-    // Commons
-    organization := "io.neysofu",
-    name := "tyche",
-    version := TycheLibraryVersion,
-    // Compiler settings
-    scalaVersion := "2.11.8",
-    scalacOptions := Seq(
-      "-deprecation",
-      "-unchecked",
-      "-feature"
-    ),
-    // Dependencies
-    resolvers ++= Dependencies.Resolvers.commons,
-    libraryDependencies ++= Seq(
-      scalactic,
-      scalatest
-    )
-  ))
+val sharedSettings = Seq(
+  organization := "io.neysofu",
+  version := TycheLibraryVersion,
+  scalaVersion := "2.12.0",
+  scalacOptions := Seq(
+    "-deprecation",
+    "-unchecked",
+    "-feature"
+  ),
+  resolvers ++= Dependencies.Resolvers.commons,
+  libraryDependencies ++= Seq(
+    //scalactic,
+    scalatest
+  )
+)
+
+lazy val root = Project(
+  id = "tyche",
+  base = file("."),
+  settings = sharedSettings
+).settings(
+  name := "tyche"  
+)

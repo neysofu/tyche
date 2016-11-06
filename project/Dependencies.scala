@@ -3,10 +3,10 @@ import sbt._, Keys._
 object Dependencies {
 
   object Resolvers {
-    val artima = "Artima Maven Repository" at "http://repo.artima.com/releases"
+   // val artima = "Artima Maven Repository" at "http://repo.artima.com/releases"
   
     val commons = Seq(
-      artima
+      //artima
     )
   }
 
