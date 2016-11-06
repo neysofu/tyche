@@ -1,15 +1,16 @@
 package io.neysofu.tyche
 
+import scala.util.Random
 import org.scalatest.{WordSpec, Matchers}
 
 class DiscreteUniformSpec extends WordSpec with Matchers {
  
   val sampleSize = 10000
-  
+
   // Coin toss
   sealed trait Coin
-  case object Head extends Coin
-  case object Tail extends Coin
+  object Head extends Coin
+  object Tail extends Coin
   val coin = DiscreteDistribution.uniform(Head, Tail)
 
   // 1-sided die
@@ -18,12 +19,12 @@ class DiscreteUniformSpec extends WordSpec with Matchers {
 
   // Families
   sealed trait Child
-  case object Male extends Child
-  case object Female extends Child
+  object Male extends Child
+  object Female extends Child
   val family = DiscreteDistribution.uniform(Male, Female)
     .until(_ contains Male)
     .map(_.size - 1)
-      
+
   "A discrete uniform probability distribution" when {
     
     "a coin is tossed" should {

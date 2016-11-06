@@ -14,12 +14,12 @@ import scala.util.Random
  *
  *  {{{
  *  val uniform = new Gen[Double] {
- *    def get = random.nextDouble
+ *    def get = Random.nextDouble
  *  }
  *  }}}
  *
  *  @author Filippo Costa
- *  @see [[io.neysofu.tyche.Moments]], [[io.neysofu.tyche.Markovian]]
+ *  @see [[io.neysofu.tyche.Moments]]
  */
 trait Gen[A] { self =>
 
