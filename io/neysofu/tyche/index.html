@@ -123,24 +123,6 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="io.neysofu">neysofu</a></dd></dl></div>
-    </li><li name="io.neysofu.tyche.util" visbl="pub" class="indented4 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="util"></a><a id="util:util"></a>
-      <span class="permalink">
-      <a href="../../../io/neysofu/tyche/index.html#util" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">package</span>
-      </span>
-      <span class="symbol">
-        <a title="" href="util/index.html">
-              <span class="name">util</span>
-            </a>
-      </span>
-      
-      
     </li><li class="current-entities indented3">
                         <a class="object" href="ContinuousDistribution$.html" title=""></a>
                         <a class="class" href="ContinuousDistribution.html" title=""></a>
@@ -179,9 +161,15 @@
                         </a>
                       </li><li class="current-entities indented3">
                         <a class="object" href="MarkovChain$.html" title=""></a>
-                        <a class="trait" href="MarkovChain.html" title=""></a>
+                        <a class="class" href="MarkovChain.html" title=""></a>
                         <a href="MarkovChain.html" title="">
                           MarkovChain
+                        </a>
+                      </li><li class="current-entities indented3">
+                        <span class="separator"></span>
+                        <a class="trait" href="MarkovGen.html" title=""></a>
+                        <a href="MarkovGen.html" title="">
+                          MarkovGen
                         </a>
                       </li><li class="current-entities indented3">
                         <span class="separator"></span>
@@ -372,10 +360,28 @@
   <span class="kw">def</span> get = scala.util.Random.nextDouble
 }</pre></li></ol>
             </div><dt>See also</dt><dd><span class="cmt"><p><a href="Moments.html" class="extype" name="io.neysofu.tyche.Moments">io.neysofu.tyche.Moments</a></p></span></dd></dl></div>
-    </li><li name="io.neysofu.tyche.MarkovChain" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="MarkovChain[A]extendsAnyRef"></a><a id="MarkovChain[A]:MarkovChain[A]"></a>
+    </li><li name="io.neysofu.tyche.MarkovChain" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="MarkovChain[A]extendsMarkovGen[A]"></a><a id="MarkovChain[A]:MarkovChain[A]"></a>
       <span class="permalink">
-      <a href="../../../io/neysofu/tyche/index.html#MarkovChain[A]extendsAnyRef" title="Permalink">
+      <a href="../../../io/neysofu/tyche/index.html#MarkovChain[A]extendsMarkovGen[A]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="MarkovChain.html">
+              <span class="name">MarkovChain</span>
+            </a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <a href="MarkovGen.html" class="extype" name="io.neysofu.tyche.MarkovGen">MarkovGen</a>[<span class="extype" name="io.neysofu.tyche.MarkovChain.A">A</span>]</span>
+      </span>
+      
+      
+    </li><li name="io.neysofu.tyche.MarkovGen" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="MarkovGen[A]extendsGen[io.neysofu.tyche.MarkovGen[A]]"></a><a id="MarkovGen[A]:MarkovGen[A]"></a>
+      <span class="permalink">
+      <a href="../../../io/neysofu/tyche/index.html#MarkovGen[A]extendsGen[io.neysofu.tyche.MarkovGen[A]]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -384,9 +390,9 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a title="" href="MarkovChain.html">
-              <span class="name">MarkovChain</span>
-            </a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a title="" href="MarkovGen.html">
+              <span class="name">MarkovGen</span>
+            </a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a>[<a href="MarkovGen.html" class="extype" name="io.neysofu.tyche.MarkovGen">MarkovGen</a>[<span class="extype" name="io.neysofu.tyche.MarkovGen.A">A</span>]]</span>
       </span>
       
       

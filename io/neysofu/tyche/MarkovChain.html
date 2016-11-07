@@ -125,24 +125,6 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="io.neysofu">neysofu</a></dd></dl></div>
-    </li><li name="io.neysofu.tyche.util" visbl="pub" class="indented4 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="util"></a><a id="util:util"></a>
-      <span class="permalink">
-      <a href="../../../io/neysofu/tyche/index.html#util" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">package</span>
-      </span>
-      <span class="symbol">
-        <a title="" href="util/index.html">
-              <span class="name">util</span>
-            </a>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="io.neysofu.tyche">tyche</a></dd></dl></div>
     </li><li class="current-entities indented3">
                         <a class="object" href="ContinuousDistribution$.html" title=""></a>
                         <a class="class" href="ContinuousDistribution.html" title=""></a>
@@ -181,9 +163,15 @@
                         </a>
                       </li><li class="current-entities indented3">
                         <a class="object" href="MarkovChain$.html" title=""></a>
-                        <a class="trait" href="" title=""></a>
+                        <a class="class" href="" title=""></a>
                         <a href="" title="">
                           MarkovChain
+                        </a>
+                      </li><li class="current-entities indented3">
+                        <span class="separator"></span>
+                        <a class="trait" href="MarkovGen.html" title=""></a>
+                        <a href="MarkovGen.html" title="">
+                          MarkovGen
                         </a>
                       </li><li class="current-entities indented3">
                         <span class="separator"></span>
@@ -212,9 +200,9 @@
             </div>
           </div>
           <div id="content">
-            <body class="trait type">
+            <body class="class type">
       <div id="definition">
-        <a href="MarkovChain$.html" title="See companion object"><div class="big-circle trait-companion-object">t</div></a>
+        <a href="MarkovChain$.html" title="See companion object"><div class="big-circle class-companion-object">c</div></a>
         <p id="owner"><a href="../../index.html" class="extype" name="io">io</a>.<a href="../index.html" class="extype" name="io.neysofu">neysofu</a>.<a href="index.html" class="extype" name="io.neysofu.tyche">tyche</a></p>
         <h1><a href="MarkovChain$.html" title="See companion object">MarkovChain</a><span class="permalink">
       <a href="../../../io/neysofu/tyche/MarkovChain.html" title="Permalink">
@@ -229,19 +217,19 @@
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">trait</span>
+        <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">MarkovChain</span><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <span class="name">MarkovChain</span><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <a href="MarkovGen.html" class="extype" name="io.neysofu.tyche.MarkovGen">MarkovGen</a>[<span class="extype" name="io.neysofu.tyche.MarkovChain.A">A</span>]</span>
       </span>
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="io.neysofu.tyche.MarkovChain">MarkovChain</a>[<span class="extype" name="io.neysofu.tyche.MarkovChain.A">A</span>]</dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="MarkovGen.html" class="extype" name="io.neysofu.tyche.MarkovGen">MarkovGen</a>[<span class="extype" name="io.neysofu.tyche.MarkovChain.A">A</span>], <a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a>[<a href="MarkovGen.html" class="extype" name="io.neysofu.tyche.MarkovGen">MarkovGen</a>[<span class="extype" name="io.neysofu.tyche.MarkovChain.A">A</span>]], <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -267,7 +255,7 @@
                   <span class="filtertype">Inherited<br />
                   </span>
                   <ol id="linearization">
-                    <li class="in" name="io.neysofu.tyche.MarkovChain"><span>MarkovChain</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                    <li class="in" name="io.neysofu.tyche.MarkovChain"><span>MarkovChain</span></li><li class="in" name="io.neysofu.tyche.MarkovGen"><span>MarkovGen</span></li><li class="in" name="io.neysofu.tyche.Gen"><span>Gen</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                   </ol>
                 </div><div class="ancestors">
               <span class="filtertype"></span>
@@ -285,49 +273,33 @@
 
       <div id="template">
         <div id="allMembers">
-        
-
-        
-
-        <div class="values members">
-              <h3>Abstract Value Members</h3>
-              <ol><li name="io.neysofu.tyche.MarkovChain#matrix" visbl="prt" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="matrix:Map[A,Map[A,Double]]"></a>
+        <div id="constructors" class="members">
+              <h3>Instance Constructors</h3>
+              <ol><li name="io.neysofu.tyche.MarkovChain#&lt;init&gt;" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="&lt;init&gt;(rule:A=&gt;Map[A,Double],state:A):io.neysofu.tyche.MarkovChain[A]"></a><a id="&lt;init&gt;:MarkovChain[A]"></a>
       <span class="permalink">
-      <a href="../../../io/neysofu/tyche/MarkovChain.html#matrix:Map[A,Map[A,Double]]" title="Permalink">
+      <a href="../../../io/neysofu/tyche/MarkovChain.html#&lt;init&gt;(rule:A=&gt;Map[A,Double],state:A):io.neysofu.tyche.MarkovChain[A]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
       <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">val</span>
+        <span class="modifier"></span>
+        <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">matrix</span><span class="result">: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="io.neysofu.tyche.MarkovChain.A">A</span>, <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="io.neysofu.tyche.MarkovChain.A">A</span>, <span class="extype" name="scala.Double">Double</span>]]</span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
-    </li><li name="io.neysofu.tyche.MarkovChain#state" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="state:A"></a>
-      <span class="permalink">
-      <a href="../../../io/neysofu/tyche/MarkovChain.html#state:A" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">state</span><span class="result">: <span class="extype" name="io.neysofu.tyche.MarkovChain.A">A</span></span>
+        <span class="name">MarkovChain</span><span class="params">(<span name="rule">rule: (<span class="extype" name="io.neysofu.tyche.MarkovChain.A">A</span>) ⇒ <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="io.neysofu.tyche.MarkovChain.A">A</span>, <span class="extype" name="scala.Double">Double</span>]</span>, <span name="state">state: <span class="extype" name="io.neysofu.tyche.MarkovChain.A">A</span></span>)</span>
       </span>
       
       
     </li></ol>
             </div>
 
+        
+
+        
+
         <div class="values members">
-              <h3>Concrete Value Members</h3>
+              <h3>Value Members</h3>
               <ol>
                 <li name="scala.AnyRef#!=" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:Any):Boolean"></a><a id="!=(Any):Boolean"></a>
@@ -447,6 +419,28 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="io.neysofu.tyche.Gen#filter" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="filter(pred:A=&gt;Boolean):io.neysofu.tyche.Gen[A]"></a><a id="filter((MarkovGen[A])⇒Boolean):Gen[MarkovGen[A]]"></a>
+      <span class="permalink">
+      <a href="../../../io/neysofu/tyche/MarkovChain.html#filter(pred:A=&gt;Boolean):io.neysofu.tyche.Gen[A]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">filter</span><span class="params">(<span name="pred">pred: (<a href="MarkovGen.html" class="extype" name="io.neysofu.tyche.MarkovGen">MarkovGen</a>[<span class="extype" name="io.neysofu.tyche.MarkovChain.A">A</span>]) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a>[<a href="MarkovGen.html" class="extype" name="io.neysofu.tyche.MarkovGen">MarkovGen</a>[<span class="extype" name="io.neysofu.tyche.MarkovChain.A">A</span>]]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Builds a new generator by filtering the sample space accordingly to a
+ predicate.</p><div class="fullcomment"><div class="comment cmt"><p>Builds a new generator by filtering the sample space accordingly to a
+ predicate.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a></dd><div class="block">Example:
+               <ol><li class="cmt"><p></p><pre>println(uniform.filter(d <span class="kw">=&gt;</span> d &gt; <span class="num">0.8</span>).get)
+<span class="cmt">// 0.8619005365066574</span></pre></li></ol>
+            </div></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <span class="permalink">
@@ -469,6 +463,42 @@
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="io.neysofu.tyche.MarkovGen#get" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="get:io.neysofu.tyche.MarkovGen[A]"></a><a id="get:MarkovGen[A]"></a>
+      <span class="permalink">
+      <a href="../../../io/neysofu/tyche/MarkovChain.html#get:io.neysofu.tyche.MarkovGen[A]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">get</span><span class="result">: <a href="MarkovGen.html" class="extype" name="io.neysofu.tyche.MarkovGen">MarkovGen</a>[<span class="extype" name="io.neysofu.tyche.MarkovChain.A">A</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Returns a random outcome.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a random outcome.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="MarkovGen.html" class="extype" name="io.neysofu.tyche.MarkovGen">MarkovGen</a> → <a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a></dd><div class="block">Example:
+               <ol><li class="cmt"><p></p><pre>println(uniform.get)
+<span class="cmt">// 0.677464655118979</span></pre></li></ol>
+            </div></dl></div>
+    </li><li name="io.neysofu.tyche.MarkovGen#getAfter" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getAfter(n:Int):io.neysofu.tyche.MarkovGen[A]"></a><a id="getAfter(Int):MarkovGen[A]"></a>
+      <span class="permalink">
+      <a href="../../../io/neysofu/tyche/MarkovChain.html#getAfter(n:Int):io.neysofu.tyche.MarkovGen[A]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getAfter</span><span class="params">(<span name="n">n: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="MarkovGen.html" class="extype" name="io.neysofu.tyche.MarkovGen">MarkovGen</a>[<span class="extype" name="io.neysofu.tyche.MarkovChain.A">A</span>]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="MarkovGen.html" class="extype" name="io.neysofu.tyche.MarkovGen">MarkovGen</a></dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <span class="permalink">
@@ -517,22 +547,48 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="io.neysofu.tyche.MarkovChain#mass" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="mass:Map[A,Double]"></a>
+    </li><li name="io.neysofu.tyche.Gen#joint" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="joint[B](that:io.neysofu.tyche.Gen[B]):io.neysofu.tyche.Gen[(A,B)]"></a><a id="joint[B](Gen[B]):Gen[(MarkovGen[A],B)]"></a>
       <span class="permalink">
-      <a href="../../../io/neysofu/tyche/MarkovChain.html#mass:Map[A,Double]" title="Permalink">
+      <a href="../../../io/neysofu/tyche/MarkovChain.html#joint[B](that:io.neysofu.tyche.Gen[B]):io.neysofu.tyche.Gen[(A,B)]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">val</span>
+        <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">mass</span><span class="result">: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="io.neysofu.tyche.MarkovChain.A">A</span>, <span class="extype" name="scala.Double">Double</span>]</span>
+        <span class="name">joint</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="that">that: <a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a>[<span class="extype" name="io.neysofu.tyche.Gen.joint.B">B</span>]</span>)</span><span class="result">: <a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a>[(<a href="MarkovGen.html" class="extype" name="io.neysofu.tyche.MarkovGen">MarkovGen</a>[<span class="extype" name="io.neysofu.tyche.MarkovChain.A">A</span>], <span class="extype" name="io.neysofu.tyche.Gen.joint.B">B</span>)]</span>
       </span>
       
+      <p class="shortcomment cmt">Builds a new, bivariate generator by zipping the sample space with
+ another generator's.</p><div class="fullcomment"><div class="comment cmt"><p>Builds a new, bivariate generator by zipping the sample space with
+ another generator's.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a></dd><div class="block">Example:
+               <ol><li class="cmt"><p></p><pre>println(uniform.joint(uniform.map(-_)).get)
+<span class="cmt">// (0.5872605617066919, -0.5959848796935293)</span></pre></li></ol>
+            </div></dl></div>
+    </li><li name="io.neysofu.tyche.Gen#map" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="map[B](f:A=&gt;B):io.neysofu.tyche.Gen[B]"></a><a id="map[B]((MarkovGen[A])⇒B):Gen[B]"></a>
+      <span class="permalink">
+      <a href="../../../io/neysofu/tyche/MarkovChain.html#map[B](f:A=&gt;B):io.neysofu.tyche.Gen[B]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">map</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="f">f: (<a href="MarkovGen.html" class="extype" name="io.neysofu.tyche.MarkovGen">MarkovGen</a>[<span class="extype" name="io.neysofu.tyche.MarkovChain.A">A</span>]) ⇒ <span class="extype" name="io.neysofu.tyche.Gen.map.B">B</span></span>)</span><span class="result">: <a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a>[<span class="extype" name="io.neysofu.tyche.Gen.map.B">B</span>]</span>
+      </span>
       
+      <p class="shortcomment cmt">Builds a new generator by applying a function to all the outcomes.</p><div class="fullcomment"><div class="comment cmt"><p>Builds a new generator by applying a function to all the outcomes.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a></dd><div class="block">Example:
+               <ol><li class="cmt"><p></p><pre>println(uniform.map(d <span class="kw">=&gt;</span> d + <span class="num">1</span>).get)
+<span class="cmt">// 1.742019032131262</span></pre></li></ol>
+            </div></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -581,6 +637,58 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="io.neysofu.tyche.Gen#repeat" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="repeat(n:Int):io.neysofu.tyche.Gen[Seq[A]]"></a><a id="repeat(Int):Gen[Seq[MarkovGen[A]]]"></a>
+      <span class="permalink">
+      <a href="../../../io/neysofu/tyche/MarkovChain.html#repeat(n:Int):io.neysofu.tyche.Gen[Seq[A]]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">repeat</span><span class="params">(<span name="n">n: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a>[<span class="extype" name="scala.Seq">Seq</span>[<a href="MarkovGen.html" class="extype" name="io.neysofu.tyche.MarkovGen">MarkovGen</a>[<span class="extype" name="io.neysofu.tyche.MarkovChain.A">A</span>]]]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Builds a new generator by joining multiple outcomes together.</p><div class="fullcomment"><div class="comment cmt"><p>Builds a new generator by joining multiple outcomes together.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a></dd><div class="block">Example:
+               <ol><li class="cmt"><p></p><pre>println(uniform.repeat(<span class="num">2</span>).get)
+<span class="cmt">// Seq(0.4656608004451568, 0.2043631751083831)</span></pre></li></ol>
+            </div></dl></div>
+    </li><li name="io.neysofu.tyche.MarkovChain#rule" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="rule:A=&gt;Map[A,Double]"></a><a id="rule:(A)⇒Map[A,Double]"></a>
+      <span class="permalink">
+      <a href="../../../io/neysofu/tyche/MarkovChain.html#rule:A=&gt;Map[A,Double]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">rule</span><span class="result">: (<span class="extype" name="io.neysofu.tyche.MarkovChain.A">A</span>) ⇒ <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="io.neysofu.tyche.MarkovChain.A">A</span>, <span class="extype" name="scala.Double">Double</span>]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.neysofu.tyche.MarkovChain">MarkovChain</a> → <a href="MarkovGen.html" class="extype" name="io.neysofu.tyche.MarkovGen">MarkovGen</a></dd></dl></div>
+    </li><li name="io.neysofu.tyche.MarkovChain#state" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="state:A"></a>
+      <span class="permalink">
+      <a href="../../../io/neysofu/tyche/MarkovChain.html#state:A" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">state</span><span class="result">: <span class="extype" name="io.neysofu.tyche.MarkovChain.A">A</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.neysofu.tyche.MarkovChain">MarkovChain</a> → <a href="MarkovGen.html" class="extype" name="io.neysofu.tyche.MarkovGen">MarkovGen</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
@@ -597,6 +705,62 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="io.neysofu.tyche.Gen#take" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="take(n:Int):Seq[A]"></a><a id="take(Int):Seq[MarkovGen[A]]"></a>
+      <span class="permalink">
+      <a href="../../../io/neysofu/tyche/MarkovChain.html#take(n:Int):Seq[A]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">take</span><span class="params">(<span name="n">n: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<a href="MarkovGen.html" class="extype" name="io.neysofu.tyche.MarkovGen">MarkovGen</a>[<span class="extype" name="io.neysofu.tyche.MarkovChain.A">A</span>]]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Returns an array of the desired length filled with random outcomes.</p><div class="fullcomment"><div class="comment cmt"><p>Returns an array of the desired length filled with random outcomes.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a></dd></dl></div>
+    </li><li name="io.neysofu.tyche.Gen#toGenDouble" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="toGenDouble(implicitd:&lt;:&lt;[A,Double]):io.neysofu.tyche.Gen[Double]"></a><a id="toGenDouble(&lt;:&lt;[MarkovGen[A],Double]):Gen[Double]"></a>
+      <span class="permalink">
+      <a href="../../../io/neysofu/tyche/MarkovChain.html#toGenDouble(implicitd:&lt;:&lt;[A,Double]):io.neysofu.tyche.Gen[Double]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toGenDouble</span><span class="params">(<span class="implicit">implicit </span><span name="d">d: <span class="extype" name="scala.Predef.&lt;:&lt;">&lt;:&lt;</span>[<a href="MarkovGen.html" class="extype" name="io.neysofu.tyche.MarkovGen">MarkovGen</a>[<span class="extype" name="io.neysofu.tyche.MarkovChain.A">A</span>], <span class="extype" name="scala.Double">Double</span>]</span>)</span><span class="result">: <a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a>[<span class="extype" name="scala.Double">Double</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Builds a new generator by replacing all the outcomes with their
+ respective numerical representations.</p><div class="fullcomment"><div class="comment cmt"><p>Builds a new generator by replacing all the outcomes with their
+ respective numerical representations.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a></dd></dl></div>
+    </li><li name="io.neysofu.tyche.Gen#toStream" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="toStream:Stream[A]"></a><a id="toStream:Stream[MarkovGen[A]]"></a>
+      <span class="permalink">
+      <a href="../../../io/neysofu/tyche/MarkovChain.html#toStream:Stream[A]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toStream</span><span class="result">: <span class="extype" name="scala.Stream">Stream</span>[<a href="MarkovGen.html" class="extype" name="io.neysofu.tyche.MarkovGen">MarkovGen</a>[<span class="extype" name="io.neysofu.tyche.MarkovChain.A">A</span>]]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Returns a stream of outcomes.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a stream of outcomes.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a></dd><div class="block">Example:
+               <ol><li class="cmt"><p></p><pre>println(uniform.stream)
+<span class="cmt">// Stream(0.6295245393412436, ?)</span></pre></li></ol>
+            </div></dl></div>
     </li><li name="scala.AnyRef#toString" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
       <span class="permalink">
@@ -613,6 +777,28 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="io.neysofu.tyche.Gen#until" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="until(pred:Seq[A]=&gt;Boolean):io.neysofu.tyche.Gen[Seq[A]]"></a><a id="until((Seq[MarkovGen[A]])⇒Boolean):Gen[Seq[MarkovGen[A]]]"></a>
+      <span class="permalink">
+      <a href="../../../io/neysofu/tyche/MarkovChain.html#until(pred:Seq[A]=&gt;Boolean):io.neysofu.tyche.Gen[Seq[A]]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">until</span><span class="params">(<span name="pred">pred: (<span class="extype" name="scala.Seq">Seq</span>[<a href="MarkovGen.html" class="extype" name="io.neysofu.tyche.MarkovGen">MarkovGen</a>[<span class="extype" name="io.neysofu.tyche.MarkovChain.A">A</span>]]) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a>[<span class="extype" name="scala.Seq">Seq</span>[<a href="MarkovGen.html" class="extype" name="io.neysofu.tyche.MarkovGen">MarkovGen</a>[<span class="extype" name="io.neysofu.tyche.MarkovChain.A">A</span>]]]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Builds a new generator by creating a sample space which contains
+ only collections of outcomes that satisfy a predicate.</p><div class="fullcomment"><div class="comment cmt"><p>Builds a new generator by creating a sample space which contains
+ only collections of outcomes that satisfy a predicate.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a></dd><div class="block">Example:
+               <ol><li class="cmt"><p></p><pre>println(uniform.until(_.sum &gt; <span class="num">1</span>).get)
+<span class="cmt">// Seq(0.45045141067752825, 0.35965061961514433, 0.3274988472269684)</span></pre></li></ol>
+            </div></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <span class="permalink">
@@ -689,7 +875,11 @@
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="scala.AnyRef">
+        <div class="parent" name="io.neysofu.tyche.MarkovGen">
+              <h3>Inherited from <a href="MarkovGen.html" class="extype" name="io.neysofu.tyche.MarkovGen">MarkovGen</a>[<span class="extype" name="io.neysofu.tyche.MarkovChain.A">A</span>]</h3>
+            </div><div class="parent" name="io.neysofu.tyche.Gen">
+              <h3>Inherited from <a href="Gen.html" class="extype" name="io.neysofu.tyche.Gen">Gen</a>[<a href="MarkovGen.html" class="extype" name="io.neysofu.tyche.MarkovGen">MarkovGen</a>[<span class="extype" name="io.neysofu.tyche.MarkovChain.A">A</span>]]</h3>
+            </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>

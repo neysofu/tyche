@@ -125,24 +125,6 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="io.neysofu">neysofu</a></dd></dl></div>
-    </li><li name="io.neysofu.tyche.util" visbl="pub" class="indented4 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="util"></a><a id="util:util"></a>
-      <span class="permalink">
-      <a href="../../../io/neysofu/tyche/index.html#util" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">package</span>
-      </span>
-      <span class="symbol">
-        <a title="" href="util/index.html">
-              <span class="name">util</span>
-            </a>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="io.neysofu.tyche">tyche</a></dd></dl></div>
     </li><li class="current-entities indented3">
                         <a class="object" href="ContinuousDistribution$.html" title=""></a>
                         <a class="class" href="ContinuousDistribution.html" title=""></a>
@@ -181,9 +163,15 @@
                         </a>
                       </li><li class="current-entities indented3">
                         <a class="object" href="" title=""></a>
-                        <a class="trait" href="MarkovChain.html" title=""></a>
+                        <a class="class" href="MarkovChain.html" title=""></a>
                         <a href="MarkovChain.html" title="">
                           MarkovChain
+                        </a>
+                      </li><li class="current-entities indented3">
+                        <span class="separator"></span>
+                        <a class="trait" href="MarkovGen.html" title=""></a>
+                        <a href="MarkovGen.html" title="">
+                          MarkovGen
                         </a>
                       </li><li class="current-entities indented3">
                         <span class="separator"></span>
@@ -214,15 +202,15 @@
           <div id="content">
             <body class="object value">
       <div id="definition">
-        <a href="MarkovChain.html" title="See companion trait"><div class="big-circle object-companion-trait">o</div></a>
+        <a href="MarkovChain.html" title="See companion class"><div class="big-circle object-companion-class">o</div></a>
         <p id="owner"><a href="../../index.html" class="extype" name="io">io</a>.<a href="../index.html" class="extype" name="io.neysofu">neysofu</a>.<a href="index.html" class="extype" name="io.neysofu.tyche">tyche</a></p>
-        <h1><a href="MarkovChain.html" title="See companion trait">MarkovChain</a><span class="permalink">
+        <h1><a href="MarkovChain.html" title="See companion class">MarkovChain</a><span class="permalink">
       <a href="../../../io/neysofu/tyche/MarkovChain$.html" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span></h1>
         <h3><span class="morelinks"><div>
-            Companion <a href="MarkovChain.html" title="See companion trait">trait MarkovChain</a>
+            Companion <a href="MarkovChain.html" title="See companion class">class MarkovChain</a>
           </div></span></h3>
       </div>
 
@@ -380,22 +368,6 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="io.neysofu.tyche.MarkovChain#emulate" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="emulate[A](seq:Seq[A]):io.neysofu.tyche.MarkovChain[A]"></a><a id="emulate[A](Seq[A]):MarkovChain[A]"></a>
-      <span class="permalink">
-      <a href="../../../io/neysofu/tyche/MarkovChain$.html#emulate[A](seq:Seq[A]):io.neysofu.tyche.MarkovChain[A]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">emulate</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="seq">seq: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="io.neysofu.tyche.MarkovChain.emulate.A">A</span>]</span>)</span><span class="result">: <a href="MarkovChain.html" class="extype" name="io.neysofu.tyche.MarkovChain">MarkovChain</a>[<span class="extype" name="io.neysofu.tyche.MarkovChain.emulate.A">A</span>]</span>
-      </span>
-      
-      
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -428,6 +400,22 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="io.neysofu.tyche.MarkovChain#estimateFrom" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="estimateFrom[A](seq:A*):io.neysofu.tyche.MarkovChain[A]"></a><a id="estimateFrom[A](A*):MarkovChain[A]"></a>
+      <span class="permalink">
+      <a href="../../../io/neysofu/tyche/MarkovChain$.html#estimateFrom[A](seq:A*):io.neysofu.tyche.MarkovChain[A]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">estimateFrom</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="seq">seq: <span class="extype" name="io.neysofu.tyche.MarkovChain.estimateFrom.A">A</span>*</span>)</span><span class="result">: <a href="MarkovChain.html" class="extype" name="io.neysofu.tyche.MarkovChain">MarkovChain</a>[<span class="extype" name="io.neysofu.tyche.MarkovChain.estimateFrom.A">A</span>]</span>
+      </span>
+      
+      
     </li><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <span class="permalink">
@@ -546,6 +534,22 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="io.neysofu.tyche.MarkovChain#randomWalk" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="randomWalk:io.neysofu.tyche.MarkovChain[Int]"></a><a id="randomWalk:MarkovChain[Int]"></a>
+      <span class="permalink">
+      <a href="../../../io/neysofu/tyche/MarkovChain$.html#randomWalk:io.neysofu.tyche.MarkovChain[Int]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">randomWalk</span><span class="result">: <a href="MarkovChain.html" class="extype" name="io.neysofu.tyche.MarkovChain">MarkovChain</a>[<span class="extype" name="scala.Int">Int</span>]</span>
+      </span>
+      
+      
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
