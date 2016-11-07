@@ -43,13 +43,13 @@ class ContinuousDistributionSpec extends WordSpec with Matchers {
 
     val n = 3
 
-    "𝙿 = 1" should {
+    "P = 1" should {
       "yield n" in {
         ContinuousDistribution.binomial(n, 1).get shouldBe n
       }
     }
 
-    "𝙿 = 0" should {
+    "P = 0" should {
       "yield 0" in {
         ContinuousDistribution.binomial(n, 0).get shouldBe 0
       }
