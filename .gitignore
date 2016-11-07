@@ -1,7 +1,7 @@
 target/
 *.class
 
-.DS_Store // Fuck this shit, Apple
+*.DS_Store // Fuck this shit, Apple
 
 # swap
 [._]*.s[a-w][a-z]
