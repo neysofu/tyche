@@ -1,9 +1,9 @@
 package io.neysofu.tyche
 
-import io.neysofu.tyche.util.Util
 import scala.util.Random
 
 case class ContinuousDistribution(f: () => Double) extends ContinuousGen[Double] {
+  require(sampleSize > 0)
   def get = f()
 }
 
@@ -24,7 +24,7 @@ object ContinuousDistribution {
    */
   def chiSquare(k: Int): ContinuousDistribution = {
     new ContinuousDistribution(
-      () => Seq.fill(k)(Util.square(normal(1, 0).get)).sum)
+      () => Seq.fill(k)(util.square(normal(1, 0).get)).sum)
   }
 
   /** Returns a binomial distribution.

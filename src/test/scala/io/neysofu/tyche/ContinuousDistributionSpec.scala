@@ -9,8 +9,6 @@ class ContinuousDistributionSpec extends WordSpec with Matchers {
     
     "μ = ∞" should {
       "ignore σ²" in {
-        // Why on Earth would someone in their right minds define 1/0 as
-        // infinite...
         ContinuousDistribution.normal(1, 1.0 / 0.0).get.isInfinity shouldBe true
       }
     }
@@ -45,13 +43,13 @@ class ContinuousDistributionSpec extends WordSpec with Matchers {
 
     val n = 3
 
-    "p = 1" should {
+    "𝙿 = 1" should {
       "yield n" in {
         ContinuousDistribution.binomial(n, 1).get shouldBe n
       }
     }
 
-    "p = 0" should {
+    "𝙿 = 0" should {
       "yield 0" in {
         ContinuousDistribution.binomial(n, 0).get shouldBe 0
       }

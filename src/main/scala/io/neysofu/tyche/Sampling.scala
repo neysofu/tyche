@@ -11,5 +11,4 @@ trait Sampling {
    * deviation.
    */
   val sampleSize: Int = 10000
-  protected lazy val nthSampleSize: Double = 1.0 / sampleSize
 }

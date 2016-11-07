@@ -14,7 +14,7 @@ object DiscreteDistribution {
    */
   def uniform[A](sampleSpace: A*): DiscreteDistribution[A] = {
     val w = 1.0 / sampleSpace.distinct.size
-    new DiscreteDistribution[A](sampleSpace.distinct.map(x => x -> w).toMap)
+    new DiscreteDistribution[A](sampleSpace.map(x => x -> w).toMap)
   }
 
   /** Returns a Bernoulli distribution.

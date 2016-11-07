@@ -1,7 +1,5 @@
 package io.neysofu.tyche
 
-import io.neysofu.tyche.util.Util
-
 /** This trait defines the essential properties of all probability
  *  distributions:
  *   1. Plotting;

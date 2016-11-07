@@ -1,7 +1,6 @@
 package io.neysofu.tyche
 
 import scala.util.Random
-import io.neysofu.tyche.util.Util
 
 /** This class represents a discrete probability distribution characterized
  *  by a probability mass function.
@@ -23,6 +22,6 @@ trait DiscreteGen[A] extends Gen[A] with MassFunction[A] with Moments[A] { self 
 
   def standardDeviation(implicit toDouble: A <:< Double): Double = {
     val m = mean
-    mass.map { case (k, v) => Util.square(toDouble(k) - mean) * v }.sum
+    mass.map { case (k, v) => util.square(toDouble(k) - mean) * v }.sum
   }
 } 
