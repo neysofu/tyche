@@ -1,8 +1,8 @@
-package io.neysofu.tyche
+package com.github.neysofu.tyche
 
 import scala.collection.mutable
 
-/** A collection of common utilities.
+/** A collectcom.github. of common utilities.
  */
 package object util {
 

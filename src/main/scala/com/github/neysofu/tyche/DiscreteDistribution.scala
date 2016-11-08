@@ -1,6 +1,6 @@
-package io.neysofu.tyche
+package com.github.neysofu.tyche
 
-/** A wrapper class from [[io.neysofu.tyche.DiscreteGen]].
+/** A wrapper class from [[com.github.neysofu.tyche.DiscreteGen]].
  */
 case class DiscreteDistribution[A](val mass: Map[A, Double]) extends DiscreteGen[A] {
   require(
@@ -14,7 +14,7 @@ case class DiscreteDistribution[A](val mass: Map[A, Double]) extends DiscreteGen
   
 object DiscreteDistribution {
 
-  /** Returns a discrete uniform distribution.
+  /** Returns a discrete uniform distributcom.github..
    *  @param outcomes the sample space
    */
   def uniform[A](sampleSpace: A*): DiscreteDistribution[A] = {
@@ -22,7 +22,7 @@ object DiscreteDistribution {
     DiscreteDistribution(sampleSpace.map(x => x -> w).toMap)
   }
 
-  /** Returns a Bernoulli distribution.
+  /** Returns a Bernoulli distributcom.github..
    *  @param p the success probability
    */
   def Bernoulli(p: Double): DiscreteDistribution[Boolean] = {

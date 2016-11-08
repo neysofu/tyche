@@ -1,13 +1,13 @@
-package io.neysofu.tyche
+package com.github.neysofu.tyche
 
-/** Defines a probability mass function and the associated cumulative density
- *  function for discrete random variables.
+/** Defines a probability mass functcom.github. and the associated cumulative density
+ *  functcom.github. for discrete random variables.
  */
 trait MassFunction[A] {
 
   type MassMap[A] = Map[A, Double]
 
-  /** The probability mass function. It contains all the possible outcomes
+  /** The probability mass functcom.github.. It contains all the possible outcomes
    *  and their respective weights. The weights are supposed to:
    *   1. be nonnegative, and
    *   2. sum up to 1.
@@ -16,7 +16,7 @@ trait MassFunction[A] {
    *  scala> val coinToss = new MassFunction[Boolean] {
    *       |   val mass = Map(true -> 0.5, false -> 0.5)
    *       | }
-   *  coinToss: io.neysofu.tyche.MassFunction[Boolean] = \$...
+   *  coinToss: com.github.neysofu.tyche.MassFunction[Boolean] = \$...
    *
    *  }}}
    */

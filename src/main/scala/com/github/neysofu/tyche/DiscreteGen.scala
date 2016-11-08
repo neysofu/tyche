@@ -1,6 +1,6 @@
-package io.neysofu.tyche
+package com.github.neysofu.tyche
 
-/** A simple implementation trait for discrete random variables.
+/** A simple implementatcom.github. trait for discrete random variables.
  */
 trait DiscreteGen[A] extends Gen[A] with MassFunction[A] with Moments[A] { self =>
 

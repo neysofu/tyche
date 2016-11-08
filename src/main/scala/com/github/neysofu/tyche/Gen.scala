@@ -1,25 +1,25 @@
-package io.neysofu.tyche
+package com.github.neysofu.tyche
 
 import scala.util.Random
 
-/** A Tyche generator is a high-level description of random variables and
+/** A Tyche generator is a high-level descriptcom.github. of random variables and
  *  stochastic processes.
  *
  *  Each and every instance is implemented by specifying its generative
- *  function ([[io.neysofu.tyche.Gen.get]]).
+ *  functcom.github. ([[com.github.neysofu.tyche.Gen.get]]).
  *
  *  @example {{{
  *  scala> val uniform = new Gen[Double] {
  *       |   def get = scala.util.Random.nextDouble
  *       | }
- *  uniform: io.neysofu.tyche.Gen[Double] = \$...
+ *  uniform: com.github.neysofu.tyche.Gen[Double] = \$...
  *
  *  }}}
  *
- *  @tparam A the outcomes' type signature. Note that many implementions
+ *  @tparam A the outcomes' type signature. Note that many implementcom.github.s
  *  require `A <: Double` to work correctly.
  *  
- *  @see [[io.neysofu.tyche.Moments]]
+ *  @see [[com.github.neysofu.tyche.Moments]]
  */
 trait Gen[+A] { self =>
 
@@ -33,7 +33,7 @@ trait Gen[+A] { self =>
    */
   def get: A
 
-  /** Builds a new generator by applying a function to all the outcomes.
+  /** Builds a new generator by applying a functcom.github. to all the outcomes.
    *  
    *  @example {{{
    *  scala> (uniform map (_+1)).get
@@ -60,7 +60,7 @@ trait Gen[+A] { self =>
   }
 
   /** Builds a new generator by creating a sample space which contains
-   *  only collections of outcomes that satisfy a predicate.
+   *  only collectcom.github.s of outcomes that satisfy a predicate.
    *
    *  @example {{{
    *  scala> (uniform until (_.sum > 1)).get
@@ -95,7 +95,7 @@ trait Gen[+A] { self =>
   def joint[B](that: Gen[B]): Gen[(A, B)] = map((_, that.get))
 
   /** Builds a new generator by replacing all the outcomes with their
-   *  respective numerical representations.
+   *  respective numerical representatcom.github.s.
    */
   def toGenDouble(implicit d: A <:< Double): Gen[Double] = map(d(_))
 

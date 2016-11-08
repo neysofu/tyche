@@ -1,4 +1,4 @@
-package io.neysofu.tyche
+package com.github.neysofu.tyche
 
 import scala.util.Random
 import org.scalatest.{WordSpec, Matchers}

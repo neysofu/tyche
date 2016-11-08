@@ -1,6 +1,6 @@
-package io.neysofu.tyche
+package com.github.neysofu.tyche
 
-/** A wrapper class for [[io.neysofu.tyche.MarkovGen]].
+/** A wrapper class for [[com.github.neysofu.tyche.MarkovGen]].
  */
 case class MarkovChain[A](rule: A => DiscreteDistribution[A], state: A) extends MarkovGen[A]
 
@@ -8,7 +8,7 @@ case class MarkovChain[A](rule: A => DiscreteDistribution[A], state: A) extends 
  */
 object MarkovChain {
 
-  /** Builds a new Markovian process which generates a unidimensional
+  /** Builds a new Markovian process which generates a unidimenscom.github.al
    *  [[https://en.wikipedia.org/wiki/Lattice_path lattice path]] with steps
    *  `+1` and `-1`.
    */
