@@ -7,5 +7,12 @@ scala:
 script:
 - sbt test
 - sbt doc
-after_success:
-- test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash deploy.sh
+before_deploy:
+- cd target
+- cd scala-2.12
+- cd api
+deploy:
+- test $TRAVIS_PULL_REQUEST == "false" &&
+  test $TRAVIS_BRANCH == "master" &&
+  bash deploy.sh &&
+  sbt 'set credentials += Credentials("Sonatype Nexus Repository Manager", "oss.sonatype.org", sys.env.get("SONATYPE_USERNAME").get, sys.env.get("SONATYPE_PASSWORD"),get)' publish
