@@ -15,6 +15,8 @@ git reset upstream/gh-pages
 
 touch .
 
-git add .
+git add -A .
 git commit -m "Rebuild pages"
 git push -q upstream HEAD:gh-pages
+
+sbt publish
