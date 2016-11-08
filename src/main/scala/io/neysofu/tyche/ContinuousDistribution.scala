@@ -2,8 +2,9 @@ package io.neysofu.tyche
 
 import scala.util.Random
 
+/** A wrapper class for [[io.neysofu.tyche.ContinuousGen]].
+ */
 case class ContinuousDistribution(f: () => Double) extends ContinuousGen[Double] {
-  require(sampleSize > 0)
   def get = f()
 }
 

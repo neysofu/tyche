@@ -1,7 +1,7 @@
 package io.neysofu.tyche
 
-/** This trait represents a continuous probability distribution with
- *  [[https://goo.gl/5xB1A4 simple random sampling]] facilities.
+/** A simple implementation trait for continuous probability distributions
+ *  with [[https://goo.gl/5xB1A4 simple random sampling]] facilities.
  */
 trait ContinuousGen[A] extends Gen[A] with Sampling with Moments[A] { self =>
 

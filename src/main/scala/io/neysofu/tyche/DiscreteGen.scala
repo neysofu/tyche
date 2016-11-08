@@ -1,14 +1,11 @@
 package io.neysofu.tyche
 
-import scala.util.Random
-
-/** This class represents a discrete probability distribution characterized
- *  by a probability mass function.
+/** A simple implementation trait for discrete random variables.
  */
 trait DiscreteGen[A] extends Gen[A] with MassFunction[A] with Moments[A] { self =>
 
   def get: A = {
-    val d = Random.nextDouble
+    val d = scala.util.Random.nextDouble
     outcomes(cdf.indexWhere(_ > d))
   }
 

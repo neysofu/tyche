@@ -2,16 +2,18 @@ package io.neysofu.tyche
 
 import scala.util.Random
 
-/** This trait defines fundamental data manipulation techniques for random
- *  variables and stochastic processes such as probability distributions.
+/** A Tyche generator is a high-level description of random variables and
+ *  stochastic processes.
  *
  *  Each and every instance is implemented by specifying its generative
  *  function ([[io.neysofu.tyche.Gen.get]]).
  *
  *  @example {{{
- *  val uniform = new Gen[Double] {
- *    def get = scala.util.Random.nextDouble
- *  }
+ *  scala> val uniform = new Gen[Double] {
+ *       |   def get = scala.util.Random.nextDouble
+ *       | }
+ *  uniform: io.neysofu.tyche.Gen[Double] = \$...
+ *
  *  }}}
  *
  *  @tparam A the outcomes' type signature. Note that many implementions
@@ -24,8 +26,9 @@ trait Gen[+A] { self =>
   /** Returns a random outcome.
    *
    *  @example {{{
-   *  println(uniform.get)
-   *  // 0.677464655118979
+   *  scala> uniform.get
+   *  res1: Double = 0.9749134509667129
+   *
    *  }}}
    */
   def get: A
@@ -33,8 +36,9 @@ trait Gen[+A] { self =>
   /** Builds a new generator by applying a function to all the outcomes.
    *  
    *  @example {{{
-   *  println(uniform.map(d => d + 1).get)
-   *  // 1.742019032131262
+   *  scala> (uniform map (_+1)).get
+   *  res1: Double = 1.9153124129473624
+   *
    *  }}}
    */
   def map[B](f: A => B): Gen[B] = new Gen[B] {
@@ -45,8 +49,9 @@ trait Gen[+A] { self =>
    *  predicate.
    *
    *  @example {{{
-   *  println(uniform.filter(d => d > 0.8).get)
-   *  // 0.8619005365066574
+   *  scala> (uniform filter (_ > 0.8)).get
+   *  res1: Double = 0.8433116704232428
+   *  
    *  }}}
    */
   def filter(pred: A => Boolean): Gen[A] = map { x =>
@@ -58,8 +63,9 @@ trait Gen[+A] { self =>
    *  only collections of outcomes that satisfy a predicate.
    *
    *  @example {{{
-   *  println(uniform.until(_.sum > 1).get)
-   *  // Seq(0.45045141067752825, 0.35965061961514433, 0.3274988472269684)
+   *  scala> (uniform until (_.sum > 1)).get
+   *  res1: Seq[Double] = List(0.8456141535917049, 0.5993270795832424)
+   *  
    *  }}}
    */
   def until(pred: Seq[A] => Boolean): Gen[Seq[A]] = map { x =>
@@ -70,18 +76,20 @@ trait Gen[+A] { self =>
   /** Builds a new generator by joining multiple outcomes together.
    *
    *  @example {{{
-   *  println(uniform.repeat(2).get)
-   *  // Seq(0.4656608004451568, 0.2043631751083831)
+   *  scala> uniform.repeat(2).get
+   *  res1: Seq[Double] = List(0.39691936209812506, 0.8606695143524133)
+   *  
    *  }}}
    */
   def repeat(n: Int): Gen[Seq[A]] = map(_ +: take(n-1))
 
-  /** Builds a new, bivariate generator by zipping the sample space with
+  /** Builds a new bivariate generator by zipping the sample space with
    *  another generator's.
    *
    *  @example {{{
-   *  println(uniform.joint(uniform.map(-_)).get)
-   *  // (0.5872605617066919, -0.5959848796935293)
+   *  scala> uniform.joint(uniform map (-_)).get
+   *  res1: (Double, Double) = (0.6916518719652441,-0.45253449818494484)
+   *  
    *  }}}
    */
   def joint[B](that: Gen[B]): Gen[(A, B)] = map((_, that.get))
@@ -92,14 +100,21 @@ trait Gen[+A] { self =>
   def toGenDouble(implicit d: A <:< Double): Gen[Double] = map(d(_))
 
   /** Returns an array of the desired length filled with random outcomes.
+   *
+   *  @example {{{
+   *  scala> uniform.take(2)
+   *  res1: Seq[Double] = List(0.3562246063380463, 0.4851991867143829)
+   *  
+   *  }}}
    */
   def take(n: Int): Seq[A] = Seq.fill(n)(get)
   
   /** Returns a stream of outcomes.
    *
    *  @example {{{
-   *  println(uniform.stream)
-   *  // Stream(0.6295245393412436, ?)
+   *  scala> uniform.toStream
+   *  res1: Stream[Double] = Stream(0.7792234677947281, ?)
+   *  
    *  }}}
    */
   def toStream: Stream[A] = get #:: toStream

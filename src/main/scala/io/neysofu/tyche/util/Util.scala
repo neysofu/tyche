@@ -7,8 +7,6 @@ import scala.collection.mutable
 package object util {
 
   def square(x: Double): Double = Math.pow(x, 2)
-  
-  def cube(x: Double): Double = Math.pow(x, 3)
 
   def buildTable[A](from: Seq[A]): Map[A, Map[A, Int]] = {
     var table = mutable.Map[A, mutable.Map[A, Int]]()

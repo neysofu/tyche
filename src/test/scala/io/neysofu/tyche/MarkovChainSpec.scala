@@ -11,9 +11,10 @@ class MarkovChainSpec extends WordSpec with Matchers {
 
   val chain = new MarkovChain[State](
     _ match {
-      case FinalState => Map(FinalState -> 1.0)
-      case StartState => Map(FinalState -> 1.0)
-    }, StartState
+      case FinalState => DiscreteDistribution(Map(FinalState -> 1.0))
+      case StartState => DiscreteDistribution(Map(FinalState -> 1.0))
+    },
+    StartState
   )
   
   "A Markov chain" when {
@@ -24,9 +25,9 @@ class MarkovChainSpec extends WordSpec with Matchers {
       }
     }
 
-    "extracted from ´\"--\"´" should {
-      "yield ´-´" in {
-        MarkovChain.estimateFrom("--" : _*).get.state shouldBe '-'
+    "modelled on \"11\"" should {
+      "yield '1'" in {
+        MarkovChain.modelOn("11" : _*).get.state shouldBe '1'
       }
     }
   }

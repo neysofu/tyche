@@ -1,10 +1,9 @@
 package io.neysofu.tyche
 
-/** This trait defines the essential properties of all probability
- *  distributions:
- *   1. Plotting;
- *   2. expected value (mean);
- *   3. standard deviation;
+/** Defines the essential properties of all probability distributions:
+ *   1. Plotting facilities,
+ *   2. expected value,
+ *   3. standard deviation,
  *  and other [[https://goo.gl/p4TGzt moments]].
  */
 trait Moments[A] {
@@ -23,5 +22,7 @@ trait Moments[A] {
 
   /** Computes the [[https://goo.gl/Wzlr6p variance]].
    */
-  def variance(implicit toDouble: A <:< Double): Double = Math.sqrt(standardDeviation)
+  def variance(implicit toDouble: A <:< Double): Double = {
+    Math.sqrt(standardDeviation)
+  }
 }
