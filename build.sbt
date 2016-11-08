@@ -16,8 +16,8 @@ def dependencySettings = Seq(
 )
 
 def secreteSettings = {
-  val username = Sonatype.username
-  val password = Sonatype.password
+  val username = sys.env.get("SONATYPE_USERNAME")
+  val password = sys.env.get("SONATYPE_PASSWORD")
   if (!(username.isEmpty || password.isEmpty)) Seq(
     credentials += Credentials(
       "Sonatype Nexus Repository Manager",
