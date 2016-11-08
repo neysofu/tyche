@@ -7,11 +7,7 @@ scala:
 script:
 - sbt test
 - sbt doc
-before_deploy:
-- cd target
-- cd scala-2.12
-- cd api
-deploy:
+after_success:
 - test $TRAVIS_PULL_REQUEST == "false" &&
   test $TRAVIS_BRANCH == "master" &&
   bash deploy.sh &&

@@ -1,5 +1,8 @@
 #!/bin/bash
 set -o errexit -o nounset
+cd target
+cd scala-2.12
+cd api
 git init
 git config user.name "Filippo Costa"
 git config user.email "filippocosta.italy@gmail.com"
