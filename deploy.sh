@@ -1,6 +1,8 @@
 #!/bin/bash
 set -o errexit -o nounset
 
+sbt publish
+
 cd target
 cd scala-2.12
 cd api
@@ -18,5 +20,3 @@ touch .
 git add -A .
 git commit -m "Rebuild pages"
 git push -q upstream HEAD:gh-pages
-
-sbt publish
