@@ -10,8 +10,10 @@ script:
 - sbt test
 - sbt doc
 after_success:
-- test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && sbt publish
-  && bash deploy.sh
+- test $TRAVIS_PULL_REQUEST == "false" &&
+  test $TRAVIS_BRANCH == "master" &&
+  sbt publish &&
+  bash deploy.sh
 env:
   global:
   - secure: Ae+OAK8IjcjSmy3cd1YQrBCzQM4ABP8Yi/DyrhibjXjn9Og/xF2mP31JVs5KEMJe6v1CgHU2kGe8T7EVFNdpWyTnhi/z2ChixtzVq7pww9ht4vn0L7flL/cjuhRaoM6gORtGg9sxD/ZalbXJk8PE7d2o09avVh1fy9j6FPKRJHPdTWRh1wkiQUz1NibRcnKjS2uhmRAFsuWxCNRWDmQz/UxYZILVaq03FNBEkUXq+FY6msakfEtN0vNDrXIXEePkSPT9/jiu2V0y02WK6jWCdR/WR9+VpspavmNXheYYXXw+gUHhHXMr36byeQ6BVthvmPMzcCHbKx+LVLjdeweqKMMSoNPh06z6d4jIgJ3sgZ7z8ZOq9CzP51FrLEKP60xt59Dhh3Sw0vY9O+OaB4bfSrtjpdLPtdN1U9ahjadh15LwWEQqUySFISn/81lVAizmnc4pnQ4VUlFHr2l/BmnmxO2QQj2BdWOF6aiqr3KsoP0127qFZ8MTQmVO8p25KHz7tImNuF6awwOtg2rTm1V8PFnBZ85t9gSfPdZ98m3q0UwiJpSDMFv9Vb4LZIDaxJFJMuiFCr0OHT/8M0mJH48WUFmK2QScrggE6PS3xh6Zy0Pw+tvsl4OhILFaOABZ1k8b5sD/Am9bsc+/d3aaauoIXYOl0X4ht+lRGWbqSLUnGgA=
