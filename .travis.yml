@@ -10,10 +10,7 @@ script:
 - sbt test
 - sbt doc
 after_success:
-- test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && sbt 'set
-  credentials += Credentials("Sonatype Nexus Repository Manager", "oss.sonatype.org",
-  sys.env("SONATYPE_NAME"), sys.env("SONATYPE_PASS"))' publish && bash deploy.sh
-env:
-  global:
-  - secure: agHuE4rcLD4jz6zpsDlxNgVg8VDLQe7r73H7r9oFEAKU/puQB0USCXW0h+m4JoiW0UZaYbQ007dxujO+NP/VR9GLnbCu/7/ajcoeVXPWuKuE2+6RXutNMcUTi/7cQiRN70nPUXOj4UrNxDRmRdAPzfDULK2ZrgJuo8Ew9vSu4R6oTuW3cxG/61Ol27VeVK1cjw1bhVmQ0ORGKEeL9+Eo31e2+R+mfgWkmmHOUKLpfBZlXGbqfv+zCW8s+eAUJ8Hs/Txh1yhgWTulc8LmarHqB+nJvGjQNbxZ5alMOI7KUSwmdpV/Wcf/U8pcZb00/CLWvNIJOKYxH8We0JiHeOwDQ3Cdzd4BG+fKSiY/TLlA8CRo5VIkhjfS7ASj41m8vnEcLLuZlFRulk7HcUpjIEZXmh6JoqzvSViCXrGy4U5Blf+6hS3pqCaVBJ5Chl9nbI2zeMdmnZHr++pNpDogqaFqCCP4cHWbb1vADkCoPKgHBfdtCBfcN0Pe7KEAxSxGRyplzT60Klh/63nt5ihVunk+H4ZtcpgeMbd7zV0s8pnCf+jZZW5sKPwjcsRmVodNK6bElLXVHKSHh3gele4tms6y0lPEQarWYRM0AGElyGaMU0+sKMQvBRtTt9FiR6ikEaYNipcEjDkbOUBJTQ53LasBt+7iPE/bQ6U5Sg65ZbNar+w=
-  - secure: 2fQpESK0NSbaHyfgJJjW2h97kS6ZgMtEhi47vwnhBm5TDqJBd1G6WSXPBJSMGCWkZnX8rLLaSBqLO+8RtyE+AtrmAZnPAzjMiOX+obk9o5D62xlaUtkXwsHtMrrF7fJFoaZm/WjzCu4WSLf6Z6+8o3jp7gqbGx6PV+fV9RVdBbcbPRCTFd9sgdwUnI60HROLpQtZ3m1C0B7YHP3KwU+xS5DUorYFR2ESsmtuq/xNRf1hLMKzeuJ3SQ8R5HtiUFXMqGWJHNtDUKpeIRjdjJ711zwLy43S4V0vXvMYZq9ZAjXdaZIQIc5ubwGXKjT7oEy30wnihuGnq/6jE5M0howRRKAknUFv0WyGnHXuVY9lI2Ff40t6W9LKk4HfSzTYNja5TqHDV33CzhJOSuPjVDwl0GYIOq+KN5pPn2IgwaSIF+DWulrRceo0doKjBJOGOkK9DdODBnLQJ1I0zzS+bR+hDOUuFxTUu/qPyhUEldCjIqIPBbqfzQhO8Rw0HGA9TIBpj4bfDpGpFTD1EVuUk6QedZk9PQCjj/sx4m/sbHgm2c/Mn4+D/qBHw+se7mJsDqw3iZqsc7LtA0cmpt52z36dCB+3IQy8Sj4GWI3KNhhawMNtFqjaSqyuG68AXIm/L92A4ncoF+fICB0sH/0nBiOxfTD/nYjhow3bF0Y1zNMp2j0=
+- test $TRAVIS_PULL_REQUEST == "false" &&
+  test $TRAVIS_BRANCH == "master" &&
+  sbt 'set credentials += Credentials("Sonatype Nexus Repository Manager", "oss.sonatype.org", sys.env("SONATYPE_NAME"), sys.env("PASS"))' publish &&
+  bash deploy.sh
