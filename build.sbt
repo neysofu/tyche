@@ -11,6 +11,19 @@ def globalSettings = Seq(
   )
 )
 
+def secretSettings = {
+  val username = sys.env.get("SONATYPE_USERNAME")
+  val password = sys.env.get("SONATYPE_PASSWORD")
+  if (!(username.isEmpty || password.isEmpty)) Seq(
+    credentials += Credentials(
+      "Sonatype Nexus Repository Manager",
+      "oss.sonatype.org",
+      username.get,
+      password.get
+    )
+  ) else Seq()
+}
+
 def dependencySettings = Seq(
   libraryDependencies ++= Seq(Dependencies.scalatest)
 )
@@ -43,5 +56,6 @@ def publishSettings = Seq(
 lazy val root = Project(
   id = "tyche",
   base = file("."),
-  settings = globalSettings ++ dependencySettings ++ publishSettings
+  settings = globalSettings ++ dependencySettings ++ publishSettings ++
+    secretSettings
 )
