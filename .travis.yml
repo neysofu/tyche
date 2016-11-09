@@ -10,5 +10,5 @@ script:
 after_success:
 - test $TRAVIS_PULL_REQUEST == "false" &&
   test $TRAVIS_BRANCH == "master" &&
-  sbt 'set credentials += Credentials("Sonatype Nexus Repository Manager", "oss.sonatype.org", sys.env.get("SONATYPE_USERNAME").get, sys.env.get("SONATYPE_PASSWORD"),get)' publish &&
+  sbt 'set credentials += Credentials("Sonatype Nexus Repository Manager", "oss.sonatype.org", sys.env("SONATYPE_USERNAME"), sys.env("SONATYPE_PASSWORD"))' publish &&
   bash deploy.sh
