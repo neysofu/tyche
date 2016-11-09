@@ -1,4 +1,4 @@
-val TycheLibraryVersion = "0.3.3-SNAPSHOT"
+val TycheLibraryVersion = "0.4.0"
 
 def globalSettings = Seq(
   organization := "com.github.neysofu",
