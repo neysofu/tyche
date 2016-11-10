@@ -21,7 +21,7 @@ def secretSettings = {
       username.get,
       password.get
     ),
-    pgpPassphrase := sys.env.get("SONATYPE_PGP")
+    pgpPassphrase := sys.env.get("SONATYPE_PGP").map(_.toArray)
   ) else Seq()
 }
 
