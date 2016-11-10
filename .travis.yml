@@ -12,7 +12,7 @@ script:
 after_success:
 - test $TRAVIS_PULL_REQUEST == "false" &&
   test $TRAVIS_BRANCH == "master" &&
-  sbt publish &&
+  sbt publishSigned &&
   bash deploy.sh
 env:
   global:
