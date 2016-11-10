@@ -21,7 +21,7 @@ def secretSettings = {
       "oss.sonatype.org",
       username.get,
       password.get
-    )
+    ),
     pgpPassphrase := pgp.get
   ) else Seq()
 }
