@@ -14,15 +14,14 @@ def globalSettings = Seq(
 def secretSettings = {
   val username = sys.env.get("SONATYPE_USERNAME")
   val password = sys.env.get("SONATYPE_PASSWORD")
-  val pgp = sys.env.get("SONATYPE_PGP")
-  if (!username.isEmpty && !password.isEmpty && !pgp.isEmpty) Seq(
+  if (!username.isEmpty && !password.isEmpty) Seq(
     credentials += Credentials(
       "Sonatype Nexus Repository Manager",
       "oss.sonatype.org",
       username.get,
       password.get
     ),
-    pgpPassphrase := pgp.get
+    pgpPassphrase := sys.env.get("SONATYPE_PGP")
   ) else Seq()
 }
 
