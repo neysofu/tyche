@@ -11,18 +11,22 @@ def globalSettings = Seq(
   )
 )
 
-def secretSettings = {
-  val username = sys.env.get("SONATYPE_USERNAME")
-  val password = sys.env.get("SONATYPE_PASSWORD")
-  if (!username.isEmpty && !password.isEmpty) Seq(
+def travisSettings = sys.env.get("TRAVIS") match {
+  case None => Seq()
+  case Some(_) => Seq(
+    // Signature
+    pgpSecretRing := file("/keys/secring.asc"),
+    pgpPublicRing := file("/keys/pubring.asc"),
+    // Passphrase
+    pgpPassphrase := Option(sys.env("SONATYPE_PGP").toArray),
+    // Username/Password
     credentials += Credentials(
       "Sonatype Nexus Repository Manager",
       "oss.sonatype.org",
-      username.get,
-      password.get
-    ),
-    pgpPassphrase := sys.env.get("SONATYPE_PGP").map(_.toArray)
-  ) else Seq()
+      sys.env("SONATYPE_USERNAME"),
+      sys.env("SONATYPE_PASSWORD")
+    )
+  )
 }
 
 def dependencySettings = Seq(
@@ -58,5 +62,5 @@ lazy val root = Project(
   id = "tyche",
   base = file("."),
   settings = globalSettings ++ dependencySettings ++ publishSettings ++
-    secretSettings
+    travisSettings
 )
