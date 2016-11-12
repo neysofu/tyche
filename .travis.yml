@@ -20,6 +20,4 @@ env:
   - secure: x3vwjroFfDWsWODoE7tTBV3D464JTmEEQASvO7JtEZaSBdi7bEiNW9KrEGZoFgg3eeONFPt4KoAl4iiSNyGCg8wTH+FBImBoosZ3DfB6rMTcJITfhXJ/3VgI+rsUB5E9BK8JtkGebkrvqEmIO3Z8WajBrwW4XwCAIK7pSCLH/G66LszDZl/4RqhpaGExdpC/pTo9qNnNbndbPAua5L3xNq0+hfUtbWtXXZzWKMqxlXUHp14TlYAOiEugCsK/xENa8BN2L8Gv4uaAXPRfQTtG4KRg8kjkN5FN0XejjQaWp2u2AC36z5tKpwRkuJai76qkoaH6LHChgcYcx4nUGGbTVWwi4kXNp1X4nXfwqkxRX1aoZSOLx6q0Ko+XRHQeDrMJ0ok6EU32r3ZPBtot7DNrEDgHQZL2VzzIDmzhaxhonD6Ra8zhpX9hmhaE9FkLOC6m2WO8S6KPb8kSyXh6fuSZb+epP07M0F1RH5Z3Ss1PVjtczdQL/D4drzHO2DocfqvdRZ3Y6wE3t4TSov8voJLh4HObXKzMnwpNH/zijqayJnXJEnajfIV4VXela6rt/jarxgG3+cWMwZ92u6FDVDAhx7yN6C1FiyNNrN5cbiwduhwKj3O+p3ngpr+YEleOoKMQLwg3tF4hYs/RYf31O0rttFcQVmZm+O35MPJ2xwztah8=
 before_install:
 - openssl aes-256-cbc -K $encrypted_2097b7bd5260_key -iv $encrypted_2097b7bd5260_iv
-  -in keys/secring.asc.enc -out keys/secring.asc -d
-- openssl aes-256-cbc -K $encrypted_2097b7bd5260_key -iv $encrypted_2097b7bd5260_iv
-  -in keys/pubring.asc.enc -out keys/pubring.asc -d
+  -in secring.asc.enc -out keys/secring.asc -d
