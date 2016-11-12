@@ -1,4 +1,7 @@
-val TycheLibraryVersion = "0.4.0"
+// Site building with ´sbt-site´
+enablePlugins(SiteScaladocPlugin)
+
+val TycheLibraryVersion = "0.4.1"
 
 def globalSettings = Seq(
   organization := "com.github.neysofu",
