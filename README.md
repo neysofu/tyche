@@ -17,7 +17,7 @@ The library is written in Scala 2.12.0 and was tested last with sbt 0.13.13.
 ## Setup
 Tyche is published to *Maven Central*, so you just need to paste this line in you build configuration file:
 
-	libraryDependencies += "io.neysofu" %% "tyche" % "0.3.0-SNAPSHOT" // Or whatever release version you want
+	libraryDependencies += "com.github.neysofu" %% "tyche" % "0.4.3"
 
 ## How to contribute
 Feedback and suggestions are very welcome! I invite you to check for open [issues](https://github.com/neysofu/tyche/issues) or open a fresh one to discuss around a bug or a feature idea. Please drop me a line at ´filippocosta.italy@gmail.com´ if you wish you contact me.
