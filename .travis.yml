@@ -14,7 +14,7 @@ after_success:
 - test $TRAVIS_PULL_REQUEST == "false" &&
   test $TRAVIS_BRANCH == "master" &&
   sbt publishSigned &&
-  sbt makeFile &&
+  sbt makeSite &&
   bash deploySite.sh
 env:
   global: # GH_TOKEN, SONATYPE_USERNAME, SONATYPE_PASSWORD, SONATYPE_PGP
