@@ -1,7 +1,7 @@
 // Site building with ´sbt-site´
 enablePlugins(SiteScaladocPlugin)
 
-val TycheLibraryVersion = "0.4.2"
+val TycheLibraryVersion = "0.4.3"
 
 def globalSettings = Seq(
   organization := "com.github.neysofu",
@@ -55,8 +55,12 @@ def publishSettings = Seq(
         <distribution>repo</distribution>
       </license>
     </licenses>
+    <scm>
+      <connection>scm:git:git@github.com:neysofu/tyche.git</connection>
+      <url>git@github.com/neysofu/tyche.git</url>
+    </scm>
     <developers>
-      <developer><id>neysofu</id></developer>
+      <developer><id>neysofu</id><name>Filippo Costa</name><url>https://github.com/neysofu</url></developer>
     </developers>
   )
 )
