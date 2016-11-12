@@ -15,8 +15,8 @@ def travisSettings = sys.env.get("TRAVIS") match {
   case None => Seq()
   case Some(_) => Seq(
     // Signature
-    pgpSecretRing := file("/keys/secring.asc"),
-    pgpPublicRing := file("/keys/pubring.asc"),
+    pgpSecretRing := file("keys/secring.asc"),
+    pgpPublicRing := file("keys/pubring.asc"),
     // Passphrase
     pgpPassphrase := Option(sys.env("SONATYPE_PGP").toArray),
     // Username/Password
