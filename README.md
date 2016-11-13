@@ -32,7 +32,7 @@ val family = tyche.DiscreteDistribution.uniform(Boy, Girl)
   .until(_ contains Boy)
   .map(_.size)
 
-println(Math.round(1.0 * family.take(sampleSize).sum / sampleSize)) // 2
+println(1.0 * family.take(sampleSize).sum / sampleSize) // ~ 2.0
 ```
 
 ## Setup
