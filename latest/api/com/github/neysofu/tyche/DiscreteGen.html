@@ -151,8 +151,10 @@
                         </a>
                       </li><li class="current-entities indented4">
                         <span class="separator"></span>
-                        <a class="trait" href="ContinuousGen.html" title="A simple implementatcom.github."></a>
-                        <a href="ContinuousGen.html" title="A simple implementatcom.github.">
+                        <a class="trait" href="ContinuousGen.html" title="A simple implementation trait for continuous probability distributions
+ with Link(https://goo.gl/5xB1A4,Text(simple random sampling)) facilities."></a>
+                        <a href="ContinuousGen.html" title="A simple implementation trait for continuous probability distributions
+ with Link(https://goo.gl/5xB1A4,Text(simple random sampling)) facilities.">
                           ContinuousGen
                         </a>
                       </li><li class="current-entities indented4">
@@ -163,14 +165,16 @@
                         </a>
                       </li><li class="current-entities indented4">
                         <span class="separator"></span>
-                        <a class="trait" href="" title="A simple implementatcom.github."></a>
-                        <a href="" title="A simple implementatcom.github.">
+                        <a class="trait" href="" title="A simple implementation trait for discrete random variables."></a>
+                        <a href="" title="A simple implementation trait for discrete random variables.">
                           DiscreteGen
                         </a>
                       </li><li class="current-entities indented4">
                         <span class="separator"></span>
-                        <a class="trait" href="Gen.html" title="A Tyche generator is a high-level descriptcom.github."></a>
-                        <a href="Gen.html" title="A Tyche generator is a high-level descriptcom.github.">
+                        <a class="trait" href="Gen.html" title="A Tyche generator is a high-level description of random variables and
+ stochastic processes."></a>
+                        <a href="Gen.html" title="A Tyche generator is a high-level description of random variables and
+ stochastic processes.">
                           Gen
                         </a>
                       </li><li class="current-entities indented4">
@@ -195,8 +199,8 @@
                         </a>
                       </li><li class="current-entities indented4">
                         <span class="separator"></span>
-                        <a class="trait" href="Moments.html" title="Defines the essential properties of all probability distributcom.github.s:"></a>
-                        <a href="Moments.html" title="Defines the essential properties of all probability distributcom.github.s:">
+                        <a class="trait" href="Moments.html" title="Defines the essential properties of all probability distributions:"></a>
+                        <a href="Moments.html" title="Defines the essential properties of all probability distributions:">
                           Moments
                         </a>
                       </li><li class="current-entities indented4">
@@ -233,7 +237,7 @@
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A simple implementatcom.github. trait for discrete random variables.
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A simple implementation trait for discrete random variables.
 </p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="com.github.neysofu.tyche.DiscreteGen">DiscreteGen</a>[<span class="extype" name="com.github.neysofu.tyche.DiscreteGen.A">A</span>]</dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
@@ -327,7 +331,7 @@
         <span class="name">mass</span><span class="result">: <a href="#MassMap[A]=Map[A,Double]" class="extmbr" name="com.github.neysofu.tyche.DiscreteGen.MassMap">MassMap</a>[<span class="extype" name="com.github.neysofu.tyche.DiscreteGen.A">A</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">The probability mass functcom.github..</p><div class="fullcomment"><div class="comment cmt"><p>The probability mass functcom.github.. It contains all the possible outcomes
+      <p class="shortcomment cmt">The probability mass function.</p><div class="fullcomment"><div class="comment cmt"><p>The probability mass function. It contains all the possible outcomes
  and their respective weights. The weights are supposed to:</p><ol class="decimal"><li>be nonnegative, and
   2. sum up to 1.
 </li></ol></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="MassFunction.html" class="extype" name="com.github.neysofu.tyche.MassFunction">MassFunction</a></dd><div class="block">Example:
@@ -746,7 +750,7 @@ res1: <span class="std">Seq</span>[<span class="std">Double</span>] = <span clas
         <span class="name">standardDeviation</span><span class="params">(<span class="implicit">implicit </span><span name="toDouble">toDouble: <span class="extype" name="scala.Predef.&lt;:&lt;">&lt;:&lt;</span>[<span class="extype" name="com.github.neysofu.tyche.DiscreteGen.A">A</span>, <span class="extype" name="scala.Double">Double</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
       </span>
       
-      <p class="shortcomment cmt">Computes the <a href="https://goo.gl/QrSlFY" target="_blank">standard deviatcom.github.</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Computes the <a href="https://goo.gl/QrSlFY" target="_blank">standard deviatcom.github.</a>.
+      <p class="shortcomment cmt">Computes the <a href="https://goo.gl/QrSlFY" target="_blank">standard deviation</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Computes the <a href="https://goo.gl/QrSlFY" target="_blank">standard deviation</a>.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.github.neysofu.tyche.DiscreteGen">DiscreteGen</a> → <a href="Moments.html" class="extype" name="com.github.neysofu.tyche.Moments">Moments</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
@@ -800,8 +804,8 @@ res1: <span class="std">Seq</span>[<span class="std">Double</span>] = <span clas
       </span>
       
       <p class="shortcomment cmt">Builds a new generator by replacing all the outcomes with their
- respective numerical representatcom.github.s.</p><div class="fullcomment"><div class="comment cmt"><p>Builds a new generator by replacing all the outcomes with their
- respective numerical representatcom.github.s.
+ respective numerical representation.</p><div class="fullcomment"><div class="comment cmt"><p>Builds a new generator by replacing all the outcomes with their
+ respective numerical representation.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Gen.html" class="extype" name="com.github.neysofu.tyche.Gen">Gen</a></dd></dl></div>
     </li><li name="com.github.neysofu.tyche.Gen#toStream" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toStream:Stream[A]"></a>
@@ -855,8 +859,8 @@ res1: Stream[<span class="std">Double</span>] = Stream(<span class="num">0.77922
       </span>
       
       <p class="shortcomment cmt">Builds a new generator by creating a sample space which contains
- only collectcom.github.s of outcomes that satisfy a predicate.</p><div class="fullcomment"><div class="comment cmt"><p>Builds a new generator by creating a sample space which contains
- only collectcom.github.s of outcomes that satisfy a predicate.
+ only collections of outcomes that satisfy a predicate.</p><div class="fullcomment"><div class="comment cmt"><p>Builds a new generator by creating a sample space which contains
+ only collections of outcomes that satisfy a predicate.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Gen.html" class="extype" name="com.github.neysofu.tyche.Gen">Gen</a></dd><div class="block">Example:
                <ol><li class="cmt"><p></p><pre>scala&gt; (uniform until (_.sum &gt; <span class="num">1</span>)).get
 res1: <span class="std">Seq</span>[<span class="std">Double</span>] = <span class="std">List</span>(<span class="num">0.8456141535917049</span>, <span class="num">0.5993270795832424</span>)</pre></li></ol>

@@ -151,8 +151,10 @@
                         </a>
                       </li><li class="current-entities indented4">
                         <span class="separator"></span>
-                        <a class="trait" href="ContinuousGen.html" title="A simple implementatcom.github."></a>
-                        <a href="ContinuousGen.html" title="A simple implementatcom.github.">
+                        <a class="trait" href="ContinuousGen.html" title="A simple implementation trait for continuous probability distributions
+ with Link(https://goo.gl/5xB1A4,Text(simple random sampling)) facilities."></a>
+                        <a href="ContinuousGen.html" title="A simple implementation trait for continuous probability distributions
+ with Link(https://goo.gl/5xB1A4,Text(simple random sampling)) facilities.">
                           ContinuousGen
                         </a>
                       </li><li class="current-entities indented4">
@@ -163,14 +165,16 @@
                         </a>
                       </li><li class="current-entities indented4">
                         <span class="separator"></span>
-                        <a class="trait" href="DiscreteGen.html" title="A simple implementatcom.github."></a>
-                        <a href="DiscreteGen.html" title="A simple implementatcom.github.">
+                        <a class="trait" href="DiscreteGen.html" title="A simple implementation trait for discrete random variables."></a>
+                        <a href="DiscreteGen.html" title="A simple implementation trait for discrete random variables.">
                           DiscreteGen
                         </a>
                       </li><li class="current-entities indented4">
                         <span class="separator"></span>
-                        <a class="trait" href="" title="A Tyche generator is a high-level descriptcom.github."></a>
-                        <a href="" title="A Tyche generator is a high-level descriptcom.github.">
+                        <a class="trait" href="" title="A Tyche generator is a high-level description of random variables and
+ stochastic processes."></a>
+                        <a href="" title="A Tyche generator is a high-level description of random variables and
+ stochastic processes.">
                           Gen
                         </a>
                       </li><li class="current-entities indented4">
@@ -195,8 +199,8 @@
                         </a>
                       </li><li class="current-entities indented4">
                         <span class="separator"></span>
-                        <a class="trait" href="Moments.html" title="Defines the essential properties of all probability distributcom.github.s:"></a>
-                        <a href="Moments.html" title="Defines the essential properties of all probability distributcom.github.s:">
+                        <a class="trait" href="Moments.html" title="Defines the essential properties of all probability distributions:"></a>
+                        <a href="Moments.html" title="Defines the essential properties of all probability distributions:">
                           Moments
                         </a>
                       </li><li class="current-entities indented4">
@@ -233,10 +237,10 @@
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A Tyche generator is a high-level descriptcom.github. of random variables and
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A Tyche generator is a high-level description of random variables and
  stochastic processes.</p><p> Each and every instance is implemented by specifying its generative
- functcom.github. (<a href="#get:A" class="extmbr" name="com.github.neysofu.tyche.Gen#get">com.github.neysofu.tyche.Gen.get</a>).
-</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>the outcomes' type signature. Note that many implementcom.github.s
+ function (<a href="#get:A" class="extmbr" name="com.github.neysofu.tyche.Gen#get">com.github.neysofu.tyche.Gen.get</a>).
+</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>the outcomes' type signature. Note that many implementations
  require <code>A &lt;: Double</code> to work correctly.</p></dd></dl><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="com.github.neysofu.tyche.Gen">Gen</a>[<span class="extype" name="com.github.neysofu.tyche.Gen.A">A</span>]</dd><div class="block">Example:
                <ol><li class="cmt"><p></p><pre>scala&gt; <span class="kw">val</span> uniform = <span class="kw">new</span> Gen[<span class="std">Double</span>] {
      |   <span class="kw">def</span> get = scala.util.Random.nextDouble
@@ -699,7 +703,7 @@ res1: <span class="std">Seq</span>[<span class="std">Double</span>] = <span clas
       </span>
       
       <p class="shortcomment cmt">Builds a new generator by replacing all the outcomes with their
- respective numerical representatcom.github.s.</p>
+ respective numerical representation.</p>
     </li><li name="com.github.neysofu.tyche.Gen#toStream" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toStream:Stream[A]"></a>
       <span class="permalink">
@@ -752,8 +756,8 @@ res1: Stream[<span class="std">Double</span>] = Stream(<span class="num">0.77922
       </span>
       
       <p class="shortcomment cmt">Builds a new generator by creating a sample space which contains
- only collectcom.github.s of outcomes that satisfy a predicate.</p><div class="fullcomment"><div class="comment cmt"><p>Builds a new generator by creating a sample space which contains
- only collectcom.github.s of outcomes that satisfy a predicate.
+ only collections of outcomes that satisfy a predicate.</p><div class="fullcomment"><div class="comment cmt"><p>Builds a new generator by creating a sample space which contains
+ only collections of outcomes that satisfy a predicate.
 </p></div><dl class="attributes block"> <div class="block">Example:
                <ol><li class="cmt"><p></p><pre>scala&gt; (uniform until (_.sum &gt; <span class="num">1</span>)).get
 res1: <span class="std">Seq</span>[<span class="std">Double</span>] = <span class="std">List</span>(<span class="num">0.8456141535917049</span>, <span class="num">0.5993270795832424</span>)</pre></li></ol>
