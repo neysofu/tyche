@@ -1,9 +1,9 @@
 package com.github.neysofu.tyche
 
-/** Defines the essential properties of all probability distributcom.github.s:
+/** Defines the essential properties of all probability distributions:
  *   1. Plotting facilities,
  *   2. expected value,
- *   3. standard deviatcom.github.,
+ *   3. standard deviation,
  *  and other [[https://goo.gl/p4TGzt moments]].
  */
 trait Moments[A] {
@@ -16,7 +16,7 @@ trait Moments[A] {
    */
   def mean(implicit toDouble: A <:< Double): Double
 
-  /** Computes the [[https://goo.gl/QrSlFY standard deviatcom.github.]].
+  /** Computes the [[https://goo.gl/QrSlFY standard deviation]].
    */
   def standardDeviation(implicit toDouble: A <:< Double): Double
 

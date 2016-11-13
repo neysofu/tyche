@@ -10,16 +10,16 @@ case class ContinuousDistribution(f: () => Double) extends ContinuousGen[Double]
 
 object ContinuousDistribution {
  
-  /** Returns a normal distributcom.github..
+  /** Returns a normal distribution.
    *
-   *  @param sd the standard deviatcom.github.
+   *  @param sd the standard deviation.
    *  @param eg the expected value
    */
   def normal(sd: Double, eg: Double): ContinuousDistribution = {
     new ContinuousDistribution(() => Random.nextGaussian * sd + eg)
   }
 
-  /** Returns a chi-squared distributcom.github..
+  /** Returns a chi-squared distribution.
    *
    *  @param k the degrees of freedom
    */
@@ -28,7 +28,7 @@ object ContinuousDistribution {
       () => Seq.fill(k)(util.square(normal(1, 0).get)).sum)
   }
 
-  /** Returns a binomial distributcom.github..
+  /** Returns a binomial distribution.
    *
    *  @param n the number of independent yes/no experiments
    *  @param p the success probability
@@ -38,7 +38,7 @@ object ContinuousDistribution {
       () => Seq.fill(n)(Random.nextDouble).count(_ < p).toDouble)
   }
 
-  /** Returns a uniform distributcom.github. in the interval `[0;1[`.
+  /** Returns a uniform distribution in the interval `[0;1[`.
    */
   def uniform: ContinuousDistribution = new ContinuousDistribution(
     () => Random.nextDouble

@@ -8,7 +8,7 @@ case class MarkovChain[A](rule: A => DiscreteDistribution[A], state: A) extends 
  */
 object MarkovChain {
 
-  /** Builds a new Markovian process which generates a unidimenscom.github.al
+  /** Builds a new Markovian process which generates a unidimensional
    *  [[https://en.wikipedia.org/wiki/Lattice_path lattice path]] with steps
    *  `+1` and `-1`.
    */

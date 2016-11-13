@@ -14,7 +14,7 @@ case class DiscreteDistribution[A](val mass: Map[A, Double]) extends DiscreteGen
   
 object DiscreteDistribution {
 
-  /** Returns a discrete uniform distributcom.github..
+  /** Returns a discrete uniform distribution.
    *  @param outcomes the sample space
    */
   def uniform[A](sampleSpace: A*): DiscreteDistribution[A] = {
@@ -22,7 +22,7 @@ object DiscreteDistribution {
     DiscreteDistribution(sampleSpace.map(x => x -> w).toMap)
   }
 
-  /** Returns a Bernoulli distributcom.github..
+  /** Returns a Bernoulli distribution.
    *  @param p the success probability
    */
   def Bernoulli(p: Double): DiscreteDistribution[Boolean] = {

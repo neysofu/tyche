@@ -2,11 +2,11 @@ package com.github.neysofu.tyche
 
 import scala.util.Random
 
-/** A Tyche generator is a high-level descriptcom.github. of random variables and
+/** A Tyche generator is a high-level description of random variables and
  *  stochastic processes.
  *
  *  Each and every instance is implemented by specifying its generative
- *  functcom.github. ([[com.github.neysofu.tyche.Gen.get]]).
+ *  function ([[com.github.neysofu.tyche.Gen.get]]).
  *
  *  @example {{{
  *  scala> val uniform = new Gen[Double] {
@@ -16,7 +16,7 @@ import scala.util.Random
  *
  *  }}}
  *
- *  @tparam A the outcomes' type signature. Note that many implementcom.github.s
+ *  @tparam A the outcomes' type signature. Note that many implementations
  *  require `A <: Double` to work correctly.
  *  
  *  @see [[com.github.neysofu.tyche.Moments]]
@@ -60,7 +60,7 @@ trait Gen[+A] { self =>
   }
 
   /** Builds a new generator by creating a sample space which contains
-   *  only collectcom.github.s of outcomes that satisfy a predicate.
+   *  only collections of outcomes that satisfy a predicate.
    *
    *  @example {{{
    *  scala> (uniform until (_.sum > 1)).get
@@ -95,7 +95,7 @@ trait Gen[+A] { self =>
   def joint[B](that: Gen[B]): Gen[(A, B)] = map((_, that.get))
 
   /** Builds a new generator by replacing all the outcomes with their
-   *  respective numerical representatcom.github.s.
+   *  respective numerical representation.
    */
   def toGenDouble(implicit d: A <:< Double): Gen[Double] = map(d(_))
 

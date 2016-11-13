@@ -22,20 +22,20 @@ trait MarkovGen[A] extends Gen[MarkovGen[A]] { self =>
    */
   val state: A
 
-  /** The transitcom.github. rule. It takes a state as a parameter and returns the
+  /** The transition rule. It takes a state as a parameter and returns the
    *  discrete random variable that will determine the next state.
    */
   val rule: A => DiscreteDistribution[A]
 
   /** Builds a new Markovian process by altering the state accordingly to
-   *  the transitcom.github. rule.
+   *  the transition rule.
    */
   def get = new MarkovGen[A] {
     val state = self.rule(self.state).get
     val rule = self.rule
   }
 
-  /** Performs a random walk and stores the state at each iteratcom.github. in an
+  /** Performs a random walk and stores the state at each iteration in an
    *  array.
    */
   def walk(steps: Int): Seq[A] = steps match {
