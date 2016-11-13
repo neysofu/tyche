@@ -49,3 +49,10 @@ Bonus points if you submit code!
 2. Write a test which shows that the code works as expected.
 3. Please, please write some documentation. One or two lines per entity are enough.
 4. Send a pull request.
+
+## Alternatives
+Be sure to check out some great alternatives:
+
+- [Apache Spark](http://spark.apache.org/docs/latest/mllib-statistics.html)
+- [Breeze](https://github.com/scalanlp/breeze)
+- [probability-monad](https://github.com/jliszka/probability-monad)
