@@ -16,22 +16,24 @@ The library is written in Scala 2.12.0 and was tested last with sbt 0.13.13.
 
 Behold, the power of Tyche:
 
-	// In a country in which people only want boys every family continues to
-	// have children until they have a boy. If they have a girl, they have
-	// another child. If they have a boy, they stop. What is the average
-	// amount of kids per family?
+```scala
+// In a country in which people only want boys every family continues to
+// have children until they have a boy. If they have a girl, they have
+// another child. If they have a boy, they stop. What is the average
+// amount of kids per family?
 
-    val sampleSize = 10000
+val sampleSize = 10000
 
-	sealed trait Child
-	object Boy extends Child
-	object Girl extends Child
+sealed trait Child
+object Boy extends Child
+object Girl extends Child
 
-	val family = tyche.DiscreteDistribution.uniform(Boy, Girl)
-		.until(_ contains Boy)
-		.map(_.size)
+val family = tyche.DiscreteDistribution.uniform(Boy, Girl)
+  .until(_ contains Boy)
+  .map(_.size)
 
-	println(Math.round(1.0 * family.take(sampleSize).sum / sampleSize)) // 2
+println(Math.round(1.0 * family.take(sampleSize).sum / sampleSize)) // 2
+```
 
 ## Setup
 Tyche is published to *Maven Central*, so you just need to paste this line in you build configuration file:
