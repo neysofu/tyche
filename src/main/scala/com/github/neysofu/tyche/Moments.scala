@@ -1,28 +1,31 @@
-package com.github.neysofu.tyche
+package com.github.neysofu
+package tyche
 
-/** Defines the essential properties of all probability distributions:
- *   1. Plotting facilities,
- *   2. expected value,
- *   3. standard deviation,
- *  and other [[https://goo.gl/p4TGzt moments]].
- */
-trait Moments[A] {
+trait Moments[+A] {
 
-  /** Draws a virtual plot.
+  /** Computes the probability of an event.
+   *
+   *  @param p the event to analyse.
+   *  @return the probability of the given event `event`.
    */
-  def virtualPlot(implicit toDouble: A <:< Double): Map[A, Double]
+  def probabilityOf(p: A => Boolean): Double
 
   /** Computes the [[https://goo.gl/LruXGw expected value]] (mean).
+   *
+   *  @return the expected value.
    */
-  def mean(implicit toDouble: A <:< Double): Double
+  def mean(implicit toDouble: A => Double): Double
 
   /** Computes the [[https://goo.gl/QrSlFY standard deviation]].
+   *
+   *  @return the standard deviation.
    */
-  def standardDeviation(implicit toDouble: A <:< Double): Double
-
+  def standardDeviation(implicit toDouble: A => Double): Double
+  
   /** Computes the [[https://goo.gl/Wzlr6p variance]].
+   *
+   *  @return the variance.
    */
-  def variance(implicit toDouble: A <:< Double): Double = {
-    Math.sqrt(standardDeviation)
-  }
+  def variance(implicit toDouble: A => Double): Double =
+    Math.sqrt(standardDeviation(toDouble))
 }

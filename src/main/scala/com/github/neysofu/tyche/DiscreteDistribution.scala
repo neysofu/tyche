@@ -1,31 +1,55 @@
-package com.github.neysofu.tyche
+package com.github.neysofu
+package tyche
 
-/** A wrapper class from [[com.github.neysofu.tyche.DiscreteGen]].
+import scala.util.Random
+
+/** Implements abstract methods for discrete distributions.
  */
-case class DiscreteDistribution[A](val mass: Map[A, Double]) extends DiscreteGen[A] {
-  require(
-    mass.values.forall(_ >= 0),
-    "All probabilities must be nonnegative.")
-  require(
-    mass.values.sum == 1,
-    "The sums of probabilities must be equal to 1.")
-}
+trait DiscreteDistribution[A] extends Gen[A] {
+    self =>
 
-  
-object DiscreteDistribution {
-
-  /** Returns a discrete uniform distribution.
-   *  @param outcomes the sample space
-   */
-  def uniform[A](sampleSpace: A*): DiscreteDistribution[A] = {
-    val w = 1.0 / sampleSpace.distinct.size
-    DiscreteDistribution(sampleSpace.map(x => x -> w).toMap)
+  override def toString = {
+    val str = "empty discrete distribution"
+    if (mass.size > 0) "non-" + str else str
   }
 
-  /** Returns a Bernoulli distribution.
-   *  @param p the success probability
+  override def filter(pred: A => Boolean): Gen[A] = {
+    val filtered = DiscreteDistribution(mass filter (x => pred(x._1)))
+    Gen(filtered())
+  }
+
+  /** The probability mass function. It contains all the possible values and
+   *  their respective weights. The weights are supposed to be positive.
    */
-  def Bernoulli(p: Double): DiscreteDistribution[Boolean] = {
-    DiscreteDistribution(Map(true -> p, false -> (1-p)))
+  def mass: Map[A, Double]
+
+  def replaceWith[B](f: A => B): DiscreteDistribution[B] =
+    DiscreteDistribution(mass.map(kv => (f(kv._1) -> kv._2)))
+
+  def apply: A = {
+    val d = Random.nextDouble * weights.last
+    values(weights indexWhere (_ > d))
+  }
+
+  override def probabilityOf(event: A => Boolean): Double =
+    (mass filter (a => event(a._1))).values.sum / weights.last
+
+  override def mean(implicit toDouble: A => Double): Double =
+    (mass map {case (k, v) => toDouble(k) * v}).sum / weights.last
+
+  override def stdDeviation(implicit toDouble: A => Double): Double = {
+    val m = mean
+    def diff(k: A) = Math.pow(toDouble(k)-m, 2)
+    (mass map {case (k, v) => diff(k) * v}).sum / weights.last
+  }
+
+  protected lazy val values = mass.keys.toVector
+  protected lazy val weights = mass.values.toVector.scanLeft(0.0)(_+_).tail
+}
+
+object DiscreteDistribution {
+
+  def apply[A](pmf: Map[A, Double]): DiscreteDistribution[A] = new DiscreteDistribution[A] {
+    val mass = pmf
   }
 }

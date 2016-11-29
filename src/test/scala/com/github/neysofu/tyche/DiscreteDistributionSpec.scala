@@ -1,60 +1,77 @@
 package com.github.neysofu.tyche
 
-import scala.util.Random
 import org.scalatest.{WordSpec, Matchers}
+import algorithms._
 
-class DiscreteDistributionSpec extends WordSpec with Matchers {
+class DiscreteGenSpec extends WordSpec with Matchers {
+
+  val zero = 0
+  val one = 1
+
+  val double = 0.123
 
   "A Bernoulli distribution" when {
 
-    "𝙿 = 1" should {
+    "𝑝 = 1" should {
       "yield a success" in {
-        DiscreteDistribution.Bernoulli(1).get shouldBe true
+        Bernoulli(one)() shouldBe true
       }
     }
 
-    "𝙿 = 0" should {
+    "𝑝 = 0" should {
       "yield a failure" in {
-        DiscreteDistribution.Bernoulli(0).get shouldBe false
+        Bernoulli(zero)() shouldBe false
       }
     }
   }
 
   "A discrete uniform distribution" when {
     
-    object Outcome
-
     "its sample space is empty" should {
       "throw an exception" in {
         a [java.lang.IllegalArgumentException] should be thrownBy {
-          DiscreteDistribution.uniform()
+          uniform(Seq() :_*)() // Ugly asf.
         }
       }
     }
 
     "its sample space is a singleton" should {
-      val d = Random.nextDouble
-      val gen = DiscreteDistribution.uniform(d)
-      "have equal mean and outcome" in {
-        gen.get shouldBe d
-        gen.mean shouldBe d
-      }
-      "have a standard deviation equal to the fourth power of the outcome" in {
-        // Approximately equal
-        (gen.standardDeviation - Math.pow(d, 4)) should be < 0.00001
+      val gen = uniform(double)
+      "have equal mean and value" in {
+        gen() shouldBe double
+        gen.mean shouldBe double
       }
     }
 
     "its sample space includes multiple values" should {
-      val gen = DiscreteDistribution.uniform(0.2, 1.6)
-      "have a weighted mean" in {
-        gen.mean shouldBe 0.9
+      val double1 = double
+      val double2 = double
+      val gen = uniform(double1, double2)
+      "be able to compute the weighted mean" in {
+        gen.mean shouldBe (double1 + double2) / 2
       }
-      "have a standard deviation" in {
-        gen.standardDeviation shouldBe 0.49
+    }
+  }
+
+  "A binomial distribution" when {
+
+    val n = 57
+
+    "𝑝 = 1" should {
+      "yield 𝑛" in {
+        binomial(n, one)() shouldBe n
       }
-      "have a variance" in {
-        gen.variance shouldBe 0.7
+    }
+
+    "𝑝 = 0" should {
+      "yield 0" in {
+        binomial(n, zero)() shouldBe zero
+      }
+    }
+
+    "sampled" should {
+      "yield a nonnegative value" in {
+        binomial(n, double)() should be >= 0
       }
     }
   }

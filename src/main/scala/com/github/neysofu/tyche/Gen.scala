@@ -1,29 +1,24 @@
-package com.github.neysofu.tyche
+package com.github.neysofu
+package tyche
 
 import scala.util.Random
+import scala.collection.mutable.Queue
+import scala.annotation.tailrec
 
-/** A Tyche generator is a high-level description of random variables and
- *  stochastic processes. Each and every instance is implemented by specifying
- *  its generative function ([[com.github.neysofu.tyche.Gen.get]]).
+/** A generic trait for generators.
+ *
+ *  A generator is a high-level description of random variables and stochastic
+ *  processes. Each and every instance is implemented by specifying its
+ *  generative function ([[com.github.neysofu.tyche.Gen.get]]).
  *
  *  @define hanging
- *  @note impossible predicates will result in the hanging of the program.
+ *  @note impossible predicates may result in the hanging of the program.
  *
  *  @tparam A the element type of this generator. Note that analysis methods
  *  require `A <: Double` in order to work.
- *  @see [[com.github.neysofu.tyche.Moments]]
  */
-trait Gen[+A] {
+trait Gen[+A] extends Function0[A] {
     self =>
-
-  override def toString = "<generator>"
-
-  /** Computes a value. This method is known as the ''generative function''
-   *  of this generator.
-   *
-   *  @return a value.
-   */
-  def get: A
 
   /** Builds a new generator by applying a function to each value.
    *  
@@ -32,21 +27,25 @@ trait Gen[+A] {
    *  @return a new generator resulting from replacing each value with the
    *  output of the given function `f` with it as an input.
    */
-  def map[B](f: A => B): Gen[B] = new Gen[B] {
-    def get = f(self.get)
-  }
+  final def map[B](f: A => B): Gen[B] = Gen(f(apply))
+
+  def flatMap[B](f: A => Seq[B]): Gen[B] =
+    map(x => Random.shuffle(f(x)).head)
 
   /** Builds a new generator by filtering values with a predicate.
    *
    *  @param pred the predicate that each value must satisfy.
-   *  @return a new generator resulting from picking only values that satify
+   *  @return a new generator resulting from picking only values that satisfy
    *  the given predicate `pred`.
    *  $hanging
    */
-  def filter(pred: A => Boolean): Gen[A] = map { x =>
-    def rec(g: A): A = if (pred(g)) g else rec(get)
-    rec(x)
+  def filter(p: A => Boolean): Gen[A] = map {
+    x => var a = x
+    while (!p(a)) a = apply
+    a
   }
+
+  def filterNot(p: A => Boolean): Gen[A] = filter (!p(_))
 
   /** Builds a new generator by creating sequences of values which satisfy a
    *  predicate.
@@ -56,47 +55,47 @@ trait Gen[+A] {
    *  empty list until it satisfies the given predicate `pred`.
    *  $hanging
    */
-  def until(pred: List[A] => Boolean): Gen[List[A]] = map { x =>
-    def rec(ls: List[A]): List[A] = if (pred(ls)) ls else rec(ls :+ get)
-    rec(List(x))
+  def until(p: Seq[A] => Boolean): Gen[Seq[A]] = map {
+    x => var ls = Queue(x)
+    while (!p(ls)) ls += apply
+    ls
   }
 
-  /** Builds a new generator by filling sequences with values.
-   *
-   *  @param n the length of each list.
-   *  @return a new generator resulting from replacing each value with a
-   *  `n`-sized list of values.
-   */
-  def repeat(n: Int): Gen[Seq[A]] = map(take(n-1) :+ _)
+  def zip[B](that: Gen[B]): Gen[(A, B)] = map (a => (a, that.apply))
 
-  /** Builds a new bivariate generator by coupling this generator with
-   *  another.
+  /** The number of observations to include in a statistical sample.
    *
-   *  @tparam B the element type of the given generator `that`.
-   *  @param that the generator to zip with this generator.
-   *  @return a new generator resulting from zipping each value with one of
-   *  the given generator `that`.
+   *  The default value assures a confidence level of 95% and a margin of
+   *  error of 0.01 for distributions with a normal (0.5 or less) standard
+   *  deviation.
    */
-  def joint[B](that: Gen[B]): Gen[(A, B)] = map((_, that.get))
+  protected val sampleSize: Int = 10000
 
-  /** Builds a new generator by replacing each value with its numerical
-   *  representation.
-   *
-   *  @return a new generator resulting from replacing each value with its
-   *  floating point number representation.
-   */
-  def toGenDouble(implicit d: A <:< Double): Gen[Double] = map(d(_))
+  def take(n: Int): Seq[A] = Seq.fill(n)(apply)
 
-  /** Computes a sequence filled with values.
-   *
-   *  @param n the length of the returned list.
-   *  @return a `n`-sized list filled with values.
-   */
-  def take(n: Int): Seq[A] = Seq.fill(n)(get)
-  
-  /** Computes a stream of values.
-   *
-   *  @return a stream of values.
-   */
-  def toStream: Stream[A] = get #:: toStream
-}  
+  def sample: Seq[A] = take(sampleSize)
+
+  def probabilityOf(p: A => Boolean): Double =
+    sample.count(p) / sampleSize
+
+  def mean(implicit toDouble: A => Double): Double =
+    
+    sample.map(toDouble(_) / sampleSize).sum
+
+  def stdDeviation(implicit toDouble: A => Double): Double = {
+    val m = mean
+    (sample map (x => (x*x - m) / sampleSize)).sum
+  }
+
+  def variance(implicit toDouble: A => Double): Double =
+    Math.sqrt(stdDeviation)
+
+  final def toStream: Stream[A] = apply #:: toStream
+}
+
+object Gen {
+
+  def apply[A](f: => A): Gen[A] = new Gen[A] {
+    def apply: A = f
+  }
+}
