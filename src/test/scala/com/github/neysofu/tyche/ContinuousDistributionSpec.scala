@@ -11,13 +11,13 @@ class ContinuousGenSpec extends WordSpec with Matchers {
     
     "μ = ∞" should {
       "ignore σ²" in {
-        normal(1.0 / 0.0, 1)().isInfinity shouldBe true
+        Gauss(1.0 / 0.0, 1)().isInfinity shouldBe true
       }
     }
 
     "σ² = 0" should {
       "yield μ" in {
-        normal(1, 0)() shouldBe 1
+        Gauss(1, 0)() shouldBe 1
       }
     }
   }

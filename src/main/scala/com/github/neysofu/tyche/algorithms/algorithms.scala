@@ -7,9 +7,6 @@ import util.Memo
 
 package object algorithms {
 
-  def normal(eg: Double, sd: Double): Gen[Double] =
-    Gen(Random.nextGaussian * sd + eg)
-
   /** Creates a chi‐squared distribution.
    *
    *  @param k the ''𝑘'' parameter of the returned distribution.
@@ -17,7 +14,7 @@ package object algorithms {
    */
   def chiSquare(k: Int): Gen[Double] = Gen {
     var sum: Double = 0
-    val standardNormal = normal(0, 1)
+    val standardNormal = Gauss(0, 1)
     for (n <- 1 to k)
       sum += Math.pow(standardNormal(), 2)
     sum
@@ -71,5 +68,5 @@ package object algorithms {
   }
   
   def approxBinomial(n: Int, p: Double): Gen[Double] =
-    Gen(normal(n*p * (1-p), n*p).apply)
+    Gen(Gauss(n*p * (1-p), n*p).apply)
 }
