@@ -7,12 +7,6 @@ import util.Memo
 
 package object algorithms {
 
-  /** Creates a normal (Gaussian) distribution.
-   *
-   *  @param eg the ''μ'' parameter of the returned distribution.
-   *  @param sd the ''σ²'' parameter of the returned distribution.
-   *  @return a normal distribution ''N(μ, σ²)''.
-   */
   def normal(eg: Double, sd: Double): Gen[Double] =
     Gen(Random.nextGaussian * sd + eg)
 
