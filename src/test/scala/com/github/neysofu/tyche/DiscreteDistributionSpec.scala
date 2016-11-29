@@ -59,19 +59,19 @@ class DiscreteGenSpec extends WordSpec with Matchers {
 
     "𝑝 = 1" should {
       "yield 𝑛" in {
-        binomial(n, one)() shouldBe n
+        Binomial(n, one)() shouldBe n
       }
     }
 
     "𝑝 = 0" should {
       "yield 0" in {
-        binomial(n, zero)() shouldBe zero
+        Binomial(n, zero)() shouldBe zero
       }
     }
 
     "sampled" should {
       "yield a nonnegative value" in {
-        binomial(n, double)() should be >= 0
+        Binomial(n, double)() should be >= 0
       }
     }
   }

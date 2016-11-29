@@ -38,35 +38,6 @@ package object algorithms {
     DiscreteDistribution(values.map(x => x->w).toMap)
   }
 
-  def Bernoulli(p: Double): DiscreteDistribution[Boolean] =
-    DiscreteDistribution(Map(true -> p, false -> (1-p)))
-
-  /** Returns a binomial distribution.
-   *
-   *  @param n the number of independent yes/no experiments
-   *  @param p the success probability
-   *  @throws java.lang.IllegalArgumentException if `n` is too large.
-   */
-  def binomial(n: Int, p: Double): DiscreteDistribution[Int] = {
-    // TODO: define gen by Seq.fill(n)(get) and making the mass lazy
-    val mass = Dict.empty[Int, Double]
-    lazy val binCoefficient: Memo[(Int, Int), Long] = Memo {
-      case (n, k) => if (k == 0 || k == n) {
-        1L
-      } else if (k > n/2) {
-        binCoefficient(n, n-k)
-      } else {
-        binCoefficient(n-1, k-1) + binCoefficient(n-1, k)
-      }
-    }
-    for (k <- 0 to n) {
-      val pk = Math.pow(p, k)
-      val qj = Math.pow(1-p, n-k)
-      mass += (k -> binCoefficient(n, k) * pk * qj)
-    }
-    DiscreteDistribution(mass.toMap)
-  }
-  
   def approxBinomial(n: Int, p: Double): Gen[Double] =
     Gen(Gauss(n*p * (1-p), n*p).apply)
 }

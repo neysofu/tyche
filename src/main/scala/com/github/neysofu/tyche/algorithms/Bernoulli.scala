@@ -9,7 +9,7 @@ import scala.util.Random
  *  @param p the 𝑃 parameter of the Bernoulli distribution.
  *  @return a new Bernoulli distribution with the given 𝑃 parameter `p`.
  */
-case class BernoulliDistr(p: Double) extends DiscreteDistribution[Boolean] {
+case class Bernoulli(p: Double) extends DiscreteDistribution[Boolean] {
 
   val q: Double = 1 - p
 

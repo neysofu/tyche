@@ -88,7 +88,7 @@ trait Gen[+A] extends Function0[A] {
   }
 
   def variance(implicit toDouble: A => Double): Double =
-    Math.sqrt(stdDeviation)
+    Math.pow(stdDeviation, 2)
 
   final def toStream: Stream[A] = apply #:: toStream
 }
