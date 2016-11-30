@@ -30,13 +30,13 @@ class DiscreteGenSpec extends WordSpec with Matchers {
     "its sample space is empty" should {
       "throw an exception" in {
         a [java.lang.IllegalArgumentException] should be thrownBy {
-          uniform(Seq() :_*)() // Ugly asf.
+         DiscreteUniform()()
         }
       }
     }
 
     "its sample space is a singleton" should {
-      val gen = uniform(double)
+      val gen = DiscreteUniform(double)
       "have equal mean and value" in {
         gen() shouldBe double
         gen.mean shouldBe double
@@ -46,7 +46,7 @@ class DiscreteGenSpec extends WordSpec with Matchers {
     "its sample space includes multiple values" should {
       val double1 = double
       val double2 = double
-      val gen = uniform(double1, double2)
+      val gen = Uniform(double1, double2)
       "be able to compute the weighted mean" in {
         gen.mean shouldBe (double1 + double2) / 2
       }
@@ -55,7 +55,7 @@ class DiscreteGenSpec extends WordSpec with Matchers {
 
   "A binomial distribution" when {
 
-    val n = 57
+    val n = 3
 
     "𝑝 = 1" should {
       "yield 𝑛" in {

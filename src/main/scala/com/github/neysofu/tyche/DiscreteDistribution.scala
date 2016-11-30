@@ -23,9 +23,6 @@ trait DiscreteDistribution[A] extends Gen[A] {
    */
   def mass: Map[A, Double]
 
-  def replaceWith[B](f: A => B): DiscreteDistribution[B] =
-    DiscreteDistribution(mass.map(kv => (f(kv._1) -> kv._2)))
-
   def apply: A = {
     val d = Random.nextDouble * weights.last
     values(weights indexWhere (_ > d))

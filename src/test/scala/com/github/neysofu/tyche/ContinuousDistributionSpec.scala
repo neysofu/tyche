@@ -26,12 +26,12 @@ class ContinuousGenSpec extends WordSpec with Matchers {
     
     "k = 0" should {
       "yield 0" in {
-        chiSquare(0)() shouldBe 0
+        ChiSquare(0)() shouldBe 0
       }
     }
 
     "k > 0" should {
-      val gen = chiSquare(1)
+      val gen = ChiSquare(1)
       "yield a nonnegative value" in {
         gen() should be >= 0.0
       }
@@ -45,9 +45,9 @@ class ContinuousGenSpec extends WordSpec with Matchers {
     
     "sampled" should {
       "yield a value that falls within the ´[0, 1[´ interval" in {
-        val outcome = uniform()
-        outcome should be < 1.0
-        outcome should be >= 0.0
+        val outcome = Uniform(0, 1)
+        outcome() should be < 1.0
+        outcome() should be >= 0.0
       }
     }
   }

@@ -75,26 +75,54 @@ trait Gen[+A] extends Function0[A] {
 
   def sample: Seq[A] = take(sampleSize)
 
+  /** Computes the probability of an event.
+   *
+   *  @param p the event to analyse.
+   *  @return the probability of the given event `event`.
+   */
   def probabilityOf(p: A => Boolean): Double =
     sample.count(p) / sampleSize
-
+  
+  /** Computes the [[https://goo.gl/LruXGw expected value]] (mean).
+   *
+   *  @return the expected value.
+   */
   def mean(implicit toDouble: A => Double): Double =
-    
     sample.map(toDouble(_) / sampleSize).sum
-
+  
+  /** Computes the [[https://goo.gl/QrSlFY standard deviation]].
+   *
+   *  @return the standard deviation.
+   */
   def stdDeviation(implicit toDouble: A => Double): Double = {
     val m = mean
     (sample map (x => (x*x - m) / sampleSize)).sum
   }
-
+  
+  /** Computes the [[https://goo.gl/Wzlr6p variance]].
+   *
+   *  @return the variance.
+   */
   def variance(implicit toDouble: A => Double): Double =
     Math.pow(stdDeviation, 2)
 
+  /** Computes a stream of values.
+   *
+   *  @return a stream of values.
+   */
   final def toStream: Stream[A] = apply #:: toStream
 }
 
+/** This object contains the builders for `Gen` instances.
+ */
 object Gen {
 
+  /** Builds a new generator by setting its generative function.
+   *
+   *  @tparam A the element type of the returned generator.
+   *  @param f the generative function of the returned generator.
+   *  @return a new generator with generative function `f`.
+   */
   def apply[A](f: => A): Gen[A] = new Gen[A] {
     def apply: A = f
   }
