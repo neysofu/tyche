@@ -5,9 +5,9 @@ package tyche
  *  transition rule.
  *
  *  @tparam A the type of the states.
- *  @see [[com.github.neysofu.tyche.Gen]], [[com.github.neysofu.tyche.DiscreteDistribution]]
+ *  @see [[com.github.neysofu.tyche.Gen]], [[com.github.neysofu.tyche.DiscreteGen]]
  */
-trait MarkovProcess[A] extends Gen[MarkovProcess[A]] {
+trait MarkovGen[A] extends Gen[MarkovGen[A]] {
     self =>
 
   /** The current state.
@@ -17,7 +17,7 @@ trait MarkovProcess[A] extends Gen[MarkovProcess[A]] {
   /** The transition rule. It takes a state as a parameter and returns the
    *  discrete random variable that will determine the next state.
    */
-  val rule: A => DiscreteDistribution[A]
+  val rule: A => DiscreteGen[A]
   
   /** Performs a random walk on the chain and stores the state at each step
    *  in a sequence.
@@ -28,14 +28,14 @@ trait MarkovProcess[A] extends Gen[MarkovProcess[A]] {
    */
   def walk(n: Int): Seq[A] = if (n > 0) state +: apply.walk(n-1) else Seq()
  
-  def apply = MarkovProcess[A](self.rule, self.rule(self.state).apply)
+  def apply = MarkovGen[A](self.rule, self.rule(self.state).apply)
 }
 
 /** Contains a number of builders for the most common Markov chains.
  */
-object MarkovProcess {
+object MarkovGen {
 
-  def apply[A](f: A => DiscreteDistribution[A], current: A) = new MarkovProcess[A] {
+  def apply[A](f: A => DiscreteGen[A], current: A) = new MarkovGen[A] {
     val state = current
     val rule = f
   }
@@ -44,9 +44,9 @@ object MarkovProcess {
    *
    *  @return a new Markovian process.
    */
-  def randomWalk: MarkovProcess[Int] = new MarkovProcess[Int] {
+  def randomWalk: MarkovGen[Int] = new MarkovGen[Int] {
     val state = 0
-    val rule = x => new DiscreteDistribution[Int] {
+    val rule = x => new DiscreteGen[Int] {
       val mass = Map(x+1 -> 0.5, x-1 -> 0.5)
     }
   }
@@ -58,7 +58,7 @@ object MarkovProcess {
    *  in the given training data list `seq`. The initial state is set to the
    *  first element in the training data list.
    */
-  def modelOn[A](seq: A*): MarkovProcess[A] = {
+  def modelOn[A](seq: A*): MarkovGen[A] = {
       import scala.collection.mutable.{Map => Dict}
     require(
       seq.size >= 2, "The training list must contain at least two elements.")
@@ -76,9 +76,9 @@ object MarkovProcess {
       }
     }
     val ruleMap = table.map(kv => kv._1 -> kv._2.toMap).toMap
-    new MarkovProcess[A] {
+    new MarkovGen[A] {
       val state = seq.head
-      val rule = (a: A) => new DiscreteDistribution[A] {
+      val rule = (a: A) => new DiscreteGen[A] {
         val mass = ruleMap(a)
       }
     }

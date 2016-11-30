@@ -10,8 +10,8 @@ class MarkovChainSpec extends WordSpec with Matchers {
   object S1 extends State
   object S2 extends State
 
-  val chain = MarkovProcess[State](
-    { case _ => DiscreteDistribution(Map(S1 -> 1))},
+  val chain = MarkovGen[State](
+    { case _ => DiscreteGen(Map(S1 -> 1))},
     S2
   )
   
@@ -25,7 +25,7 @@ class MarkovChainSpec extends WordSpec with Matchers {
 
     "modelled on \"11\"" should {
       "yield '1'" in {
-        MarkovProcess.modelOn("11" : _*)().state shouldBe '1'
+        MarkovGen.modelOn("11" : _*)().state shouldBe '1'
       }
     }
   }

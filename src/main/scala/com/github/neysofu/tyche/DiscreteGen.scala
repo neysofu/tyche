@@ -3,20 +3,11 @@ package tyche
 
 import scala.util.Random
 
-/** Implements abstract methods for discrete distributions.
+/** A trait for optimizing generator which use a hashtable as a generative
+ *  function.
  */
-trait DiscreteDistribution[A] extends Gen[A] {
+trait DiscreteGen[A] extends Gen[A] {
     self =>
-
-  override def toString = {
-    val str = "empty discrete distribution"
-    if (mass.size > 0) "non-" + str else str
-  }
-
-  override def filter(pred: A => Boolean): Gen[A] = {
-    val filtered = DiscreteDistribution(mass filter (x => pred(x._1)))
-    Gen(filtered())
-  }
 
   /** The probability mass function. It contains all the possible values and
    *  their respective weights. The weights are supposed to be positive.
@@ -26,6 +17,16 @@ trait DiscreteDistribution[A] extends Gen[A] {
   def apply: A = {
     val d = Random.nextDouble * weights.last
     values(weights indexWhere (_ > d))
+  }
+
+  override def toString = {
+    val str = "empty discrete distribution"
+    if (mass.size > 0) "non-" + str else str
+  }
+
+  override def filter(pred: A => Boolean): Gen[A] = {
+    val filtered = DiscreteGen(mass filter (x => pred(x._1)))
+    Gen(filtered())
   }
 
   override def probabilityOf(event: A => Boolean): Double =
@@ -44,9 +45,9 @@ trait DiscreteDistribution[A] extends Gen[A] {
   protected lazy val weights = mass.values.toVector.scanLeft(0.0)(_+_).tail
 }
 
-object DiscreteDistribution {
+object DiscreteGen {
 
-  def apply[A](pmf: Map[A, Double]): DiscreteDistribution[A] = new DiscreteDistribution[A] {
+  def apply[A](pmf: Map[A, Double]): DiscreteGen[A] = new DiscreteGen[A] {
     val mass = pmf
   }
 }

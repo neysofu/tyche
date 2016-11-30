@@ -10,7 +10,7 @@ import com.github.neysofu.tyche.util.Memo
  *  @param n the number of independent yes/no experiments
  *  @param p the success probability
  */
-case class Binomial(val n: Int, val p: Double) extends DiscreteDistribution[Int] {
+case class Binomial(val n: Int, val p: Double) extends DiscreteGen[Int] {
 
   private lazy val bernoulli = Bernoulli(p)
 

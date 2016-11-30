@@ -4,7 +4,7 @@ package algorithms
 
 import scala.util.Random
 
-case class Uniform(a: Double, b: Double) extends AbstractGen[Double] {
+case class Uniform(a: Double, b: Double) extends Gen[Double] {
   require(a <= b, "𝑎 shall be greater or equal to 𝑏.")
 
   def apply: Double = Random.nextDouble * (a-b) + b

@@ -8,7 +8,7 @@ package algorithms
  *  @return a discrete uniform distribution with the given sample space
  *  `values`.
  */ 
-case class DiscreteUniform[A](space: A*) extends DiscreteDistribution[A] {
+case class DiscreteUniform[A](space: A*) extends DiscreteGen[A] {
 
   def mass: Map[A, Double] = {
     require(!space.isEmpty, "The sample space cannot be empty.")

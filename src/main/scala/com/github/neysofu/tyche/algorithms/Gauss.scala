@@ -9,7 +9,7 @@ import scala.util.Random
  *  @param ev the ''μ'' parameter of the distribution.
  *  @param sd the ''σ²'' parameter of the distribution.
  */ 
-case class Gauss(ev: Double, sd: Double) extends AbstractGen[Double] {
+case class Gauss(ev: Double, sd: Double) extends Gen[Double] {
 
   def apply: Double = Random.nextGaussian * sd + ev
 
