@@ -1,24 +1,19 @@
 package com.github.neysofu
 package tyche
 
-/** Markovian processes are described as generators with a state and a
+/** Represents a process with the Markovian property; i.e. a state and a
  *  transition rule.
  *
  *  @tparam A the type of the states.
- *  @see [[com.github.neysofu.tyche.Gen]], [[com.github.neysofu.tyche.DiscreteGen]]
  */
-trait MarkovGen[A] extends Gen[MarkovGen[A]] {
+trait MarkovAutomaton[A] extends Automaton[MarkovAutomaton[A]] {
     self =>
 
-  /** The current state.
-   */
   val state: A
+  val rule: A => DiscreteAutomaton[A]
 
-  /** The transition rule. It takes a state as a parameter and returns the
-   *  discrete random variable that will determine the next state.
-   */
-  val rule: A => DiscreteGen[A]
-  
+  def apply: MarkovAutomaton[A] = MarkovAutomaton(rule(state)(), rule)
+
   /** Performs a random walk on the chain and stores the state at each step
    *  in a sequence.
    *
@@ -26,16 +21,14 @@ trait MarkovGen[A] extends Gen[MarkovGen[A]] {
    *  @return a new list of the given length `n` filled with successive
    *  states; an empty list if `n` is nonpositive.
    */
-  def walk(n: Int): Seq[A] = if (n > 0) state +: apply.walk(n-1) else Seq()
- 
-  def apply = MarkovGen[A](self.rule, self.rule(self.state).apply)
+  def walk(n: Int): Seq[A] = take(n) map (_.state)
 }
 
 /** Contains a number of builders for the most common Markov chains.
  */
-object MarkovGen {
+object MarkovAutomaton {
 
-  def apply[A](f: A => DiscreteGen[A], current: A) = new MarkovGen[A] {
+  def apply[A](current: A, f: A => DiscreteAutomaton[A]) = new MarkovAutomaton[A] {
     val state = current
     val rule = f
   }
@@ -44,12 +37,8 @@ object MarkovGen {
    *
    *  @return a new Markovian process.
    */
-  def randomWalk: MarkovGen[Int] = new MarkovGen[Int] {
-    val state = 0
-    val rule = x => new DiscreteGen[Int] {
-      val mass = Map(x+1 -> 0.5, x-1 -> 0.5)
-    }
-  }
+  def randomWalk: MarkovAutomaton[Int] =
+    MarkovAutomaton(0, x => DiscreteAutomaton(Map(x+1 -> 0.5, x-1 -> 0.5)))
 
   /** Builds a new Markov chain modelled on some training data sequence.
    *
@@ -58,7 +47,7 @@ object MarkovGen {
    *  in the given training data list `seq`. The initial state is set to the
    *  first element in the training data list.
    */
-  def modelOn[A](seq: A*): MarkovGen[A] = {
+  def modelOn[A](seq: A*): MarkovAutomaton[A] = {
       import scala.collection.mutable.{Map => Dict}
     require(
       seq.size >= 2, "The training list must contain at least two elements.")
@@ -76,11 +65,6 @@ object MarkovGen {
       }
     }
     val ruleMap = table.map(kv => kv._1 -> kv._2.toMap).toMap
-    new MarkovGen[A] {
-      val state = seq.head
-      val rule = (a: A) => new DiscreteGen[A] {
-        val mass = ruleMap(a)
-      }
-    }
+    MarkovAutomaton(seq.head, (a: A) => DiscreteAutomaton(ruleMap(a)))
   }
 }

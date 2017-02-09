@@ -1,17 +1,19 @@
-package com.github.neysofu.tyche
+package com.github.neysofu
+package tyche
 
 import scala.util.Random
 import org.scalatest.{WordSpec, Matchers}
+import shapes._
+import implicits.EqualityImplicits._
+import util.Interval
 
-import algorithms._
-
-class ContinuousGenSpec extends WordSpec with Matchers {
+class AutomatonSpec extends WordSpec with Matchers {
 
   "A normal distribution" when {
     
     "μ = ∞" should {
       "ignore σ²" in {
-        Gauss(1.0 / 0.0, 1)().isInfinity shouldBe true
+        Gauss(1.0 / 0, 1)().isInfinity shouldBe true
       }
     }
 
@@ -31,12 +33,12 @@ class ContinuousGenSpec extends WordSpec with Matchers {
     }
 
     "k > 0" should {
-      val gen = ChiSquare(1)
+      val cq1 = ChiSquare(1)
       "yield a nonnegative value" in {
-        gen() should be >= 0.0
+        cq1() should be >= 0.0
       }
       "have a nonnegative mean" in {
-        gen.mean should be >= 0.0
+        cq1.mean should be >= 0.0
       }
     }
   }
@@ -45,7 +47,7 @@ class ContinuousGenSpec extends WordSpec with Matchers {
     
     "sampled" should {
       "yield a value that falls within the ´[0, 1[´ interval" in {
-        val outcome = Uniform(0, 1)
+        val outcome = Uniform(Interval(0, 1))
         outcome() should be < 1.0
         outcome() should be >= 0.0
       }
@@ -54,14 +56,13 @@ class ContinuousGenSpec extends WordSpec with Matchers {
 
   "A pseudo-continuous distribution" when {
     
-    val gen = Gen(1.0)
-    
     "its sample space size equals 1" should {
+      val auto = Automaton(1.0)
       "have equal mean and outcome" in {
-        (gen() - gen.mean).abs should be < 0.0001
+        assert(auto() === auto.mean)
       }
       "have a null standard deviation" in {
-        gen.stdDeviation.abs should be < 0.0001
+        assert(auto.stdDeviation === 0.0)
       }
     }
   }

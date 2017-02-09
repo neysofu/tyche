@@ -1,27 +1,29 @@
 package com.github.neysofu
 package tyche
-package algorithms
+package shapes
 
+import util.Memo
 import scala.collection.mutable.{Map => Dict}
-import com.github.neysofu.tyche.util.Memo
 
 /**
  *
  *  @param n the number of independent yes/no experiments
  *  @param p the success probability
  */
-case class Binomial(val n: Int, val p: Double) extends DiscreteGen[Int] {
+case class Binomial(val n: Int, val p: Double) extends Automaton[Int] {
 
-  private lazy val bernoulli = Bernoulli(p)
+  private[this] val bernoulli = Bernoulli(p)
 
-  override def apply: Int = Seq.fill(n)(if (bernoulli()) 1 else 0).sum
+  override def apply: Int =
+    Seq.fill(n)(if (bernoulli()) 1 else 0).sum
 
-  override def mean(implicit toDouble: Int => Double): Double = n * p
+  override def mean(implicit toDouble: Int => Double): Double =
+    n * p
 
   override def stdDeviation(implicit toDouble: Int => Double): Double =
     Math.sqrt(n * p * (1-p))
 
-  def mass: Map[Int, Double] = {
+  lazy val mass: Map[Int, Double] = {
     val dict = Dict.empty[Int, Double]
     lazy val binCoefficient: Memo[(Int, Int), Long] = Memo {
       case (n, k) => if (k == 0 || k == n) {

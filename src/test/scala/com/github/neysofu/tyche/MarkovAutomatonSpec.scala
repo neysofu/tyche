@@ -1,19 +1,16 @@
-package com.github.neysofu.tyche
+package com.github.neysofu
+package tyche
 
 import scala.util.Random
 import org.scalatest.{WordSpec, Matchers}
-import algorithms._
 
-class MarkovChainSpec extends WordSpec with Matchers {
+class MarkovAutomatonSpec extends WordSpec with Matchers {
 
   sealed trait State
   object S1 extends State
   object S2 extends State
 
-  val chain = MarkovGen[State](
-    { case _ => DiscreteGen(Map(S1 -> 1))},
-    S2
-  )
+  val chain = MarkovAutomaton[State](S2, { case s => DiscreteAutomaton(Map(S1 -> 1))})
   
   "A Markov chain" when {
     
@@ -25,7 +22,7 @@ class MarkovChainSpec extends WordSpec with Matchers {
 
     "modelled on \"11\"" should {
       "yield '1'" in {
-        MarkovGen.modelOn("11" : _*)().state shouldBe '1'
+        MarkovAutomaton.modelOn("11" : _*)().state shouldBe '1'
       }
     }
   }

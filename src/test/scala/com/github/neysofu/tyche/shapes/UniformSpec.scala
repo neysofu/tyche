@@ -1,9 +1,10 @@
 package com.github.neysofu
 package tyche
-package algorithms
+package shapes
 
 import scala.util.Random
 import org.scalatest.{WordSpec, Matchers}
+import com.github.neysofu.tyche.util.Interval
 
 class UniformSpec extends WordSpec with Matchers {
 
@@ -12,14 +13,14 @@ class UniformSpec extends WordSpec with Matchers {
     "𝑏 is greater than 𝑎" should {
       "throw an exception" in {
         a [java.lang.IllegalArgumentException] should be thrownBy {
-          Uniform(1, 0)
+          Uniform(Interval(1, 0))
         }
       }
     }
 
     "𝑏 equals 𝑎" should {
       val a = 1
-      val uniform = Uniform(a, a)
+      val uniform = Uniform(Interval(a, a))
       "have a null deviation" in {
         uniform.stdDeviation shouldBe 0.0
       }

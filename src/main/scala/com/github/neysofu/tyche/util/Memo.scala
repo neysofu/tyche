@@ -11,6 +11,6 @@ import scala.collection.mutable.{Map => Dict}
  *  @tparam O the target type of the given function `f`.
  */
 case class Memo[I, O](f: I => O) extends (I => O) with Serializable {
-  val cache = Dict.empty[I, O]
-  override def apply(x: I) = cache.getOrElseUpdate(x, f(x))
+  val cache: Dict[I, O] = Dict.empty
+  def apply(x: I): O = cache.getOrElseUpdate(x, f(x))
 }

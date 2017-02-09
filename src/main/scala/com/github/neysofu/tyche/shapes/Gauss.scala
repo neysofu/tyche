@@ -1,6 +1,6 @@
 package com.github.neysofu
 package tyche
-package algorithms
+package shapes
 
 import scala.util.Random
 
@@ -9,7 +9,7 @@ import scala.util.Random
  *  @param ev the ''μ'' parameter of the distribution.
  *  @param sd the ''σ²'' parameter of the distribution.
  */ 
-case class Gauss(ev: Double, sd: Double) extends Gen[Double] {
+case class Gauss(ev: Double, sd: Double) extends ContinuousAutomaton {
 
   def apply: Double = Random.nextGaussian * sd + ev
 

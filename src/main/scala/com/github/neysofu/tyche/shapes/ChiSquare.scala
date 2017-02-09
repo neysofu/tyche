@@ -1,15 +1,17 @@
 package com.github.neysofu
 package tyche
-package algorithms
+package shapes
 
-/**
- * @param k the ''𝑘'' parameter of the returned distribution.
+/** Represents a chi-squared distribution with ''k'' degrees of freedom.
+ * @param k the ''k'' parameter of the returned distribution.
  */
-case class ChiSquare(k: Int) extends Gen[Double] {
+case class ChiSquare(k: Int) extends ContinuousAutomaton {
+  require(k >= 0)
 
   def apply: Double = {
     var sum = 0.0
-    for (n <- 1 to k) sum += Math.pow(ChiSquare.stdNormal(), 2)
+    for (n <- 1 to k)
+      sum += Math.pow(ChiSquare.stdNormal(), 2)
     sum
   }
 
