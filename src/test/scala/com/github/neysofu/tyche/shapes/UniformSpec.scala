@@ -4,7 +4,7 @@ package shapes
 
 import scala.util.Random
 import org.scalatest.{WordSpec, Matchers}
-import com.github.neysofu.tyche.util.Interval
+import util.Interval
 
 class UniformSpec extends WordSpec with Matchers {
 
@@ -21,9 +21,6 @@ class UniformSpec extends WordSpec with Matchers {
     "𝑏 equals 𝑎" should {
       val a = 1
       val uniform = Uniform(Interval(a, a))
-      "have a null deviation" in {
-        uniform.stdDeviation shouldBe 0.0
-      }
       "have a mean equal to 𝑎 and 𝑏" in {
         uniform.mean shouldBe a
       }

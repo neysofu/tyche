@@ -6,7 +6,7 @@ import scala.util.Random
 
 case class MassFunction[A](mass: Map[A, Double]) extends MassTraitFunction[A] {
   require(!mass.isEmpty, "The PMF cannot be empty.")
-  require(mass.values forall (_ > 0), "All probabilities must be positive.")
+  require(mass.values forall (_ >= 0), "All probabilities must be nonnegative.")
 }
 
 trait MassTraitFunction[A] extends (() => A) {

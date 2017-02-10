@@ -10,6 +10,7 @@ import scala.util.Random
  *  @param sd the ''σ²'' parameter of the distribution.
  */ 
 case class Gauss(ev: Double, sd: Double) extends ContinuousAutomaton {
+    require(sd >= 0, "σ² cannot be negative")
 
   def apply: Double = Random.nextGaussian * sd + ev
 

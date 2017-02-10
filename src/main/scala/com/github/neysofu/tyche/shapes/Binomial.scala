@@ -11,6 +11,7 @@ import scala.collection.mutable.{Map => Dict}
  *  @param p the success probability
  */
 case class Binomial(val n: Int, val p: Double) extends Automaton[Int] {
+    require(n >= 0, "n cannot be negative.")
 
   private[this] val bernoulli = Bernoulli(p)
 
@@ -26,13 +27,13 @@ case class Binomial(val n: Int, val p: Double) extends Automaton[Int] {
   lazy val mass: Map[Int, Double] = {
     val dict = Dict.empty[Int, Double]
     lazy val binCoefficient: Memo[(Int, Int), Long] = Memo {
-      case (n, k) => if (k == 0 || k == n) {
+        case (n, k) =>
+      if (k == 0 || k == n)
         1L
-      } else if (k > n/2) {
+      else if (k > n/2)
         binCoefficient(n, n-k)
-      } else {
+      else
         binCoefficient(n-1, k-1) + binCoefficient(n-1, k)
-      }
     }
     for (k <- 0 to n) {
       val pk = Math.pow(p, k)

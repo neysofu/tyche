@@ -49,6 +49,7 @@ trait DiscreteAutomaton[A] extends Automaton[A] with MassTraitFunction[A] {
 object DiscreteAutomaton {
 
   def apply[A](mass: Map[A, Double]): DiscreteAutomaton[A] = {
+    MassFunction(mass)
     val m = mass
     new DiscreteAutomaton[A] {
       val mass: Map[A, Double] = m
@@ -62,7 +63,6 @@ object DiscreteAutomaton {
    *  `values`.
    */
   def uniform[A](space: A*): DiscreteAutomaton[A] = {
-    require(!space.isEmpty, "The sample space cannot be empty.")
     DiscreteAutomaton((space map (x => x -> 1.0)).toMap)
   }
 
