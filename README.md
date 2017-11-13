@@ -1,16 +1,11 @@
 # Tyche ![build](https://travis-ci.org/neysofu/tyche.svg?branch=master) ![scala version](https://img.shields.io/badge/scala-2.12.0-blue.svg)
 Tyche is a small and robust statistical library for the JVM. Many JVM-hosted numerical libraries offer similar functionalities, but they seem to be unnecessarily bloated and they fail to provide straightforward APIs. Instead, Tyche is built from the ground up in accordance to good design principles.
 
-Tyche is tiny and yet badass. Here's why:
-
 - Discrete & Continuous distributions.
 - Foolproof analysis tools.
-- Efficient numerical manipulation techniques.
-- The coolest Markov chains you'll ever see.
-- Fully modular design.
+- Markov chains and lattice walks.
 - Simple Random Sampling (SRS) support.
-- **Extensive** documentation!
-- Enviable test coverage.
+- Extensive documentation and good test coverage.
 
 The library is written in Scala 2.12.0 and was tested last with sbt 0.13.13.
 
@@ -22,8 +17,6 @@ Behold, the power of Tyche:
 // another child. If they have a boy, they stop. What is the average
 // amount of kids per family?
 
-val sampleSize = 10000
-
 sealed trait Child
 object Boy extends Child
 object Girl extends Child
@@ -32,7 +25,7 @@ val family = tyche.DiscreteDistribution.uniform(Boy, Girl)
   .until(_ contains Boy)
   .map(_.size)
 
-println(1.0 * family.take(sampleSize).sum / sampleSize) // ~ 2.0
+println(family.mean) // ~ 2.0
 ```
 
 ## Setup
